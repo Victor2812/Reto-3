@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
@@ -7,10 +9,7 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-// Colores
-$color-deusto : #003FA2;
-
-
-.mierda {
-    background-color: $color-deusto;
+.card {
+    border-radius: 0.7rem;
+    // box-shadow: 0.5rem 0.5rem 1rem darkblue;
 }

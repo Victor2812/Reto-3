@@ -23,11 +23,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 mierda">
-                    <p>Mierda</p>
-                </div>
-            </div>
         </div>
     </section>
 </body>
