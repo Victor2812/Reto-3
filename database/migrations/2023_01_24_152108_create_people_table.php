@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone', 9)->unique();
             $table->string('email', 100)->unique();
             $table->foreignId('role_id')->constrained();
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }
