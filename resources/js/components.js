@@ -2,10 +2,35 @@ class login extends HTMLElement {
     constructor() {
         console.log('login component anexed');
         super();
-        
-        const shadowRoot = this.attachShadow({ mode: "closed" });
-        
-        // create login form 
+
+        const shadowRoot = this.attachShadow({ mode: "open" });
+
+        // v2 version of the login form web component, this one allows for the user to implement bootstrap
+        const htmlTemplate = document.createElement('template');
+
+        // no se que le pasa al primer div, no pilla el mb-4, lo alica bien el input dni
+        htmlTemplate.innerHTML = `
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+            <form action="#" method="post>
+                <div class="form-outline mb-4">
+                    <input type="text" id="dni" class="form-control form-control-lg mb-4" placeholder="DNI" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="password" id="pass" class="form-control form-control-lg" placeholder="Password" />
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+            </form>
+        `;
+
+        shadowRoot.appendChild(htmlTemplate.content.cloneNode(true));
+
+        // v1 of the login form, the only way to change the style is to implement css via template.innerHTML
+        /*
+        // create login form
         const loginForm = document.createElement("form");
         loginForm.setAttribute("method", "POST");
         loginForm.setAttribute("action", "#");
@@ -30,34 +55,11 @@ class login extends HTMLElement {
         enviar.classList.add("enviar");
         enviar.innerText = "Enviar";
 
-        // append input to parent form element form 
+        // append input to parent form element form
         loginForm.appendChild(inputName);
         loginForm.appendChild(inputPass);
         loginForm.appendChild(enviar);
-
-        // css 
-        const template = document.createElement("template");
-        template.innerHTML = `
-            <style>
-                * {
-                    box-sizing: border-box;
-                }
-                .login-form {
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                input {
-                    margin: 1em
-                }
-                
-                .enviar {
-                    margin: 1em;
-                    background-color: red;
-                }
-            </style>
-        `;
-        shadowRoot.appendChild(template.content.cloneNode(true));
+        */
 
     }
 
