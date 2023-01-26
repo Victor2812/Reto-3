@@ -7,7 +7,9 @@
                     <div class="card">
                         <div class="p-5 text-center">
                             <img class="mb-5 mt-2" src="imgs/universidad-deusto.svg" alt="logo universidad deusto" width="70%">
-                            <login-sufrimiento></login-sufrimiento>
+                            <form action="">
+                                <login-sufrimiento></login-sufrimiento>
+                            </form>
                             <!--
                             <form action="">
                                 <div class="form-outline mb-4">

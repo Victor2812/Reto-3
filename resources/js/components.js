@@ -13,7 +13,6 @@ class login extends HTMLElement {
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-            <form action="#" method="post>
                 <div class="form-outline mb-4">
                     <input type="text" id="dni" class="form-control form-control-lg mb-4" placeholder="DNI" />
                 </div>
@@ -23,7 +22,6 @@ class login extends HTMLElement {
                 </div>
 
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-            </form>
         `;
 
         shadowRoot.appendChild(htmlTemplate.content.cloneNode(true));
