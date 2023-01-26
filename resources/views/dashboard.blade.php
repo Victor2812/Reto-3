@@ -11,5 +11,6 @@
 </head>
 <body>
     <h1>DASH</h1>
+    <a href="{{ route('logout') }}">Cerrar sesión</a>
 </body>
 </html>
