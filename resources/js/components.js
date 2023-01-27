@@ -82,9 +82,9 @@ class footer extends HTMLElement {
 
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
-            <div id="contenedor" class="container-fluid" style="position: fixed; bottom: 0; width: 100%; background-color: #003FA2">
-                <div class="row py-3 px-3">
-                    <div class="col-md-7">
+            <div id="contenedor" class="pepe" style="position: relative; bottom: 0;">
+                <div class="row py-3 px-3" style="background-color: #1a52ab;">
+                    <div class="col-md-6">
                         <div class="row ">
                             <div class="col-lg-12 d-flex flex-sm-column justify-content-md-center">
                                 <ul class="nav">
@@ -104,7 +104,7 @@ class footer extends HTMLElement {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5 d-flex justify-content-md-end">
+                    <div class="col-md-6 d-flex justify-content-md-end">
                         <ul class="nav">
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="https://www.deusto.es/es/inicio/vive/actualidad/redes-sociales?redsel=Twitter"><i class="bi bi-twitter"></i></a>
@@ -127,6 +127,13 @@ class footer extends HTMLElement {
                         </ul>
                     </div>
                 </div>
+                <!--
+                <div class="row text-light text-center" style="background-color: #003FA2";>
+                    <div class="col-md-12 py-2">
+                        <p>2022 - Todos los derechos reservados</p>
+                    </div>
+                </div>
+                -->
             </div>
         `;
 
