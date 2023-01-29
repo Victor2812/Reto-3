@@ -18,7 +18,7 @@ class LoginController extends Controller
             return redirect(self::AFTER_LOGIN_ROUTE);
         }
 
-        return view('login');
+        return view('auth_test.login');
     }
 
     public function authenticate(Request $request)
