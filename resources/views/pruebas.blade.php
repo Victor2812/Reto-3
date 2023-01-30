@@ -13,11 +13,159 @@
         <div class="row flex-nowrap">
             <div id="app" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary"></div>
             <div class="col py-3" >
-                Lorem fistrum de la pradera mamaar la caidita fistro pupita condemor no te digo trigo por no llamarte Rodrigor condemor. No te digo trigo por no llamarte Rodrigor fistro me cago en tus muelas diodenoo tiene musho peligro. Llevame al sircoo a peich al ataquerl diodeno ese que llega ese hombree está la cosa muy malar hasta luego Lucas ese pedazo de fistro amatomaa. Benemeritaar papaar papaar te va a hasé pupitaa jarl diodenoo apetecan hasta luego Lucas hasta luego Lucas tiene musho peligro sexuarl. A wan torpedo va usté muy cargadoo mamaar apetecan ese que llega jarl pupita. Llevame al sircoo condemor benemeritaar no puedor apetecan quietooor no te digo trigo por no llamarte Rodrigor caballo blanco caballo negroorl hasta luego Lucas caballo blanco caballo negroorl torpedo. Pupita te voy a borrar el cerito llevame al sircoo sexuarl ese hombree por la gloria de mi madre quietooor.
+                <div class="col py-3 d-flex flex-column ">
 
-Llevame al sircoo no puedor la caidita de la pradera. Tiene musho peligro papaar papaar torpedo ahorarr condemor hasta luego Lucas ese pedazo de. Qué dise usteer diodenoo jarl al ataquerl por la gloria de mi madre hasta luego Lucas está la cosa muy malar no te digo trigo por no llamarte Rodrigor ese hombree a wan ahorarr. Papaar papaar me cago en tus muelas amatomaa al ataquerl ese pedazo de qué dise usteer a wan de la pradera. Se calle ustée amatomaa no puedor ese pedazo de no puedor pecador a wan llevame al sircoo va usté muy cargadoo. Benemeritaar caballo blanco caballo negroorl te va a hasé pupitaa ahorarr ahorarr me cago en tus muelas a peich no te digo trigo por no llamarte Rodrigor la caidita torpedo. No te digo trigo por no llamarte Rodrigor pupita ese pedazo de llevame al sircoo diodenoo llevame al sircoo.
-
-A wan quietooor fistro hasta luego Lucas sexuarl fistro caballo blanco caballo negroorl fistro. A wan jarl benemeritaar pupita por la gloria de mi madre apetecan sexuarl amatomaa te voy a borrar el cerito mamaar amatomaa. Está la cosa muy malar ese que llega va usté muy cargadoo llevame al sircoo. Se calle ustée me cago en tus muelas apetecan llevame al sircoo torpedo diodeno te voy a borrar el cerito la caidita. Sexuarl hasta luego Lucas sexuarl la caidita pupita. Al ataquerl me cago en tus muelas te voy a borrar el cerito apetecan.
+                    <!-- Header -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top">
+    
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+    
+                        <!-- Header Logo -->
+                        <a href="#">
+                            <img src="imgs/universidad-deusto.svg" alt="Universidad de Deusto" width="150px">
+                        </a>
+    
+                        <!-- Header Buscador -->
+                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+    
+                        <!-- Header Usuario -->
+                        <a href="" class="mr-2 d-none d-lg-inline text-gray-600 small">
+                            Douglas McGee
+                        </a>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">|</span>
+    
+                        <!-- Header Logout -->
+                        <a href="" class="text-gray-600 small">
+                            Cerrar Sesión
+                        </a>
+                        
+                    </nav>
+                    <!-- End Header -->
+    
+                    <!-- Titulo -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Panel de control</h1>
+                    </div>
+    
+                    <!-- Row -->
+                    <div class="row">
+    
+                        <!-- Alumnos -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card text-center text-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h2>
+                                        <i class="bi bi-search"></i>
+                                    </h2>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col auto">
+                                            <h5>Alumnos</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Empresas -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card text-center text-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h2>
+                                        <i class="bi bi-search"></i>
+                                    </h2>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col auto">
+                                            <h5>Empresas</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Tutores -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card text-center text-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h2>
+                                        <i class="bi bi-search"></i>
+                                    </h2>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col auto">
+                                            <h5>Tutores</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Coordinadores -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card text-center text-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h2>
+                                        <i class="bi bi-search"></i>
+                                    </h2>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col auto">
+                                            <h5>Coordinadores</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <!-- End Row -->
+    
+                    <!-- Row -->
+                    <div class="row">
+    
+                        <!-- Grados -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card text-center text-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h2>
+                                        <i class="bi bi-search"></i>
+                                    </h2>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col auto">
+                                            <h5>Grados</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Estadísticas -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card text-center text-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h2>
+                                        <i class="bi bi-search"></i>
+                                    </h2>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col auto">
+                                            <h5>Estadísticas</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Row -->
+                </div>
             </div>
         </div>
         <footer-sufrimiento></footer-sufrimiento>
