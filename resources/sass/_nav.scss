@@ -1,4 +1,4 @@
-// SUBRAYADO HOVER
+// hover subrayado
 .nav-item::after {
     content: '';
     height: 2px;
@@ -12,3 +12,21 @@
     width: 100%;
     transition: width 0.3s linear;
 }
+
+// barra busqueda
+.navbar-search {
+    width: 25rem;
+    input {
+      font-size: 0.85rem;
+      height: auto;
+    }
+}
+
+.divider {
+    width: 0;
+    border-right: 1px solid black;
+    height: calc(#{$topbar-base-height} - 2rem);
+    margin: auto 1rem;
+}
+
+

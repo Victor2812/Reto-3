@@ -37,18 +37,28 @@
                         </div>
                     </form>
 
-                    <!-- Header Usuario -->
-                    <a href="" class="mr-2 d-none d-lg-inline text-gray-600 small">
-                        Douglas McGee
-                    </a>
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">|</span>
+                    <ul class="navbar-nav ml-auto">
 
-                    <!-- Header Logout -->
-                    <a href="" class="text-gray-600 small">
-                        Cerrar Sesión
-                    </a>
+                        <!-- Header Usuario -->
+                        <li class="nav-item">
+                            <a href="" class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                Douglas McGee
+                            </a>
+                        </li>
+
+                        <div class="divider"></div>
+
+                        <!-- Header Logout -->
+                        <li class="nav-item">
+                            <a href="" class="text-gray-600 small">
+                                Cerrar Sesión
+                            </a>
+                        </li>
+
+                    </ul>
 
                 </div>
+
             </div>
             <!-- End Header -->
 
@@ -62,25 +72,40 @@
 
             <!-- Footer -->
             <footer class="bg-white">
-                <div class="container my-auto p-4">
+                <div class="container p-3 pb-0 d-flex flex-row justify-content-between">
 
                     <!-- Footer Nav -->
-                    <nav class="navbar navbar-expand-sm">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item px-sm-1">
-                                <a href="#">Politica</a>
-                            </li>
-                            <li class="nav-item px-sm-1">
-                                <a href="#">Mierda</a>
-                            </li>
-                            <li class="nav-item px-sm-1">
-                                <a href="#">Coño</a>
-                            </li>
-                        </ul>
+                    <nav class="navbar navbar-expand-sm navbar-ligh mb-3">
+                            <a class="px-2" href="">
+                                caca
+                            </a>
+                            <a class="px-2" href="">
+                                culo
+                            </a>
+                            <a class="px-2" href="">
+                                pedo
+                            </a>
+                            <a class="px-2" href="">
+                                pis
+                            </a>
                     </nav>
                     <!-- End Footer Nav -->
 
                     <!-- Footer Social -->
+                    <nav class="navbar navbar-expand-sm navbar-ligh mb-3">
+                            <a class="px-2" href="">
+                                caca
+                            </a>
+                            <a class="px-2" href="">
+                                culo
+                            </a>
+                            <a class="px-2" href="">
+                                pedo
+                            </a>
+                            <a class="px-2" href="">
+                                pis
+                            </a>
+                    </nav>
                     <!-- End Footer Social-->
 
                 </div>
