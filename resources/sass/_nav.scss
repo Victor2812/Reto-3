@@ -1,0 +1,14 @@
+// SUBRAYADO HOVER
+.nav-item::after {
+    content: '';
+    height: 2px;
+    width: 0;
+    background-color: white;
+    margin: auto;
+    display: block;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+    transition: width 0.3s linear;
+}

@@ -14,23 +14,11 @@
 
 // FontAwesome icons
 
-// LOGIN
-.card {
-    border-radius: 0.7rem;
-    // box-shadow: 0.5rem 0.5rem 1rem darkblue;
-}
+// Global
+@import 'global';
 
-// SUBRAYADO HOVER
-.nav-item::after {
-    content: '';
-    height: 2px;
-    width: 0;
-    background-color: white;
-    margin: auto;
-    display: block;
-}
+// Components
+@import 'card';
+@import 'nav';
 
-.nav-item:hover::after {
-    width: 100%;
-    transition: width 0.3s linear;
-}
+
