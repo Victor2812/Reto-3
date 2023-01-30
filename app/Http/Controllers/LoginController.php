@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    const AFTER_LOGIN_ROUTE = "dashboard";
+    const AFTER_LOGIN_ROUTE = "pruebas";
     const AFTER_LOGOUT_ROUTE = "/";
 
     public function form() {
@@ -18,7 +18,7 @@ class LoginController extends Controller
             return redirect(self::AFTER_LOGIN_ROUTE);
         }
 
-        return view('auth_test.login');
+        return view('login');
     }
 
     public function authenticate(Request $request)

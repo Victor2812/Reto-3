@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('pruebas');
 });
-
+*/
 //Auth::routes();
 Route::get('/login', [LoginController::class, 'form'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
@@ -26,5 +26,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
+
+Route::get('/main', function () {
+    return view('pruebas');
+})->middleware('auth')->name('main');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

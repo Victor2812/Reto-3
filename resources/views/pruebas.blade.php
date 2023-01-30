@@ -47,7 +47,7 @@
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">|</span>
     
                         <!-- Header Logout -->
-                        <a href="" class="text-gray-600 small">
+                        <a href="{{ route('logout') }}" class="text-gray-600 small">
                             Cerrar Sesión
                         </a>
                         

@@ -17,20 +17,26 @@
                     <div class="card">
                         <div class="p-5 text-center">
                             <img class="mb-5 mt-2" src="imgs/universidad-deusto.svg" alt="logo universidad deusto" width="70%">
-                            <form action="">
+                            <!--
+                            <form action="" method="POST">
                                 <login-sufrimiento></login-sufrimiento>
                             </form>
-                            <!--
-                            <form action="">
+                            -->
+                            
+                            <form action="{{ route('login') }}" method="POST">
+                                @csrf
+
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="dni" class="form-control form-control-lg" placeholder="DNI" />
+                                    <input type="text"  name="dni" class="form-control form-control-lg mb-4" placeholder="DNI" />
                                 </div>
+                
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="pass" class="form-control form-control-lg" placeholder="Password" />
+                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" />
                                 </div>
+                
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
                             </form>
-                            -->
+                            
                         </div>
                     </div>
                 </div>
