@@ -41,8 +41,8 @@
                         </form>
     
                         <!-- Header Usuario -->
-                        <a href="" class="mr-2 d-none d-lg-inline text-gray-600 small">
-                            Douglas McGee
+                        <a href="#" class="mr-2 d-none d-lg-inline text-gray-600 small">
+                            {{ Auth::user()->person()->first()->fullName() }}
                         </a>
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">|</span>
     

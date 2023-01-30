@@ -24,12 +24,20 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pruebas');
 })->middleware('auth')->name('dashboard');
 
-Route::get('/main', function () {
-    return view('pruebas');
-})->middleware('auth')->name('main');
-
+Route::get('/alumno', function () {
+    return view('alumnos');
+})->middleware('auth')->name('alumno');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*
+|--------------------------------------------------------------------------
+| Ruutas API
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
