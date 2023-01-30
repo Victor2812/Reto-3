@@ -40,7 +40,7 @@ class PersonPolicy
     public function view(User $user, Person $person)
     {
         // Los coordinadores (función before) y sólo si la persona es el propio usuario
-        return $this->viewAny($user) || $user->person()->first()->id === $person->id;
+        return $user->person()->first()->id === $person->id;
     }
 
     /**
@@ -65,7 +65,7 @@ class PersonPolicy
     public function update(User $user, Person $person)
     {
         // Los coordinadores (función before) y sólo si la persona es el propio usuario
-        return $this->viewAny($user) || $user->person()->first()->id === $person->id;
+        return $user->person()->first()->id === $person->id;
     }
 
     /**
