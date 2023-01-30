@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Crear roles
-        foreach (config('roles') as $id => $name) {
+        foreach (config('roles') as $name => $id) {
             Role::factory()->create([
                 'id' => $id,
                 'name' => $name,

@@ -11,9 +11,8 @@
 */
 
 return [
-//  ID      Nombre
-    1 =>    'COORDINADOR',
-    2 =>    'FACTILITADOR_ACADEMICO',
-    3 =>    'FACILITADOR_EMPRESA',
-    4 =>    'ALUMNO',
+    'COORDINADOR' => 1,
+    'FACTILITADOR_ACADEMICO' => 2,
+    'FACILITADOR_EMPRESA' => 3,
+    'ALUMNO' => 4,
 ];
