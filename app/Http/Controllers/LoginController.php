@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    const AFTER_LOGIN_ROUTE = "dashboard";
-    const AFTER_LOGOUT_ROUTE = "/";
+    const AFTER_LOGIN_ROUTE = "pruebas";
+    const AFTER_LOGOUT_ROUTE = "/login";
 
     public function form() {
         if (Auth::check()) {
@@ -18,7 +18,7 @@ class LoginController extends Controller
             return redirect(self::AFTER_LOGIN_ROUTE);
         }
 
-        return view('auth_test.login');
+        return view('login');
     }
 
     public function authenticate(Request $request)
@@ -54,11 +54,11 @@ class LoginController extends Controller
     {
         // Cierra la sesión del usuario
         Auth::logout();
- 
+
         // Invalida la sesión de PHP
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-     
+
         return redirect(self::AFTER_LOGOUT_ROUTE);
     }
 }

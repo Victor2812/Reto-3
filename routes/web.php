@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('pruebas');
-});
+});*/
 
 //Auth::routes();
 Route::get('/login', [LoginController::class, 'form'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
+Route::get('/pruebas', function () {
+    return view('tutores');
+})->middleware('auth')->name('pruebas');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

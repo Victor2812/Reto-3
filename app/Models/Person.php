@@ -18,4 +18,8 @@ class Person extends Model
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function fullName() {
+        return $this->name . ' ' . $this->surname;
+    }
 }

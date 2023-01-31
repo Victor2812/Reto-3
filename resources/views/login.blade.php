@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <title>Document</title>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -17,20 +17,23 @@
                     <div class="card">
                         <div class="p-5 text-center">
                             <img class="mb-5 mt-2" src="imgs/universidad-deusto.svg" alt="logo universidad deusto" width="70%">
+                            <!--
                             <form action="">
                                 <login-sufrimiento></login-sufrimiento>
                             </form>
-                            <!--
-                            <form action="">
+                                -->
+                            <form method="post" action="{{ route('login') }}">
+                                @csrf
+
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="dni" class="form-control form-control-lg" placeholder="DNI" />
+                                    <input type="text" name="dni" class="form-control form-control-lg" placeholder="DNI" />
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="pass" class="form-control form-control-lg" placeholder="Password" />
+                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" />
                                 </div>
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
                             </form>
-                            -->
+
                         </div>
                     </div>
                 </div>
