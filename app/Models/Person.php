@@ -23,4 +23,20 @@ class Person extends Model
     {
         return $this->name . ' ' . $this->surname; 
     }
+
+    public function scopeCoordiantors($query) {
+        return $query->where('role_id', '=', config('roles.COORDINADOR'));
+    }
+
+    public function scopeStudentTutors($query) {
+        return $query->where('role_id', '=', config('roles.FACTILITADOR_ACADEMICO'));
+    }
+
+    public function scopeCompanyTutors($query) {
+        return $query->where('role_id', '=', config('roles.FACILITADOR_EMPRESA'));
+    }
+
+    public function scopeStudents($query) {
+        return $query->where('role_id', '=', config('roles.ALUMNO'));
+    }
 }
