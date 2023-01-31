@@ -46,13 +46,7 @@
     
 </template>
 <script>
-import axios from "axios";
-
 export default {
-
-    async mounted(){
-        this.$axios.get('')
-    },
     name: 'sidebarView',
 }
 </script>
