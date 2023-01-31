@@ -15,8 +15,13 @@
 // FontAwesome icons
 
 
-// TABLAS
-@import 'tablas';
+// Global
+@import 'global';
+
+// Compoenents
+@import 'card';
+@import 'nav';
+@import 'tables';
 
 // LOGIN
 .card {
