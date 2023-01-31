@@ -29,12 +29,16 @@
                                 <div class="form-outline mb-4">
                                     <input type="text"  name="dni" class="form-control form-control-lg mb-4" placeholder="DNI" />
                                 </div>
-                              
+                                @error('dni')
+                                    <strong>DNI incorrecto</strong>
+                                @enderror
 
                                 <div class="form-outline mb-4">
                                     <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" />
                                 </div>
-                                
+                                @error('password')
+                                    <strong>Contraseña incorrecta</strong>
+                                @enderror
                 
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
                             </form>

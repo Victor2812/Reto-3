@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\GradosController;
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +31,11 @@ Route::get('/dashboard', function () {
 
 // View listado de alumnoos
 Route::get('/alumnos', [AlumnosController::class, 'index'])->middleware('auth')->name('alumnos');
+
+// View listado de grados
+Route::get('/grados', [GradosController::class, 'index'])->middleware('auth')->name('grados');
+Route::get('/grados-new', [GradosController::class, 'create'])->middleware('auth')->name('newGrado');
+Route::post('/grados-new', [GradosController::class, 'store'])->middleware('auth')->name('newGrado');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

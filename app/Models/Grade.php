@@ -9,6 +9,8 @@ class Grade extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function name() {
         return $this->name;
     }
