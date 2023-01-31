@@ -1,4 +1,4 @@
-@extends('layaouts.app')
+@extends('layouts.app')
 
 @section('title', 'Tutor')
 
@@ -11,7 +11,7 @@
                 <div class="form-items">
                     <h3>Register Today</h3>
                     <p>Fill in the data below.</p>
-                    <form class="requires-validation" novalidate>
+                    <form action="{{ route('tutors.store') }}" class="requires-validation" novalidate>
 
                         <div class="col-md-12">
                             <input class="form-control" type="text" name="name" placeholder="Full Name" required>
@@ -75,5 +75,6 @@
         </div>
     </div>
 </div>
+<a href="{{ route('tutors.index')}}">Volver</a>
 
 @endsection

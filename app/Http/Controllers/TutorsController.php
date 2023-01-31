@@ -12,9 +12,13 @@ class TutorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Devuelve la lista de tutores academicos
+        // Devuelve la lista de tutores
+        $tutors = Person::allTutors()->get();
+        return view('tutors.index', [
+            'tutors' => $tutors,
+        ]);
     }
 
     /**
@@ -24,7 +28,8 @@ class TutorsController extends Controller
      */
     public function create()
     {
-        //
+        // Devuelve la vista con el formulario
+        return view('tutors.create');
     }
 
     /**
@@ -35,7 +40,7 @@ class TutorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Esta funcion recoge el POST del formulario de creación
     }
 
     /**

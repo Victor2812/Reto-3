@@ -5,7 +5,7 @@
 @section('main')
     <div class="d-flex align-items-center justify-content-between mb-4 px-4">
         <h1 class="h3 mb-0">Tutores</h1>
-        <a href="#" class="d-inline-block btn btn-sm btn-primary shadow-sm">
+        <a href="{{ route('tutors.create') }}" class="d-inline-block btn btn-sm btn-primary shadow-sm">
             Nuevo
         </a>
     </div>
@@ -18,21 +18,21 @@
                         <tr>
                             <th>DNI</th>
                             <th>Nombre</th>
-                            <th>Apellido</th>
                             <th>Tipo</th>
                             <th>Mail</th>
                             <th>Telefono</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                        </tr>
+                        @foreach ($tutors as $t)
+                            <tr>
+                                <td>{{ $t->dni }}</td>
+                                <td>{{ $t->fullName() }}</td>
+                                <td>{{ $t->role()->first()->name }}</td>
+                                <td>{{ $t->email }}</td>
+                                <td>{{ $t->phone }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

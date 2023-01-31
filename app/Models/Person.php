@@ -42,4 +42,9 @@ class Person extends Model
     {
         return $query->where('role_id', '=', config('roles.ALUMNO'));
     }
+
+    public function scopeAllTutors($query)
+    {
+        return $query->where('role_id', '!=', config('roles.ALUMNO'));
+    }
 }
