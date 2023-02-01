@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TutorsController;
-use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,18 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('pruebas');
-});*/
-
 Route::get('/login', [LoginController::class, 'form'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 Route::get('/dashboard', function() {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
 
-Route::resource('/tutors', TutorsController::class);
-Route::resource('/people', PersonController::class);
 
+Route::resource('/tutors', TutorsController::class)->middleware('auth');
+
+
+Route::redirect('/', 'dashboard');
