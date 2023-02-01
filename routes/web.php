@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TutorsController;
 use App\Http\Controllers\PersonController;
@@ -31,3 +32,5 @@ Route::get('/dashboard', function() {
 Route::resource('/tutors', TutorsController::class);
 Route::resource('/people', PersonController::class);
 
+Route::get('/chart', [ChartsController::class, 'index'])->name('charts');
+Route::get('/chart/fails', [ChartsController::class, 'failsChart']);
