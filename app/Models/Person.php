@@ -2,12 +2,23 @@
 
 namespace App\Models;
 
+use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Person extends Model
 {
     use HasFactory;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relaciones
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
 
     public function user()
     {
@@ -19,9 +30,25 @@ class Person extends Model
         return $this->belongsTo(Role::class);
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Ayudantes
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     public function fullName() {
         return $this->name . ' ' . $this->surname;
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
 
     public function scopeCoordinators($query)
     {
@@ -47,5 +74,26 @@ class Person extends Model
     {
         return $query->where('role_id', '!=', config('roles.ALUMNO'));
         // TODO: además, para los coordinadores, comprobar si hay fichas a su tutoría
+    }
+
+    public function scopeBySearchTerms($query, string $search_terms)
+    {
+        $search_terms = explode(' ', trim($search_terms));
+        $search_terms = array_filter($search_terms, function ($param) {
+            return strlen($param) > 0;
+        });
+
+        return $query->where(function (Builder $query) use ($search_terms) {
+            foreach ($search_terms as $term) {
+                $term = strtolower($term);
+                $query->orWhere(DB::raw("LOWER(name)"), 'like', "%$term%")
+                    ->orWhere(DB::raw("LOWER(surname)"), 'like', "%$term%")
+                    ->orWhere(DB::raw("LOWER(dni)"), 'like', "%$term%");
+            }
+        });
+    }
+
+    public function scopeIsTutorOnDualSheets($query) {
+        throw new Exception('Función no implementada');
     }
 }

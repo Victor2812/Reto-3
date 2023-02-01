@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoordinatorsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TutorsController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Route::get('/dashboard', function() {
 
 
 Route::resource('/tutors', TutorsController::class)->middleware('auth');
+Route::resource('/coordinators', CoordinatorsController::class)->middleware('auth');
 
 
 Route::redirect('/', 'dashboard');
