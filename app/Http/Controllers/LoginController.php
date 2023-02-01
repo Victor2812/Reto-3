@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    const AFTER_LOGIN_ROUTE = "pruebas";
+    const AFTER_LOGIN_ROUTE = "dashboard";
     const AFTER_LOGOUT_ROUTE = "/login";
 
     public function form() {

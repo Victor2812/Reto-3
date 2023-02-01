@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\DB;
 class TutorsController extends Controller
 {
     /**
+    * Create the controller instance.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+        // Establecer la política de autorización al recurso
+        $this->authorizeResource(Person::class, 'person');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,6 +49,7 @@ class TutorsController extends Controller
 
             $tutors->where(function (Builder $query) use ($search_terms) {
                 foreach ($search_terms as $term) {
+                    $term = strtolower($term);
                     $query->orWhere(DB::raw("LOWER(name)"), 'like', "%$term%")
                         ->orWhere(DB::raw("LOWER(surname)"), 'like', "%$term%")
                         ->orWhere(DB::raw("LOWER(dni)"), 'like', "%$term%");
@@ -57,10 +69,9 @@ class TutorsController extends Controller
             // ...
         }
 
-        // Devuelve la lista de tutores
         return view('tutors.index', [
             // Información de la base de datos
-            'tutors' => $tutors->get(),
+            'tutors' => $tutors->paginate(13),
             'roles' => $roles,
             'grades' => [],
             'companies' => [],

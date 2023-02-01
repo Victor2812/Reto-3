@@ -44,7 +44,7 @@
     <div class="row">
         <div class="col-12 px-4">
             <div class="table-responsive">
-                <table class="tablita-guapa" width="100%" cellspacing="0">
+                <table class="tablita-guapa table-striped table-bordered table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>DNI</th>
@@ -66,6 +66,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div>
+                    {{ $tutors->links() }}
+                </div>
             </div>
         </div>
     </div>
