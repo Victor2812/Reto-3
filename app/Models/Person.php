@@ -19,28 +19,32 @@ class Person extends Model
         return $this->belongsTo(Role::class);
     }
 
-    public function fullName()
-    {
-        return $this->name . ' ' . $this->surname; 
+    public function fullName() {
+        return $this->name . ' ' . $this->surname;
     }
 
-    public function scopeCoordiantors($query) {
+    public function scopeCoordinators($query)
+    {
         return $query->where('role_id', '=', config('roles.COORDINADOR'));
     }
 
-    public function scopeStudentTutors($query) {
+    public function scopeStudentTutors($query)
+    {
         return $query->where('role_id', '=', config('roles.FACTILITADOR_ACADEMICO'));
     }
 
-    public function scopeCompanyTutors($query) {
+    public function scopeCompanyTutors($query)
+    {
         return $query->where('role_id', '=', config('roles.FACILITADOR_EMPRESA'));
     }
 
-    public function scopeStudents($query) {
+    public function scopeStudents($query)
+    {
         return $query->where('role_id', '=', config('roles.ALUMNO'));
     }
 
-    public function scopeAllTutors($query) {
+    public function scopeAllTutors($query)
+    {
         return $query->where('role_id', '!=', config('roles.ALUMNO'));
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Person;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlumnosController extends Controller
 {
@@ -12,11 +14,37 @@ class AlumnosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $data = Person::all()->where('role_id', 4);
+    public function index(Request $request)
+    {   
+        // recoger lisado de alumno de la database
+        $alumnos = Person::students();
+
+        // recoger el filtro del formulario buscador
+        $search = $request->query('search');
+
+        // Aplicar texto de busqueda
+        if ($search) {
+            $search_terms = explode(' ', trim($search));
+            $search_terms = array_filter($search_terms, function ($param) {
+                return strlen($param) > 0;
+            });
+
+            $alumnos->where(function (Builder $query) use ($search_terms) {
+                foreach ($search_terms as $term) {
+                    $term = strtolower($term);
+                    $query->orWhere(DB::raw("LOWER(name)"), 'like', "%$term%")
+                        ->orWhere(DB::raw("LOWER(surname)"), 'like', "%$term%")
+                        ->orWhere(DB::raw("LOWER(dni)"), 'like', "%$term%");
+                }
+            });
+        }
+
         return view('alumnos.index', [
-            'alumno' => $data
+            // info de la DB
+            'alumnos' => $alumnos->paginate(13),
+
+            // terminos de busqueda previos
+            'old_search' => $search,
         ]);
     }
 

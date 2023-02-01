@@ -9,6 +9,14 @@
         <a href="{{ route('dashboard') }}"><button class="btn btn-primary">Nuevo</button></a>
     </div>
 
+    <!-- Buscador -->
+    <div>
+        <form action="{{ route(Route::currentRouteName()) }}" method="GET">
+            <input type="text" name="search" placeholder="Nombre, Apellido, DNI ..." value="{{ $old_search }}" class=""/>
+            <button type="submit"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+
     <!-- Tabla alumnos -->
     <div class="row">
         <div class="col-12 ">
@@ -23,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($alumno as $id)
+                    @foreach ($alumnos as $id)
                         <tr>
                             <th>{{ $id->dni }}</th>
                             <th>{{ $id->name }}</th>
@@ -34,6 +42,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div>
+                {{ $alumnos->links() }}
+            </div>
         </div>
     </div>
 @endsection
