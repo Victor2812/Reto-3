@@ -15,7 +15,7 @@ class TutorsController extends Controller
     public function index(Request $request)
     {
         // Devuelve la lista de tutores
-        $tutors = Person::allTutors()->get();
+        $tutors = Person::allTutors()->paginate(13);
         return view('tutors.index', [
             'tutors' => $tutors,
         ]);

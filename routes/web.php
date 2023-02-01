@@ -24,6 +24,10 @@ Route::get('/login', [LoginController::class, 'form'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/dashboard', function() {
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');
+
 Route::resource('/tutors', TutorsController::class);
 Route::resource('/people', PersonController::class);
 
