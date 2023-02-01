@@ -14,32 +14,10 @@
 
 // FontAwesome icons
 
-
 // Global
 @import 'global';
 
-// Compoenents
+// Components
 @import 'card';
 @import 'nav';
 @import 'tables';
-
-// LOGIN
-.card {
-    border-radius: 0.7rem;
-    // box-shadow: 0.5rem 0.5rem 1rem darkblue;
-}
-
-// SUBRAYADO HOVER
-.nav-item::after {
-    content: '';
-    height: 2px;
-    width: 0;
-    background-color: white;
-    margin: auto;
-    display: block;
-}
-
-.nav-item:hover::after {
-    width: 100%;
-    transition: width 0.3s linear;
-}

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Grade;
 
-class GradosController extends Controller
+class GradesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class GradosController extends Controller
     public function index()
     {
         $data = Grade::all();
-        return view('grados', ['data' => $data]);
+        return view('grades.index', ['data' => $data]);
     }
 
     /**
@@ -25,7 +25,7 @@ class GradosController extends Controller
      */
     public function create()
     {
-        return view('gradosInsert');
+        return view('grades.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class GradosController extends Controller
         
         // guardamos el nuevo grado
         $grade->save();
-        return view('gradosInsert');
+        return view('grades.create');
     }
 
     /**

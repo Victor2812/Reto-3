@@ -39,4 +39,8 @@ class Person extends Model
     public function scopeStudents($query) {
         return $query->where('role_id', '=', config('roles.ALUMNO'));
     }
+
+    public function scopeAllTutors($query) {
+        return $query->where('role_id', '!=', config('roles.ALUMNO'));
+    }
 }

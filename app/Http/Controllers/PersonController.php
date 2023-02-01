@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Person;
+use Illuminate\Http\Request;
 
-class AlumnosController extends Controller
-{
+class PersonController extends Controller
+{   
+    /**
+     * Create the controller instance.
+     * 
+     * @return void
+     */
+    public function __construct()
+    {   
+        // Establecer la política de autorización al recurso
+        $this->authorizeResource(Person::class, 'person');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +25,8 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        $data = Person::all()->where('role_id', 4);
-        return view('alumnos.index', [
-            'alumno' => $data
-        ]);
+        // Mostrar lista de personas
+        return 'Lista de personas';
     }
 
     /**
@@ -27,7 +36,8 @@ class AlumnosController extends Controller
      */
     public function create()
     {
-        //
+        // Mostrar formulario de crear personas
+        return 'Formulario de crear personas';
     }
 
     /**
@@ -38,7 +48,7 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Acción del formulario de crear personas
     }
 
     /**
@@ -47,9 +57,10 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, Person $person)
     {
-        //
+        // Mostrar la persona
+        return 'Mostrar la persona';
     }
 
     /**
@@ -58,9 +69,10 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $person)
     {
-        //
+        // Editar la persona
+        return 'Formulario para editar la persona';
     }
 
     /**
@@ -70,9 +82,9 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Person $person)
     {
-        //
+        // Actualizar la persona
     }
 
     /**
@@ -81,8 +93,8 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Person $person)
     {
-        //
+        // Destruir la persona
     }
 }

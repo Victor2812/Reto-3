@@ -1,4 +1,6 @@
-@extends('pruebas')
+@extends('layouts.app')
+
+@section('title', 'Nuevo Grado')
 
 @section('main')
     <!-- Titulo -->
@@ -8,7 +10,7 @@
 
     <!-- Formulario creación -->
     <div class="row">
-        <form action="" method="POST">
+        <form action="{{ route('grades.store') }}" method="POST">
             @csrf
 
             <div class="form-outine mb4">
@@ -17,13 +19,13 @@
             @error('nombre')
                 <strong>Te dejaste el nombre por poner PELOTUDO</strong>
             @enderror
-            <button class="btn btn-primary mb-4 ">Añadir Grado</button>
+            <button type="submit" class="btn btn-primary mb-4 ">Añadir Grado</button>
 
         </form>
     </div>
 
     <!-- Button volver -->
     <div class="row">
-        <a href="{{ route('grados') }}"><button class="btn btn-primary">Volver</button></a>
+        <a href="{{ route('grades.index') }}"><button class="btn btn-primary">Volver</button></a>
     </div>
 @endsection
