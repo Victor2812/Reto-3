@@ -46,5 +46,6 @@ class Person extends Model
     public function scopeAllTutors($query)
     {
         return $query->where('role_id', '!=', config('roles.ALUMNO'));
+        // TODO: además, para los coordinadores, comprobar si hay fichas a su tutoría
     }
 }
