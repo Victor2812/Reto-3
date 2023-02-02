@@ -3,25 +3,50 @@
 @section('title', 'Grados')
 
 @section('main')
-    <!-- Titulo -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Grados</h1>
-        <a href="{{ route('grades.create') }}"><button class="btn btn-primary">Nuevo</button></a>
-    </div>
-    
-    <!-- Tabla alumnos -->
-    <div class="row">
-        <div class="col-12 px-4">
-            <table class="tablita-guapa" width="100%" cellspacing="0">
-                <tbody>
-                    @foreach ($data as $grade)
-                        <tr>
-                            <th>{{ $grade->name }}</th>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <!-- Años escolares -->
+    <section>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Años escolares</h1>
+            <a href="#"><button class="btn btn-primary">Nuevo</button></a>
         </div>
-    </div>
+
+        <!-- Buscador de años escolares -->
+        <div class="row">
+            <form action="{{ route(Route::currentRouteName()) }}" method="GET">
+                <input type="number" name="ystart" placeholder="Desde" value="{{ $old_ystart }}" min="{{ $oldestYear->startYear() }}" max="{{ $newestYear->startYear() }}">
+                <input type="number" name="yend" placeholder="Hasta" value="{{ $old_yend }}" min="{{ $oldestYear->endYear() }}" max="{{ $newestYear->endYear() }}">
+
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+        
+        <!-- Tabla años escolares -->
+        <div class="row">
+            <div class="col-12 px-4">
+                <table class="tablita-guapa" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($years as $y)
+                            <tr>
+                                <td>{{ $y->startYear() }}</td>
+                                <td>{{ $y->endYear() }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+    
+                <!-- Paginacion -->
+                <div>
+                    {{ $years->links() }}
+                </div>
+                <!-- End Paginacion -->
+            </div>
+        </div>
+    </section>
 
 @endsection

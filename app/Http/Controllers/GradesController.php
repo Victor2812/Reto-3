@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Grade;
+use App\Models\SchoolYear;
 
 class GradesController extends Controller
 {
@@ -12,11 +13,34 @@ class GradesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $grades = Grade::all();
+        // Obtener información desde base de datos
+        $years = SchoolYear::orderBy('end', 'desc');
+        $newestYear = SchoolYear::newestYear()->first();
+        $oldestYear = SchoolYear::oldestYear()->first();
 
-        dd($grades);
+        // Aplicar filtros
+        $ystart = $request->query('ystart');
+        $yend = $request->query('yend');
+
+        if ($ystart) {
+            $years->startYearIsGreaterThan($ystart);
+        }
+
+        if ($yend) {
+            $years->endYearIsLessThan($yend);
+        }
+        
+        return view('grades.index', [
+            'years' => $years->paginate($perPage = 4, $columns = ['*'], $pageName = 'years'),
+            'newestYear' => $newestYear,
+            'oldestYear' => $oldestYear,
+
+            // Old values
+            'old_ystart' => $ystart,
+            'old_yend' => $yend,
+        ]);
     }
 
     /**
