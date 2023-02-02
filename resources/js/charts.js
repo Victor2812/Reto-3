@@ -1,16 +1,69 @@
-//pie
-var ctxP = document.getElementById("pieChart").getContext('2d');
-var myPieChart = new Chart(ctxP, {
-  type: 'pie',
-  data: {
-    labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-    datasets: [{
-      data: [300, 50, 100, 40, 120],
-      backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-      hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-    }]
-  },
-  options: {
-    responsive: true
-  }
-});
+import Chart from 'chart.js/auto';
+
+(async function() {
+    const pieData = [
+        { item: "Aprobado", count: 80 , color: 'lightblue'},
+        { item: "Suspendido", count: 20, color: 'pink'}
+    ];
+
+    new Chart(
+        document.getElementById('pieChart'),
+        {
+        type: 'pie',
+        data: {
+            labels: pieData.map(row => row.item),
+            datasets: [
+            {
+                label: 'Aprobados $ Suspendidos',
+                data: pieData.map(row => row.count),
+                backgroundColor: pieData.map(row => row.color)
+            }
+            ]
+        }
+        }
+    );
+
+    const lineData = [
+        { year: "19-20", count: { aprobados: 80, suspensos: 20 } },
+        { year: "20-21", count: { aprobados: 60, suspensos: 40 } },
+        { year: "21-22", count: { aprobados: 70, suspensos: 30 } },
+        { year: "22-23", count: { aprobados: 10, suspensos: 90 } }
+    ];
+
+    new Chart(
+        document.getElementById('lineChart'),
+        {
+        type: 'line',
+        data: {
+            labels: lineData.map(row => row.year),
+            datasets: [
+            {
+                label: 'Aprobados',
+                data: lineData,
+                backgroundColor: 'blue',
+                borderColor: 'blue',
+                tension: 0.4,
+                parsing: {
+                    xAxisKey: 'year',
+                    yAxisKey: 'count.aprobados'
+                }
+            },
+            {
+                label: 'Suspendidos',
+                data: lineData,
+                backgroundColor: 'red',
+                borderColor: 'red',
+                tension: 0.4,
+                parsing: {
+                    xAxisKey: 'year',
+                    yAxisKey: 'count.suspensos'
+                }
+            }
+            ]
+        }
+        }
+    );
+
+
+
+})();

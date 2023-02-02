@@ -11,7 +11,14 @@
 <!-- End Titulo -->
 
 <!-- Chart -->
-<canvas id="pieChart"></canvas>
+<div class="row">
+    <div class="col-6">
+        <canvas id="pieChart"></canvas>
+    </div>
+    <div class="col-6">
+        <canvas id="lineChart"></canvas>
+    </div>
+</div>
 <!-- End Chart -->
 
 <a href="{{ route('dashboard')}}">Volver</a>
