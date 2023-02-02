@@ -23,9 +23,4 @@
             </table>
         </div>
     </div>
-
-    <div class="content" id="app">
-        <error-component></error-component>
-    </div>
-
 @endsection
