@@ -3,12 +3,14 @@
 @section('title', 'Tutores')
 
 @section('main')
+    <!-- Titulo -->
     <div class="d-flex align-items-center justify-content-between mb-4 px-4">
         <h1 class="h3 mb-0">Tutores</h1>
         <a href="{{ route('tutors.create') }}" class="d-inline-block btn btn-sm btn-primary shadow-sm">
             Nuevo
         </a>
     </div>
+    <!-- End Titulo -->
 
     <div>
         <form action="{{ route(Route::currentRouteName()) }}" method="GET">
@@ -44,7 +46,7 @@
     <div class="row">
         <div class="col-12 px-4">
             <div class="table-responsive">
-                <table class="tablita-guapa table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                <table class="tablita-guapa table-striped table-bordered table-hovers" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>DNI</th>
@@ -66,10 +68,15 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <!-- Paginacion -->
                 <div>
                     {{ $tutors->links() }}
                 </div>
+                <!-- End Paginacion -->
             </div>
         </div>
     </div>
+    <!-- End Tabla -->
+
 @endsection

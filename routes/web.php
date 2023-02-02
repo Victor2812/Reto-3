@@ -3,6 +3,7 @@
 use App\Http\Controllers\GradesController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\CoordinatorsController;
+use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TutorsController;
 use Illuminate\Support\Facades\Route;
@@ -48,3 +49,5 @@ Route::get('/dashboard', function() {
 |
 */
 
+Route::get('/chart', [ChartsController::class, 'index'])->name('charts');
+Route::get('/chart/fails', [ChartsController::class, 'failsChart']);

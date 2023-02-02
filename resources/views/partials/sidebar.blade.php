@@ -9,7 +9,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link align-middle px-0 text-white">
+            <a href="{{ route('students.index') }}" class="nav-link align-middle px-0 text-white">
                 <i class="fs-4 bi-mortarboard"></i> <span class="ms-1 d-none d-sm-inline">Alumnos</span></a>
         </li>
         <li class="nav-item">
@@ -28,12 +28,12 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link align-middle px-0 text-white">
+            <a href="{{ route('grades.index') }}" class="nav-link align-middle px-0 text-white">
                 <i class="fs-4 bi-bank"></i> <span class="ms-1 d-none d-sm-inline">Grados</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link align-middle px-0 text-white">
+            <a href="{{ route('charts') }}" class="nav-link align-middle px-0 text-white">
                 <i class="fs-4 bi-bar-chart"></i> <span class="ms-1 d-none d-sm-inline">Estadísticas</span>
             </a>
         </li>
