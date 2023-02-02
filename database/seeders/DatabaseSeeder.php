@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Grade;
 use App\Models\Person;
 use App\Models\Role;
+use App\Models\SchoolYear;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
@@ -46,6 +47,15 @@ class DatabaseSeeder extends Seeder
         foreach (Person::where('role_id', '!=', 3)->get() as $person) {
             User::factory()->create([
                 'person_id' => $person->id,
+            ]);
+        }
+
+        // Años escolares
+        for ($i=4; $i > 0; $i--) {
+            $i2 = $i-1;
+            SchoolYear::factory()->create([
+                'start' => (new \DateTime())->modify("-$i year"),
+                'end' => (new \DateTime())->modify("-$i2 year"),
             ]);
         }
 
