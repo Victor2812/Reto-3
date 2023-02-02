@@ -11,7 +11,7 @@
     <!-- Row -->
     <div class="row">
         <!-- Alumnos -->
-        <a href="{{ route('alumnos.index') }}" class="col-xl-3 col-md-6 mb-4">
+        <a href="{{ route('students.index') }}" class="col-xl-3 col-md-6 mb-4">
             <div class="card text-center text-primary shadow h-100 py-2">
                 <div class="card-body">
                     <h2>

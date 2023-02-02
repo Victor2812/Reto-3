@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\GradesController;
-use App\Http\Controllers\AlumnosController;
+use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\CoordinatorsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TutorsController;
@@ -25,7 +25,7 @@ Route::get('/login', [LoginController::class, 'form'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::resource('/alumnos', AlumnosController::class)
+Route::resource('/students', StudentsController::class)
     ->middleware('auth');
 Route::resource('/tutors', TutorsController::class)
     ->middleware('auth');

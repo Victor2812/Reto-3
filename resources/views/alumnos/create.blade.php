@@ -10,7 +10,7 @@
 
     <!-- Formulario creación -->
     <div class="row">
-        <form action="{{ route('alumnos.store') }}" method="POST">
+        <form action="{{ route('students.store') }}" method="POST">
             @csrf
 
             <div class="form-outine mb4">

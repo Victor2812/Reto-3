@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
-class AlumnosController extends Controller
+class StudentsController extends Controller
 {
     /**
     * Create the controller instance.
