@@ -5,9 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Grade;
 use App\Models\SchoolYear;
+use Illuminate\Database\Eloquent\Builder;
 
 class GradesController extends Controller
 {
+    protected function applyYearFilter(Request $request, Builder $yearsQuery)
+    {
+        $ystart = $request->query('ystart');
+        $yend = $request->query('yend');
+
+        if ($ystart) {
+            $yearsQuery->startYearIsGreaterThan($ystart);
+        }
+
+        if ($yend) {
+            $yearsQuery->endYearIsLessThan($yend);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,16 +36,7 @@ class GradesController extends Controller
         $oldestYear = SchoolYear::oldestYear()->first();
 
         // Aplicar filtros
-        $ystart = $request->query('ystart');
-        $yend = $request->query('yend');
-
-        if ($ystart) {
-            $years->startYearIsGreaterThan($ystart);
-        }
-
-        if ($yend) {
-            $years->endYearIsLessThan($yend);
-        }
+        $this->applyYearFilter($request, $years);
         
         return view('grades.index', [
             'years' => $years->paginate($perPage = 4, $columns = ['*'], $pageName = 'years'),
@@ -38,8 +44,8 @@ class GradesController extends Controller
             'oldestYear' => $oldestYear,
 
             // Old values
-            'old_ystart' => $ystart,
-            'old_yend' => $yend,
+            'old_ystart' => $request->query('ystart'),
+            'old_yend' => $request->query('yend'),
         ]);
     }
 
