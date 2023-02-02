@@ -1,0 +1,15 @@
+.grade-course {
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+
+    border: 0.15rem solid $primary;
+    border-radius: 0.5rem;
+
+    font-weight: 600;
+
+    &.active {
+        background-color: $primary;
+        color: $secondary;
+    }
+}

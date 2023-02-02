@@ -49,4 +49,47 @@
         </div>
     </section>
 
+    <section>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Grados</h1>
+            <a href="#"><button class="btn btn-primary">Nuevo</button></a>
+        </div>
+        
+        <div class="row">
+            <form action="{{ route(Route::currentRouteName()) }}" method="GET">
+                <input type="text" name="gsearch" placeholder="Nombre" value="{{ $old_gsearch }}">
+
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col-12 px-4">
+                <table class="tablita-guapa" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cursos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($grades as $g)
+                            <tr>
+                                <td>{{ $g->name }}</td>
+                                <td>
+                                    @include('partials.grades.courselist', ['courses' => $g->courses()->get()])
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+    
+                <!-- Paginacion -->
+                <div>
+                    {{ $grades->links() }}
+                </div>
+                <!-- End Paginacion -->
+            </div>
+        </div>
+    </section>
 @endsection

@@ -9,17 +9,26 @@ use Illuminate\Database\Eloquent\Builder;
 
 class GradesController extends Controller
 {
-    protected function applyYearFilter(Request $request, Builder $yearsQuery)
+    protected function applyYearFilter(Request $request, Builder $query)
     {
         $ystart = $request->query('ystart');
         $yend = $request->query('yend');
 
         if ($ystart) {
-            $yearsQuery->startYearIsGreaterThan($ystart);
+            $query->startYearIsGreaterThan($ystart);
         }
 
         if ($yend) {
-            $yearsQuery->endYearIsLessThan($yend);
+            $query->endYearIsLessThan($yend);
+        }
+    }
+
+    protected function applyGradeFilter(Request $request, Builder $query)
+    {
+        $gsearch = $request->query('gsearch');
+
+        if (strlen(trim($gsearch)) > 0) {
+            $query->bySearch($gsearch);
         }
     }
 
@@ -35,17 +44,25 @@ class GradesController extends Controller
         $newestYear = SchoolYear::newestYear()->first();
         $oldestYear = SchoolYear::oldestYear()->first();
 
+        $grades = Grade::orderBy('id', 'desc');
+
         // Aplicar filtros
         $this->applyYearFilter($request, $years);
+        $this->applyGradeFilter($request, $grades);
         
         return view('grades.index', [
+            // Fechas
             'years' => $years->paginate($perPage = 4, $columns = ['*'], $pageName = 'years'),
             'newestYear' => $newestYear,
             'oldestYear' => $oldestYear,
 
-            // Old values
+            // Grados
+            'grades' => $grades->paginate(13),
+
+            // Valores antiguos
             'old_ystart' => $request->query('ystart'),
             'old_yend' => $request->query('yend'),
+            'old_gsearch' => $request->query('gsearch'),
         ]);
     }
 
