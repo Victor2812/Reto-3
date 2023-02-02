@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Course;
+use App\Models\Grade;
 use App\Models\Person;
 use App\Models\Role;
 use App\Models\User;
@@ -45,6 +47,21 @@ class DatabaseSeeder extends Seeder
             User::factory()->create([
                 'person_id' => $person->id,
             ]);
+        }
+
+        // Grados
+        for ($i=0; $i < 10; $i++) { 
+            $grade = Grade::factory()->create([
+                'name' => "Gado $i",
+            ]);
+
+            for ($j=1; $j < 5; $j++) {
+                Course::factory()->create([
+                    'grade_id' => $grade->id,
+                    'name' => "$j",
+                    'has_dual' => $j > 1,
+                ]);
+            }
         }
     }
 }

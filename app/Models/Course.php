@@ -9,10 +9,10 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id',
-        'grade_id',
-        'name',
-        'has_dual'
-    ];
+    public $timestamps = false;
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
+    }
 }
