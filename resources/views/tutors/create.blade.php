@@ -11,23 +11,96 @@
 <div class="row">
     <form action="{{ route('tutors.store') }}" class="requires-validation" novalidate>
         <div class="form-body">
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Introduce nombre">
+
+            <!-- Row -->
+            <div class="row mb-4">
+
+                <!-- Nombre -->
+                <div class="col-4">
+                    <div class="form-outline">
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                    </div>
                 </div>
+
+                <!-- Apellidos -->
+                <div class="col-4">
+                    <div class="form-outline">
+                        <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+                    </div>
+                </div>
+
+                <!-- DNI -->
+                <div class="col-4">
+                    <div class="form-outline">
+                        <input type="text" class="form-control" name="dni" placeholder="DNI">
+                    </div>
+                </div>
+
             </div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="apellidos">Apellidos</label>
-                    <input type="text" class="form-control" name="apellidos" placeholder="Introduce apellidos">
+            <!-- End Row -->
+
+            <!-- Row -->
+            <div class="row mb-4">
+
+                <!-- Tipo de Tutor -->
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="tipoTutor">Tipo de Tutor</label>
+                        <select class="form-control" name="tipoTutor">
+                            <option>Academico</option>
+                            <option>Empresa</option>
+                        </select>
+                    </div>
                 </div>
-            </div><div class="col-4">
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="text" class="form-control" name="telefono" placeholder="Introduce número de teléfono">
+
+                <!-- Grado -->
+                <div class="col-6">
+                    <div class="form-group">
+
+                        <select class="form-control" name="grado">
+                            <option>Dessarrollo de mierda</option>
+                            <option>Dessarrollo de detritos</option>
+                            <option>Dessarrollo de excreciones</option>
+                            <option>Dessarrollo de heces</option>
+                            <option>Dessarrollo de boñigas</option>
+                        </select>
+                    </div>
                 </div>
+
             </div>
+            <!-- End Row -->
+
+            <!-- Row -->
+            <div class="row mb-4">
+
+                <!-- Mail -->
+                <div class="col-4">
+                    <div class="form-outline">
+                        <input type="mail" class="form-control" name="email" placeholder="Mail">
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="col-4">
+                    <div class="form-outline">
+                        <input type="password" class="form-control" name="pass" placeholder="Contraseña">
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="col-4">
+                    <div class="form-outline">
+                        <input type="text" class="form-control" name="pass" placeholder="Teléfono">
+                    </div>
+                </div>
+
+            </div>
+            <!-- End Row -->
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+
         </div>
     </form>
 </div>
