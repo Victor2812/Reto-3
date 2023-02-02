@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class AlumnosController extends Controller
+class TutorsController extends Controller
 {
     /**
     * Create the controller instance.
@@ -17,30 +18,54 @@ class AlumnosController extends Controller
         // Establecer la política de autorización al recurso
         $this->authorizeResource(Person::class, 'person');
     }
-
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
-        // recoger lisado de alumno de la database
-        $alumnos = Person::students();
+    {
+        // Información de la base de datos
+        $tutors = Person::allTutors();
+        $roles = Role::all();
+        // TODO: grados
+        // TODO: compañías
 
-        // recoger el filtro del formulario buscador
+        // Obtener filtros
         $search = $request->query('search');
+        $role = (int)$request->query('role');
+        $grade = (int)$request->query('grade');
+        $company = (int)$request->query('company');
 
-        // Aplicar texto de busqueda
+        // Aplicar texto de búsqueda
         if ($search) {
-            $alumnos->bySearchTerms($search);
+            $tutors->bySearchTerms($search);
         }
 
-        return view('alumnos.index', [
-            // info de la DB
-            'alumnos' => $alumnos->paginate(13),
-            // terminos de busqueda previos
-            'old_search' => $search,
+        if ($role > 0) {
+            $tutors->where('role_id', '=', $role);
+        }
+
+        if ($grade > 0) {
+            // ...
+        }
+
+        if ($company > 0) {
+            // ...
+        }
+
+        return view('tutors.index', [
+            // Información de la base de datos
+            'tutors' => $tutors->paginate(13),
+            'roles' => $roles,
+            'grades' => [],
+            'companies' => [],
+            // Términos de búsqueda previos
+            'old_search' => $search, // mostrar selección actual si la hay
+            'old_role' => $role,
+            'old_grade' => $grade,
+            'old_company' => $company,
         ]);
     }
 
@@ -51,7 +76,8 @@ class AlumnosController extends Controller
      */
     public function create()
     {
-        //
+        // Devuelve la vista con el formulario
+        return view('tutors.create');
     }
 
     /**
@@ -62,7 +88,7 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Esta funcion recoge el POST del formulario de creación
     }
 
     /**
@@ -82,7 +108,7 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         //
     }

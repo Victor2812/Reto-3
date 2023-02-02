@@ -54,11 +54,11 @@ class LoginController extends Controller
     {
         // Cierra la sesión del usuario
         Auth::logout();
- 
+
         // Invalida la sesión de PHP
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-     
+
         return redirect(self::AFTER_LOGOUT_ROUTE);
     }
 }

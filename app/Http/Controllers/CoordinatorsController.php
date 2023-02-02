@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
-class PersonController extends Controller
-{   
+class CoordinatorsController extends Controller
+{
     /**
-     * Create the controller instance.
-     * 
-     * @return void
-     */
+    * Create the controller instance.
+    *
+    * @return void
+    */
     public function __construct()
-    {   
+    {
         // Establecer la política de autorización al recurso
         $this->authorizeResource(Person::class, 'person');
     }
@@ -23,10 +23,29 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Mostrar lista de personas
-        return 'Lista de personas';
+        // Información de la base de datos
+        $coordinators = Person::coordinators();
+
+        // Obtener filtros
+        $search = $request->query('search');
+        $is_tutor = $request->query('is_tutor') === 'on';
+
+        if ($search) {
+            $coordinators->bySearchTerms($search);
+        }
+
+        if ($is_tutor) {
+            $coordinators->isTutorOnDualSheets();
+        }
+
+        return view('coordinators.index', [
+            // Información de la base de datos
+            'coordinators' => $coordinators->paginate(13),
+            // Términos de búsqueda previos
+            'old_search' => $search, // mostrar selección actual si la hay
+        ]);
     }
 
     /**
@@ -36,8 +55,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        // Mostrar formulario de crear personas
-        return 'Formulario de crear personas';
+        //
     }
 
     /**
@@ -48,53 +66,51 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        // Acción del formulario de crear personas
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Person $person
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Person $person)
+    public function show(Person $person)
     {
-        // Mostrar la persona
-        return 'Mostrar la persona';
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Person $person
      * @return \Illuminate\Http\Response
      */
     public function edit(Person $person)
     {
-        // Editar la persona
-        return 'Formulario para editar la persona';
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Person $person
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Person $person)
     {
-        // Actualizar la persona
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Person $person
      * @return \Illuminate\Http\Response
      */
     public function destroy(Person $person)
     {
-        // Destruir la persona
+        //
     }
 }
