@@ -13,7 +13,7 @@
                 <i class="fs-4 bi-mortarboard"></i> <span class="ms-1 d-none d-sm-inline">Alumnos</span></a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link align-middle px-0 text-white">
+            <a href="{{ route('companies.index') }}" class="nav-link align-middle px-0 text-white">
             <i class="fs-4 bi-buildings"></i> <span class="ms-1 d-none d-sm-inline">Empresas</span>
             </a>
         </li>

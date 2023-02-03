@@ -124,7 +124,6 @@ class GradesController extends Controller
      */
     public function show(Grade $grade)
     {
-        // TOOD
         return Redirect::route('grades.edit', [$grade->id]);
     }
 

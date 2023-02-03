@@ -65,6 +65,11 @@ class Person extends Model
         return $query->where('role_id', '=', config('roles.FACILITADOR_EMPRESA'));
     }
 
+    public function scopeAvailableCompanyTutors($query)
+    {
+        return $query->whereNotIn('id', DB::table('companies')->select('person_id'));
+    }
+
     public function scopeStudents($query)
     {
         return $query->where('role_id', '=', config('roles.ALUMNO'));

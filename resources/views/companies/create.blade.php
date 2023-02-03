@@ -12,7 +12,8 @@
 
 <!-- Row -->
 <div class="row">
-    <form action="{{ route('companys.store') }}" class="requires-validation" novalidate>
+    <form action="{{ route('companies.store') }}" class="requires-validation" method="POST">
+        @csrf
         <div class="form-body">
 
             <!-- Row -->
@@ -20,6 +21,9 @@
 
                 <!-- CIF -->
                 <div class="col-12 mb-4 col-sm-6 mb-sm-0">
+                    @error('cif')
+                        <strong>{{ $message }}</strong>
+                    @enderror
                     <div class="form-outline">
                         <input type="text" class="form-control" name="cif" placeholder="CIF">
                     </div>
@@ -27,8 +31,11 @@
 
                 <!-- Nombre -->
                 <div class="col-12 mb-4 col-sm-6 mb-sm-0">
+                    @error('name')
+                        <strong>{{ $message }}</strong>
+                    @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <input type="text" class="form-control" name="name" placeholder="Nombre">
                     </div>
                 </div>
 
@@ -40,8 +47,11 @@
 
                 <!-- Direccion -->
                 <div class="col-12 mb-4 col-sm-6 mb-sm-0">
+                    @error('location')
+                        <strong>{{ $message }}</strong>
+                    @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="dirección" placeholder="Dirección">
+                        <input type="text" class="form-control" name="location" placeholder="Dirección">
                     </div>
                 </div>
 
@@ -50,8 +60,10 @@
                     <div class="form-group">
 
                         <select class="form-select" name="tutor">
-                            <option selected>Tutor</option>
-                            <!-- TODO cargar tutores -->
+                            <option value="" selected>Tutor</option>
+                            @foreach ($tutors as $tutor)
+                                <option value="{{ $tutor->id }}">{{$tutor->fullName()}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -75,6 +87,6 @@
 </div>
 <!-- End Row -->
 
-<a href="{{ route('companys.index')}}">Volver</a>
+<a href="{{ route('companies.index')}}">Volver</a>
 
 @endsection
