@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Company;
 use App\Models\Course;
 use App\Models\Grade;
 use App\Models\Person;
@@ -72,6 +73,13 @@ class DatabaseSeeder extends Seeder
                     'has_dual' => $j > 1,
                 ]);
             }
+        }
+
+        // Empresas
+        foreach (Person::where('role_id', '=', 3)->get() as $person) {
+            Company::factory()->create([
+                'person_id' => $person->id,
+            ]);
         }
     }
 }
