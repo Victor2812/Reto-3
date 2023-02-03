@@ -11,6 +11,8 @@ class Course extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['name', 'has_dual'];
+
     public function grade()
     {
         return $this->belongsTo(Grade::class);

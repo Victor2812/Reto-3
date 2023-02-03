@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\Grade;
 use App\Models\SchoolYear;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Redirect;
 
 class GradesController extends Controller
 {
+    const N_COURSES = 4;
+    
     protected function applyYearFilter(Request $request, Builder $query)
     {
         $ystart = $request->query('ystart');
@@ -71,9 +75,11 @@ class GradesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('grades.create');
+        return view('grades.create', [
+            'nCourses' => self::N_COURSES,
+        ]);
     }
 
     /**
@@ -83,21 +89,31 @@ class GradesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-
+    {
         // comprobamos que se han introducido datos
         $request->validate([
-            'nombre' => 'required',
+            'name' => 'required|string|min:1',
+            'courses' => 'required|array|min:1',
+            'courses.*' => 'required|string|min:1'
         ]);
 
-        $nombre = $request->nombre;
-
-        $grade = new Grade;
-        $grade->name = $nombre;
-        
-        // guardamos el nuevo grado
+        $grade = new Grade([
+            'name' => trim($request->name),
+        ]);
         $grade->save();
-        return view('grades.create');
+        
+        $courseList = [];
+        $courses = $request->courses;
+        // Añadir los cursos
+        for ($i = 0; $i < self::N_COURSES; $i++) {
+            array_push($courseList, [
+                'name' => $i + 1,
+                'has_dual' => isset($courses[$i]),
+            ]);
+        }
+        $grade->courses()->createMany($courseList);
+
+        return Redirect::route('grades.show', [$grade->id]);
     }
 
     /**
@@ -108,7 +124,8 @@ class GradesController extends Controller
      */
     public function show(Grade $grade)
     {
-        //
+        // TOOD
+        return Redirect::route('grades.edit', [$grade->id]);
     }
 
     /**
@@ -119,7 +136,10 @@ class GradesController extends Controller
      */
     public function edit(Grade $grade)
     {
-        //
+        return view('grades.edit', [
+            'grade' => $grade,
+            'courses' => $grade->courses()->get(),
+        ]);
     }
 
     /**
@@ -131,7 +151,25 @@ class GradesController extends Controller
      */
     public function update(Request $request, Grade $grade)
     {
-        //
+        // comprobamos que se han introducido datos
+        $request->validate([
+            'name' => 'required|string|min:1',
+            'courses' => 'required|array|min:1',
+            'courses.*' => 'required|string|min:1'
+        ]);
+        
+        $grade->name = trim($request->name);
+        $courses = $request->courses;
+        $courseList = $grade->courses()->get();
+
+        // Actualizar información de los cursos
+        foreach ($courseList as $course) {
+            $course->has_dual = isset($courses[$course->id]);
+            $course->save();
+        }
+
+        $grade->save();
+        return Redirect::route('grades.edit', [$grade->id]);
     }
 
     /**
@@ -142,6 +180,7 @@ class GradesController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        //
+        Grade::destroy($grade->id);
+        return Redirect::route('grades.index', [$grade->id]);
     }
 }

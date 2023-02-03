@@ -13,6 +13,8 @@ class Grade extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['name'];
+
     public function courses()
     {
         return $this->hasMany(Course::class);

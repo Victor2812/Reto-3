@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('grade_id')->constrained();
+            $table->foreignId('grade_id')->constrained()->onDelete('cascade');
             $table->string('name', 4);  // "1" ... "9999"
             $table->boolean('has_dual')->default(false); // tiene dual sí o no
             //$table->timestamps();
