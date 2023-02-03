@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\Person;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class TutorsController extends Controller
         // Establecer la política de autorización al recurso
         $this->authorizeResource(Person::class, 'person');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -76,8 +77,17 @@ class TutorsController extends Controller
      */
     public function create()
     {
+        $grades = Grade::all();
+        $roles = [
+            'Academico' => config('roles.FACTILITADOR_ACADEMICO'),
+            'Empresa' => config('roles.FACTILITADOR_EMPRESA'),
+        ];
+
         // Devuelve la vista con el formulario
-        return view('tutors.create');
+        return view('tutors.create', [
+            'grades' => $grades,
+            'roles' => $roles,
+        ]);
     }
 
     /**
@@ -89,6 +99,7 @@ class TutorsController extends Controller
     public function store(Request $request)
     {
         // Esta funcion recoge el POST del formulario de creación
+        $request->validate([]);
     }
 
     /**

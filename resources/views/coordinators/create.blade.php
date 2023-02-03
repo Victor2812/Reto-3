@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Tutor')
+@section('title', 'Coordiandor')
 
 @section('main')
 
+<!-- Titulo -->
 <div class="d-flex align-items-center justify-content-between mb-4 px-4">
-    <h1 class="h3 mb-0">Añadir Tutor</h1>
+    <h1 class="h3 mb-0">Añadir Coordinador</h1>
 </div>
+<!-- End Titulo -->
 
+<!-- Row -->
 <div class="row">
-    <form action="{{ route('tutors.store') }}" class="requires-validation" novalidate>
+    <form action="{{ route('coordiantors.store') }}" class="requires-validation" novalidate>
         <div class="form-body">
 
             <!-- Row -->
@@ -42,20 +45,8 @@
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
 
-                <!-- Tipo de Tutor -->
-                <div class="col-12 mb-4 col-sm-6 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="tipoTutor">
-                            <option selected>Tipo de tutor</option>
-                            @foreach ($roles as $key => $value)
-                                <option value="{{ $value }}">{{ $key }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
                 <!-- Grado -->
-                <div class="col-12 mb-4 col-sm-6 mb-sm-0">
+                <div class="col-12 mb-4 mb-sm-0">
                     <div class="form-group">
 
                         <select class="form-select" name="grado">
@@ -106,12 +97,13 @@
                 </div>
 
             </div>
-            <!-- End Row -->
 
         </div>
     </form>
 </div>
+<!-- End Row -->
 
-<a href="{{ route('tutors.index')}}">Volver</a>
+<a href="{{ route('coordinators.index')}}">Volver</a>
 
 @endsection
+
