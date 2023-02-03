@@ -13,14 +13,16 @@
 <!-- Chart -->
 <div class="row">
     <div class="col-6">
-        <canvas id="pieChart"></canvas>
+        <piechart-component></piechart-component>
     </div>
     <div class="col-6">
-        <canvas id="lineChart"></canvas>
+        <linechart-component></linechart-component>
     </div>
 </div>
 <!-- End Chart -->
 
-<a href="{{ route('dashboard')}}">Volver</a>
+<div class="row">
+    <a href="{{ route('dashboard') }}"><button class="btn btn-primary">Volver</button></a>
+</div>
 
 @endsection

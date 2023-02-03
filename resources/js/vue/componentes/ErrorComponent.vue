@@ -1,23 +1,50 @@
 <template>
     <div class="contenedor">
-    <v-typical 
+        <h1>{{ texts }}</h1>
+    <!--<v-typical 
         class="blink"
         :steps="['TU MADRE EN TANGA']"
         :loop="Infinity"
         :wrapper="'h1'"
-    >
-    </v-typical>
-</div>
+        >
+        </v-typical>-->
+    </div>
 </template>
 
 <script lang="ts">
-import VTypical from 'vue-typical';
+import VTypical from "vue-typical";
 
 export default {
     name: "error-component",
     components: {
         VTypical,
     },
+
+    data() {
+        return {
+            texts: ''
+        }
+    },
+
+    mounted() {
+       fetch('/gay')
+       .then(async response => {
+        const data = await response.json();
+
+        if (response.ok) {
+            console.log(data);
+        } else {
+            console.log('an error occurred while fetching 403 frases');
+        }
+        
+        var random = data[Math.floor(Math.random() * data.length)]['frase'];
+        this.texts = random;
+       });
+        /*
+        fetch('/gay').then(r => r.ok && r.json()).then(data => {
+            this.texts = data;
+        });*/
+    }
 };
 </script>
 
