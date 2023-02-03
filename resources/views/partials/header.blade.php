@@ -1,5 +1,5 @@
 <!-- Header Logo -->
-<a href="#">
+<a href="{{ route('dashboard') }}">
     <img src="imgs/universidad-deusto.svg" alt="Universidad de Deusto" width="150px">
 </a>
 
