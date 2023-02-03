@@ -43,8 +43,18 @@ class User extends Authenticatable
     ];
      */
 
-     public function person()
-     {
+    public function person()
+    {
         return $this->belongsTo(Person::class);
-     }
+    }
+
+    public function isCoordinator()
+    {
+        return $this->person()->first()->role_id == config('roles.COORDINADOR');
+    }
+
+    public function isTutor()
+    {
+        return $this->person()->first()->role_id == config('roles.FACTILITADOR_ACADEMICO');
+    }
 }
