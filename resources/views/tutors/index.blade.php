@@ -3,6 +3,7 @@
 @section('title', 'Tutores')
 
 @section('main')
+
     <!-- Titulo -->
     <div class="d-flex align-items-center justify-content-between mb-4 px-4">
         <h1 class="h3 mb-0">Tutores</h1>
@@ -12,9 +13,14 @@
     </div>
     <!-- End Titulo -->
 
+    <!-- Filtros -->
     <div>
         <form action="{{ route(Route::currentRouteName()) }}" method="GET">
+
+            <!-- Barra Busqueda -->
             <input type="text" name="search" placeholder="Nombre, Apellido, DNI ..." value="{{ $old_search }}"/>
+
+            <!-- Tipo de Tutor -->
             <select name="role">
                 <option value="">-- Cualquiera --</option>
                 @foreach ($roles as $r)
@@ -23,6 +29,8 @@
                     </option>
                 @endforeach
             </select>
+
+            <!-- Grados -->
             <select name="grade">
                 <option value="">-- Cualquiera --</option>
                 @foreach ($grades as $g)
@@ -31,6 +39,8 @@
                     </option>
                 @endforeach
             </select>
+
+            <!-- Empresa -->
             <select name="company">
                 <option value="">-- Cualquiera --</option>
                 @foreach ($companies as $c)
@@ -39,12 +49,19 @@
                 </option>
                 @endforeach
             </select>
+
+            <!-- Submit -->
             <button type="submit"><i class="bi bi-search"></i></button>
+
         </form>
     </div>
+    <!-- End Filtros -->
 
+    <!-- Row -->
     <div class="row">
         <div class="col-12 px-4">
+
+            <!-- Table -->
             <div class="table-responsive">
                 <table class="tablita-guapa table-striped table-bordered table-hovers" width="100%" cellspacing="0">
                     <thead>
@@ -54,6 +71,8 @@
                             <th>Tipo</th>
                             <th>Mail</th>
                             <th>Telefono</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,6 +83,8 @@
                                 <td>{{ $t->role()->first()->name }}</td>
                                 <td>{{ $t->email }}</td>
                                 <td>{{ $t->phone }}</td>
+                                <td><a href="#">Editar</a></td> <!-- TODO enlace -->
+                                <td><button>Eliminar</button></td> <!-- TODO enlace -->
                             </tr>
                         @endforeach
                     </tbody>
@@ -74,9 +95,12 @@
                     {{ $tutors->links() }}
                 </div>
                 <!-- End Paginacion -->
+
             </div>
+            <!-- End Table -->
+
         </div>
     </div>
-    <!-- End Tabla -->
+    <!-- End Row -->
 
 @endsection

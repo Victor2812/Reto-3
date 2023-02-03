@@ -17,7 +17,7 @@
                 <input type="text" name="nombre" class="form-control form-control-md mb-4" placeholder="Nombre">
             </div>
             @error('nombre')
-                <strong>Te dejaste el nombre por poner PELOTUDO</strong>
+                <strong>{{ $message }}</strong>
             @enderror
             <button type="submit" class="btn btn-primary mb-4 ">Añadir Grado</button>
 

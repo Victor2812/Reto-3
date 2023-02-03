@@ -35,20 +35,22 @@ class GradesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
 
         // comprobamos que se han introducido datos
-        $request->validate([
+        $valid = $request->validate([
             'nombre' => 'required',
         ]);
 
-        $nombre = $request->nombre;
+        if ($valid) {
+            $nombre = $request->nombre;
 
-        $grade = new Grade;
-        $grade->name = $nombre;
-        
-        // guardamos el nuevo grado
-        $grade->save();
+            $grade = new Grade;
+            $grade->name = $nombre;
+
+            // guardamos el nuevo grado
+            $grade->save();
+        }
         return view('grades.create');
     }
 
