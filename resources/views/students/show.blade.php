@@ -5,14 +5,15 @@
 @section('main')
 
     <!-- Row -->
-    <div class="row mb-4">
+    <div class="row mb-4"> 
             <!-- Box -->
             <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
 
                 <!-- Titulo + Mail -->
                 <div class="d-flex flex-column justify-content-start">
                     <h1 class="h3 mb-0">{{ $student->name }} {{ $student->surname }}</h1>
-                    <p class="mb-0">{{ $student->email }}</p> 
+                    <p class="mb-1">{{ $student->email }}</p>
+                    <p class="mb-0">{{ $student->phone }}</p> 
                 </div>
                 
                 <!-- Boton Editar -->

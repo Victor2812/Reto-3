@@ -51,7 +51,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        return view('students.create'); 
     }
 
     /**

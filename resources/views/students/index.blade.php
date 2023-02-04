@@ -11,7 +11,7 @@
     </div>
     <!-- End Titulo -->
 
-    <!-- Filtros -->
+    <!-- TODO Filtros -->
 
         <!-- Buscador --> <!-- TODO revisar que funcione -->
         <div>
@@ -35,6 +35,7 @@
 
     <!-- End Filtros -->
 
+    <!-- Row -->
     <div class="row">
         <div class="col-12 px-4">
 

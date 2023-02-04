@@ -16,9 +16,13 @@
     <!-- Filtros -->
     <div>
         <form action="{{ route(Route::currentRouteName()) }}" method="GET">
+
+            <!-- Buscador -->
             <input type="text" name="search" placeholder="Nombre, Apellido, DNI ..." value="{{ $old_search }}"/>
-            <label>Es tutor: <input type="checkbox" name="is_tutor"></label>
             <button type="submit"><i class="bi bi-search"></i></button>
+
+            <!-- Es tutor -->
+            <label>Es tutor: <input type="checkbox" name="is_tutor"></label>
         </form>
     </div>
     <!-- End Filtros -->
@@ -44,12 +48,12 @@
                     <tbody>
                         @foreach ($coordinators as $p)
                             <tr>
-                                <td></td> <!-- TODO dni-->
-                                <td></td> <!-- TODO nombre-->
-                                <td></td> <!-- TODO mail-->
-                                <td></td> <!-- TODO telefono-->
-                                <td><a href="#">-->Ver</a></td> <!-- TODO enlace -->
-                                <td><a href="#"></a></td> <!-- TODO enlace -->
+                                <td>{{ $p->dni }}</td> 
+                                <td>{{ $p->name }} {{ $p->surname }}<td>
+                                <td>{{ $p->email }}</td>
+                                <td>{{ $p->phone }}</td>
+                                <td><a href="{{ route('coordinators.show', [$p])}}">Ver</a></td>
+                                <td><a href="#">Editar</a></td> <!-- TODO enlace -->
                                 <td><button>Eliminar</button></td> <!-- TODO enlace -->
                             </tr>
                         @endforeach

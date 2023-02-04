@@ -15,7 +15,7 @@ class CoordinatorsController extends Controller
     public function __construct()
     {
         // Establecer la política de autorización al recurso
-        $this->authorizeResource(Person::class, 'person');
+        // $this->authorizeResource(Person::class, 'person');
     }
 
     /**
@@ -55,7 +55,7 @@ class CoordinatorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -66,7 +66,8 @@ class CoordinatorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Esta funcion recoge el POST del formulario de creación
+        $request->validate([]);
     }
 
     /**
@@ -75,9 +76,11 @@ class CoordinatorsController extends Controller
      * @param  Person $person
      * @return \Illuminate\Http\Response
      */
-    public function show(Person $person)
+    public function show(Person $coordinator)
     {
-        //
+        return view('coordinators.show', [
+            'coordinator' => $coordinator,
+        ]);
     }
 
     /**
