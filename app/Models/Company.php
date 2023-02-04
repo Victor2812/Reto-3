@@ -12,4 +12,9 @@ class Company extends Model
     protected $fillable = [
         'name', 'CIF', 'location'
     ];
+
+    public function dualSheets()
+    {
+        return $this->hasMany(DualSheet::class);
+    }
 }

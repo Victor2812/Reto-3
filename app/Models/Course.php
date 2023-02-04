@@ -17,4 +17,9 @@ class Course extends Model
     {
         return $this->belongsTo(Grade::class);
     }
+
+    public function dualSheets()
+    {
+        return $this->hasMany(DualSheet::class);
+    }
 }

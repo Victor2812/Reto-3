@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DualSheet;
 use Illuminate\Http\Request;
 
 class DualSheetsController extends Controller
@@ -13,11 +14,18 @@ class DualSheetsController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
-        $person = $user->person()->first();
+        // Distinguir entre las que puede ver un coordinador y un tutor academico
+        $sheets = DualSheet::select();
 
-        $sheets = $person->studentSheets()->get();
-        dd($sheets);
+        if ($request->user()->isCoordinator()) {
+
+        } else if ($request->user()->isTutor()) {
+            $person = $request->user()->person()->first();
+            $sheets->fromTutor($person);
+        }
+
+        // TODO: mostrar ficha DUAL
+        dd($sheets->get());
     }
 
     /**
