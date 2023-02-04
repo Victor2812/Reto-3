@@ -15,7 +15,7 @@ class StudentsController extends Controller
     public function __construct()
     {
         // Establecer la política de autorización al recurso
-        $this->authorizeResource(Person::class, 'person');
+        //$this->authorizeResource(Person::class, 'person');
     }
 
     /**
@@ -26,19 +26,19 @@ class StudentsController extends Controller
     public function index(Request $request)
     {   
         // recoger lisado de alumno de la database
-        $alumnos = Person::students();
+        $students = Person::students();
 
         // recoger el filtro del formulario buscador
         $search = $request->query('search');
 
         // Aplicar texto de busqueda
         if ($search) {
-            $alumnos->bySearchTerms($search);
+            $students->bySearchTerms($search);
         }
 
-        return view('alumnos.index', [
+        return view('students.index', [
             // info de la DB
-            'alumnos' => $alumnos->paginate(13),
+            'students' => $students->paginate(13),
             // terminos de busqueda previos
             'old_search' => $search,
         ]);
@@ -51,7 +51,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -62,18 +62,21 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Esta funcion recoge el POST del formulario de creación
+        $request->validate([]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Person $student
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Person $student)
     {
-        //
+        return view('students.show', [
+            'student' => $student,
+        ]); 
     }
 
     /**
@@ -84,7 +87,7 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 
     }
 
     /**

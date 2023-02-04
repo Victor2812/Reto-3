@@ -108,9 +108,11 @@ class TutorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Person $tutor)
     {
-        //
+        return view('tutors.show', [
+            'tutors' => $tutor,
+        ]);
     }
 
     /**

@@ -36,6 +36,7 @@
                             <th>Nombre</th>
                             <th>Mail</th>
                             <th>Telefono</th>
+                            <th>Ver</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -47,6 +48,7 @@
                                 <td></td> <!-- TODO nombre-->
                                 <td></td> <!-- TODO mail-->
                                 <td></td> <!-- TODO telefono-->
+                                <td><a href="#">-->Ver</a></td> <!-- TODO enlace -->
                                 <td><a href="#"></a></td> <!-- TODO enlace -->
                                 <td><button>Eliminar</button></td> <!-- TODO enlace -->
                             </tr>

@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <!-- Grado -->
+                <!-- Tutor -->
                 <div class="col-12 mb-4 col-sm-6 mb-sm-0">
                     <div class="form-group">
 
