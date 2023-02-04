@@ -30,6 +30,16 @@ class Person extends Model
         return $this->belongsTo(Role::class);
     }
 
+    public function studentSheets()
+    {
+        return $this->hasMany(DualSheet::class, 'student_id');
+    }
+
+    public function academicTutorSheets()
+    {
+        return $this->hasMany(DualSheet::class, 'tutor_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Ayudantes
