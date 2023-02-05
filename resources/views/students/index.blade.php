@@ -4,6 +4,9 @@
 
 @section('main')
 
+    <!-- Breadcrumbs -->
+    {{ Breadcrumbs::render('students.index') }}
+
     <!-- Titulo -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Alumnos</h1>
@@ -56,10 +59,10 @@
                     <tbody>
                     @foreach ($students as $id)
                         <tr>
-                            <th>{{ $id->dni }}</th>
-                            <th>{{ $id->name }} {{ $id->surname }}</th>
-                            <th>{{ $id->email }}</th>
-                            <th>{{ $id->phone }}</th>
+                            <td>{{ $id->dni }}</td>
+                            <td>{{ $id->name }} {{ $id->surname }}</td>
+                            <td>{{ $id->email }}</td>
+                            <td>{{ $id->phone }}</td>
                             <td><a href="{{ route('students.show', [$id->id])}}">Ver</a></td> <!-- TODO enlace --> 
                             <td><a href="#">Editar</a></td> <!-- TODO enlace -->
                             <td><button>Eliminar</button></td> <!-- TODO enlace -->

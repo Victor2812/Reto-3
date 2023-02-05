@@ -12,7 +12,7 @@
             <!-- Titulo + Mail -->
             <div class="d-flex flex-column justify-content-start">
                 <h1 class="h3 mb-0">{{ $coordinator->name }} {{ $coordinator->surname }}</h1>
-                <p class="mb-1">{{ $coordinator->email }}</p>
+                <p class="mb-0">{{ $coordinator->email }}</p>
                 <p class="mb-0">{{ $coordinator->phone }}</p>  
             </div>
             

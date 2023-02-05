@@ -55,7 +55,7 @@ class CoordinatorsController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        return view('coordinators.create');
     }
 
     /**

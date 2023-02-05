@@ -12,8 +12,8 @@
             <!-- Titulo + Mail -->
             <div class="d-flex flex-column justify-content-start">
                 <h1 class="h3 mb-0">{{ $tutor->name }} {{ $tutor->surname }}</h1>
-                <p class="h4">{{ $tutor->role_id }}</p> <!-- TODO que ponga si es tutor academico, de empresa o coordinador -->
-                <p class="mb-1">{{ $tutor->email }}</p>
+                <p class="h5 mb-1">{{ $tutor->role_id }}</p> <!-- TODO que ponga si es tutor academico, de empresa o coordinador -->
+                <p class="mb-0">{{ $tutor->email }}</p>
                 <p class="mb-0">{{ $tutor->phone }}</p>  
             </div>
             
