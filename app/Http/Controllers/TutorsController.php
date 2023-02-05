@@ -6,6 +6,8 @@ use App\Models\Grade;
 use App\Models\Person;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use PhpParser\Node\Stmt\Return_;
 
 class TutorsController extends Controller
 {
@@ -105,7 +107,7 @@ class TutorsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Person $tutor
      * @return \Illuminate\Http\Response
      */
     public function show(Person $tutor)
@@ -118,34 +120,49 @@ class TutorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Person $tutor
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Person $tutor)
     {
-        //
+        $grades = Grade::all();
+        $roles = [
+            'Academico' => config('roles.FACTILITADOR_ACADEMICO'),
+            'Empresa' => config('roles.FACTILITADOR_EMPRESA'),
+        ];
+
+        // Devuelve la vista con el formulario
+        return view('tutors.edit', [
+            'tutor' => $tutor,
+            'grades' => $grades,
+            'roles' => $roles,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Person $tutor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Person $tutor)
     {
         //
+
+
+        return Redirect::route('tutors.edit', ['tutor' => $tutor]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Person $tutor
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Person $tutor)
     {
-        //
+        $tutor->delete();
+        return Redirect::route('tutors.index');
     }
 }

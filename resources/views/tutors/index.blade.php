@@ -135,16 +135,20 @@
 
                             <!-- Editar -->
                             <td> 
-                                <button class="btn" href="#"><!-- TODO enlace -->
-                                    <i class="bi bi-pencil"></i>
-                                </button>
+                                <a href="{{ route('tutors.edit', [$t->id]) }}">
+                                    <button class="btn">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-                                <button class="btn"> <!-- TODO enlace -->
-                                    <i class="bi bi-trash3"></i>
-                                </button>
+                                <a href="{{ route('tutors.destroy', [$t->id]) }}">
+                                    <button class="btn"> 
+                                        <i class="bi bi-trash3"></i>
+                                    </button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

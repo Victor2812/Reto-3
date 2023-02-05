@@ -107,7 +107,10 @@ class StudentsController extends Controller
         $request->validate([
             'nombre' => 'required|string|min:4',
             'apellidos' => 'required|string@min|min:5'
+            
         ]);
+
+
 
         return Redirect::route('students.edit', [$student->id]);
     }
