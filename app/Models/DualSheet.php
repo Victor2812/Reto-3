@@ -64,9 +64,4 @@ class DualSheet extends Model
     {
         return $this->hasOne(DiaryEvaluation::class, 'sheet_id');
     }
-
-    public function scopeFromTutor(Builder $query, Person $tutor)
-    {
-        $query->where('tutor_id', '=', $tutor->id);
-    }
 }

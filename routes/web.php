@@ -36,8 +36,6 @@ Route::resource('/coordinators', CoordinatorsController::class)
     ->middleware('auth');
 Route::resource('/companies', CompaniesController::class)
     ->middleware('auth');
-Route::resource('/sheets', DualSheetsController::class)
-    ->middleware('auth');
 
 Route::resource('/grades', GradesController::class)
     ->middleware('auth');
