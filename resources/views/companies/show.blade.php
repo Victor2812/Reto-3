@@ -4,55 +4,44 @@
 
 @section('main')
 
-    <!-- Titulo -->
-    <div class="d-flex align-items-center justify-content-between mb-4 px-4">
-        <h1 class="h3 mb-0">{{ $company->name }}</h1>
-        <a href="{{ route('companies.edit', [$company->id]) }}" class="d-inline-block btn btn-sm btn-primary shadow-sm">
-            Editar
-        </a>
+    <!-- Row -->
+    <div class="row mb-4">
+        <!-- Box -->
+        <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
+
+            <!-- Titulo + Mail -->
+            <div class="d-flex flex-column justify-content-start">
+                <h1 class="h3 mb-0">{{ $company->name }}</h1>
+                <p class="mb-0">{{ $coordinator->CIF }}</p>
+                <p class="mb-0">{{ $coordinator->location }}</p>  
+            </div>
+            
+            <!-- Boton Editar -->
+            <a href="#" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
+                Editar <!-- TODO añadir enlace -->
+            </a>
+
+        </div>
+        <!-- End Box -->
     </div>
-    <!-- End Titulo -->
+    <!-- End Row -->
 
     <!-- Row -->
-    <div class="row">
-        <div class="col-12 px-4">
+    <div class="row mb-2">
 
-            <!-- Tabla -->
-            <div class="table-responsive">
-                <table class="tablita-guapa table-striped table-bordered table-hovers" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>CIF</th>
-                            <th>Nombre</th>
-                            <th>Dirección</th>
-                            <th>Tutor de Empresa</th>
-                            <th>Contacto</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ $company->CIF }}</td>
-                            <td>{{ $company->name }}</td>
-                            <td>{{ $company->location }}</td>
-                            <td><a href="#">{{ 'a' }}</a></td> <!-- TODO nombre tutor empresa -->
-                            <td>{{ 'a' }}</td> <!-- TODO mail tutor empresa -->
-                            <td><a href="{{ route('companies.show', [$company->id]) }}">Ver</a></td>
-                            <td><a href="{{ route('companies.edit', [$company->id]) }}">Editar</a></td> <!-- TODO enlace -->
-                            <td>
-                                @include('partials.general.deletebutton', [
-                                    'route' => route('companies.destroy', [$company->id])
-                                ])
-                            </td> <!-- TODO enlace -->
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- End Tabla -->
+        <!-- Info Tutor -->
+        <div class="d-flex flex-column justify-content-start">
+            <h1 class="h3 mb-3">Contacto</h1>
+            <p><strong>Nombre </strong> nombre tutor</p> <!-- TODO añadir nombre tutor -->
+            <p><strong>Mail </strong> mail tutor</p> <!-- TODO añadir mail tutor -->
+            <p><strong>Telefono </strong> empresa</p> <!-- TODO añadir telefono tutor -->
         </div>
+        <!-- End Info Tutor -->
+
     </div>
     <!-- End Row -->
 
     <a href="{{ route('companies.index') }}">Volver</a>
+
+
 @endsection

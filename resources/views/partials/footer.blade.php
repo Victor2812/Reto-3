@@ -1,15 +1,15 @@
 <!-- Footer Nav -->
 <nav class="navbar navbar-expand-sm flex-column flex-md-row">
-    <a class="nav-item px-3" href="https://www.deusto.es/es/inicio/contacto">
+    <a class="nav-item px-3 text-decoration-none" href="https://www.deusto.es/es/inicio/contacto">
         Contacto
     </a>
-    <a class="nav-item px-3" href="https://auraportal.deusto.es/Visitor.aspx?id=11189&idPortal=0&updformid=false&Language=13">
+    <a class="nav-item text-decoration-none px-3" href="https://auraportal.deusto.es/Visitor.aspx?id=11189&idPortal=0&updformid=false&Language=13">
         Sugerencias
     </a>
-    <a class="nav-item px-3" href="https://www.deusto.es/es/inicio/privacidad">
+    <a class="nav-item text-decoration-none px-3" href="https://www.deusto.es/es/inicio/privacidad">
         Privacidad
     </a>
-    <a class="nav-item px-3" href="https://www.deusto.es/es/inicio/mapa-web">
+    <a class="nav-item text-decoration-none px-3" href="https://www.deusto.es/es/inicio/mapa-web">
         Mapa Web
     </a>
 </nav>

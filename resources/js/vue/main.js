@@ -1,8 +1,7 @@
 import { createApp } from "vue";
+import componente from './componentes/ErrorComponent.vue';
 
-import App from "./App.vue";
-
-const app = createApp(App); 
+const app = createApp(componente); 
 
 app.mount("#app");
 

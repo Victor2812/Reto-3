@@ -17,7 +17,7 @@ class TutorsController extends Controller
     public function __construct()
     {
         // Establecer la política de autorización al recurso
-        $this->authorizeResource(Person::class, 'person');
+        //$this->authorizeResource(Person::class, 'person');
     }
 
     /**
@@ -108,9 +108,11 @@ class TutorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Person $tutor)
     {
-        //
+        return view('tutors.show', [
+            'tutor' => $tutor,
+        ]);
     }
 
     /**

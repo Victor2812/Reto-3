@@ -1,3 +1,7 @@
+// Componentes fuera de uso
+
+
+// No nos permite una redirección correcta a la ruta de laravel 
 class login extends HTMLElement {
     constructor() {
         console.log('login component anexed');
@@ -68,6 +72,8 @@ class login extends HTMLElement {
 
 customElements.define('login-sufrimiento', login);
 
+
+// Fuera de uso -> se optó por no utilizarlo por motivos de ajuste en el layout del proyecto
 class footer extends HTMLElement {
     constructor() {
         console.log('Footer anexed');
@@ -148,3 +154,153 @@ class footer extends HTMLElement {
 }
 
 customElements.define('footer-sufrimiento', footer);
+
+// NEW CUSTOM WEB COMPONENTS ARE DATA CHARTS
+
+import { Chart } from "chart.js";
+
+
+// PIECHART
+class piechart extends HTMLElement {
+    constructor() {
+        console.log('stats component ok');
+        super();
+    }
+    
+    getModel() {
+        return new Promise((res, rej) => {
+            fetch('/stats')
+                .then(data => data.json())
+                .then((json) => {
+                    //console.log(json);
+                    this.renderChart(json);
+                    res();
+                })
+                .catch((err) => rej(err));
+        });
+    }
+
+    renderChart(json) {
+        
+        const shadowRoot = this.attachShadow({ mode: 'open' });
+
+        const contenedor = document.createElement('div');
+        contenedor.className += "row";
+
+        const divisor = document.createElement('div');
+        divisor.className += "col-6";
+
+        const canvas = document.createElement('canvas');
+        canvas.setAttribute('id', 'pieChart');
+
+        divisor.appendChild(canvas);
+        contenedor.appendChild(divisor);
+
+        shadowRoot.appendChild(contenedor);
+
+        new Chart(
+            canvas,
+            {
+            type: 'pie',
+            data: {
+                labels: json.map(row => row.item),
+                datasets: [
+                {
+                    label: 'Aprobados $ Suspendidos',
+                    data: json.map(row => row.count),
+                    backgroundColor: json.map(row => row.color)
+                }
+                ]
+            }
+            }
+        );
+    }
+
+    connectedCallback() {
+        console.log('piechart component is being used');
+        this.getModel();
+    }
+}
+
+customElements.define('piechart-component', piechart);
+
+
+// LINECHART
+class lineChart extends HTMLElement {
+    constructor() {
+        console.log('lineChart component ok');
+        super();
+    }
+
+    async getModel() {
+        const response = await fetch('/lineData');
+        const data = await response.json();
+        if (response.ok) {
+            //console.log(data);
+            this.renderChart(data);
+        } else {
+            console.log('An error occured while fetching lineChart data');
+        }
+    }
+
+    renderChart(data) {
+        console.log(data);
+
+        const shadowRoot = this.attachShadow({ mode: 'open' });
+
+        const contenedor = document.createElement('div');
+        contenedor.className += "row";
+
+        const divisor = document.createElement('div');
+        divisor.className += "col-6";
+
+        const canvas = document.createElement('canvas');
+        canvas.setAttribute('id', 'lineChart');
+
+        divisor.appendChild(canvas);
+        contenedor.appendChild(divisor);
+
+        shadowRoot.appendChild(contenedor);
+
+        new Chart(
+            canvas,
+            {
+            type: 'line',
+            data: {
+                labels: data.map(row => row.year),
+                datasets: [
+                {
+                    label: 'Aprobados',
+                    data: data,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue',
+                    tension: 0.4,
+                    parsing: {
+                        xAxisKey: 'year',
+                        yAxisKey: 'count.aprobados'
+                    }
+                },
+                {
+                    label: 'Suspendidos',
+                    data: data,
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    tension: 0.4,
+                    parsing: {
+                        xAxisKey: 'year',
+                        yAxisKey: 'count.suspensos'
+                    }
+                }
+                ]
+            }
+            }
+        );
+    }
+
+    connectedCallback() {
+        console.log('lineChart component is being used');
+        this.getModel();
+    }
+}
+
+customElements.define('linechart-component', lineChart);

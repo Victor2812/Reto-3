@@ -4,6 +4,9 @@
 
 @section('main')
 
+<!-- Breadcrumbs -->
+{{ Breadcrumbs::render('tutors.create') }}
+
 <div class="d-flex align-items-center justify-content-between mb-4 px-4">
     <h1 class="h3 mb-0">Añadir Tutor</h1>
 </div>

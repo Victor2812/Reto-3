@@ -4,6 +4,9 @@
 
 @section('main')
 
+<!-- Breadcrumbs -->
+
+
 <!-- Titulo -->
 <div class="d-flex align-items-center justify-content-between mb-4 px-4">
     <h1 class="h3 mb-0">Estadísticas</h1>
@@ -13,14 +16,16 @@
 <!-- Chart -->
 <div class="row">
     <div class="col-6">
-        <canvas id="pieChart"></canvas>
+        <piechart-component></piechart-component>
     </div>
     <div class="col-6">
-        <canvas id="lineChart"></canvas>
+        <linechart-component></linechart-component>
     </div>
 </div>
 <!-- End Chart -->
 
-<a href="{{ route('dashboard')}}">Volver</a>
+<div class="row">
+    <a href="{{ route('dashboard') }}"><button class="btn btn-primary">Volver</button></a>
+</div>
 
 @endsection

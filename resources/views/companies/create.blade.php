@@ -4,6 +4,9 @@
 
 @section('main')
 
+<!-- Breadcrumbs -->
+{{ Breadcrumbs::render('companies.create') }}
+
 <!-- Titulo -->
 <div class="d-flex align-items-center justify-content-between mb-4 px-4">
     <h1 class="h3 mb-0">Añadir Empresa</h1>
@@ -55,7 +58,7 @@
                     </div>
                 </div>
 
-                <!-- Grado -->
+                <!-- Tutor -->
                 <div class="col-12 mb-4 col-sm-6 mb-sm-0">
                     <div class="form-group">
 

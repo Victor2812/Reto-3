@@ -4,6 +4,9 @@
 
 @section('main')
 
+    <!-- Breadcrumbs -->
+    {{ Breadcrumbs::render('tutors.index') }}
+
     <!-- Titulo -->
     <div class="d-flex align-items-center justify-content-between mb-4 px-4">
         <h1 class="h3 mb-0">Tutores</h1>
@@ -71,6 +74,7 @@
                             <th>Tipo</th>
                             <th>Mail</th>
                             <th>Telefono</th>
+                            <th>Ver</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -83,6 +87,7 @@
                                 <td>{{ $t->role()->first()->name }}</td>
                                 <td>{{ $t->email }}</td>
                                 <td>{{ $t->phone }}</td>
+                                <td><a href="{{ route('tutors.show', [$t])}}">Ver</a></td> <!-- TODO enlace -->
                                 <td><a href="#">Editar</a></td> <!-- TODO enlace -->
                                 <td><button>Eliminar</button></td> <!-- TODO enlace -->
                             </tr>

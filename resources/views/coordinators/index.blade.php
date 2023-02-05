@@ -4,6 +4,9 @@
 
 @section('main')
 
+<!-- Breadcrumbs -->
+{{ Breadcrumbs::render('coordinators.index') }}
+
     <!-- Titulo -->
     <div class="d-flex align-items-center justify-content-between mb-4 px-4">
         <h1 class="h3 mb-0">Coordinadores</h1>
@@ -16,9 +19,13 @@
     <!-- Filtros -->
     <div>
         <form action="{{ route(Route::currentRouteName()) }}" method="GET">
+
+            <!-- Buscador -->
             <input type="text" name="search" placeholder="Nombre, Apellido, DNI ..." value="{{ $old_search }}"/>
-            <label>Es tutor: <input type="checkbox" name="is_tutor"></label>
             <button type="submit"><i class="bi bi-search"></i></button>
+
+            <!-- Es tutor -->
+            <label>Es tutor: <input type="checkbox" name="is_tutor"></label>
         </form>
     </div>
     <!-- End Filtros -->
@@ -36,6 +43,7 @@
                             <th>Nombre</th>
                             <th>Mail</th>
                             <th>Telefono</th>
+                            <th>Ver</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -43,11 +51,12 @@
                     <tbody>
                         @foreach ($coordinators as $p)
                             <tr>
-                                <td></td> <!-- TODO dni-->
-                                <td></td> <!-- TODO nombre-->
-                                <td></td> <!-- TODO mail-->
-                                <td></td> <!-- TODO telefono-->
-                                <td><a href="#"></a></td> <!-- TODO enlace -->
+                                <td>{{ $p->dni }}</td> 
+                                <td>{{ $p->name }} {{ $p->surname }}<td>
+                                <td>{{ $p->email }}</td>
+                                <td>{{ $p->phone }}</td>
+                                <td><a href="{{ route('coordinators.show', [$p])}}">Ver</a></td>
+                                <td><a href="#">Editar</a></td> <!-- TODO enlace -->
                                 <td><button>Eliminar</button></td> <!-- TODO enlace -->
                             </tr>
                         @endforeach
