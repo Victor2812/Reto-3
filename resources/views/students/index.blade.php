@@ -154,15 +154,17 @@
                     @foreach ($students as $id)
                         <tr>
                             <td class="d-none d-sm-table-cell">{{ $id->dni }}</td>
-                            <td>{{ $id->name }} {{ $id->surname }}</td>
+                            <td>{{ $id->fullName() }}</td>
                             <td class="d-none d-sm-table-cell">{{ $id->email }}</td>
                             <td class="d-none d-sm-table-cell">{{ $id->phone }}</td>
 
                             <!-- Ver -->
                             <td>
-                                <button class="btn" href="{{ route('students.show', [$id->id])}}">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                                <a href="{{ route('students.show', [$id->id])}}">
+                                    <button class="btn">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </a>
                             </td>
 
                             <!-- Editar -->
@@ -194,24 +196,6 @@
         </div>
         <!-- End Table -->
 
-
-
-
-    </div>
-    <!-- End Row -->
-    
-
-    
-
-    
-
-    <!-- Row -->
-    <div class="row">
-        <div class="col-12 px-4">
-
-            
-
-        </div>
     </div>
     <!-- End Row -->
 

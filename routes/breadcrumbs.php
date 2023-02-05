@@ -29,10 +29,8 @@ Breadcrumbs::for('students.create', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('students.show', function (BreadcrumbTrail $trail, Person $student) {
     $trail->parent('students.index');
-    $trail->push($student->name . ' ' . $student->surname, route('students.show', $student));
+    $trail->push($student->fullName(), route('students.show', $student));
 });
-
-
 
 // Tutors
 Breadcrumbs::for('tutors.index', function (BreadcrumbTrail $trail) {
@@ -47,7 +45,7 @@ Breadcrumbs::for('tutors.create', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('tutors.show', function (BreadcrumbTrail $trail, Person $tutor) {
     $trail->parent('tutors.index');
-    $trail->push($tutor->name . ' ' . $tutor->surname, route('tutors.show', $tutor));
+    $trail->push($tutor->fullName(), route('tutors.show', $tutor));
 });
 
 // Coordinators
@@ -63,7 +61,7 @@ Breadcrumbs::for('coordinators.create', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('coordinators.show', function (BreadcrumbTrail $trail, Person $coordinator) {
     $trail->parent('coordinators.index');
-    $trail->push($coordinator->name . ' ' . $coordinator->surname, route('coordinators.show', $coordinator));
+    $trail->push($coordinator->fullName(), route('coordinators.show', $coordinator));
 });
 
 // Companies
