@@ -8,63 +8,85 @@
     {{ Breadcrumbs::render('students.show', $student) }}
 
     <!-- Row -->
-    <div class="row mb-4"> 
-            <!-- Box -->
-            <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white rounded">
+    <div class="row bg-white shadow mx-2 gx-0">
 
-                <!-- Titulo + Mail -->
-                <div class="d-flex flex-column justify-content-start">
-                    <h1 class="h3 mb-0">{{ $student->name }} {{ $student->surname }}</h1>
+        <!-- Titulo -->
+        <div class="row px-4 pt-4 gx-0 mb-3">
+            <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
+                <div>
+                    <h1 class="h3 mb-0">{{ $student->fullName() }}</h1>
+                    <p class="text-uppercase">grado que esta cursando</p> <!-- meter grado -->
                     <p class="mb-0">{{ $student->email }}</p>
-                    <p class="mb-0">{{ $student->phone }}</p> 
+                    <p class="mb-0">{{ $student->phone }}</p>
+                </div>
+                <div>
+                    <a href="#"><button class="btn btn-secondary text-primary">Editar</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- End Titulo -->
+
+        <!-- Ficha Dual -->
+        <div class="row px-4 gx-0 my-3">
+
+            <!-- Titulo -->
+            <div class="d-flex align-items-center justify-content-between">
+                <h1 class="h3 mb-0">Ficha Dual</h1>
+                <div class="d-flex flex-row">
+                    <div class="form-group">
+                        <select class="form-select" name="año academico">
+                            <option value="" selected>2021 - 2022</option> <!-- TODO cargar cursos -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
                 </div>
                 
-                <!-- Boton Editar -->
-                <a href="#" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
-                    Editar <!-- TODO añadir enlace -->
-                </a>
-
             </div>
-            <!-- End Box -->
-    </div>
-    <!-- End Row -->
+            <!-- End Titulo -->
 
-    <!-- Row -->
-    <div class="row mb-2">
+            <!-- Data -->
+            <div class="row mb-0 mt-3 mb-sm-3 mx-2 gx-0 d-flex justify-content-center">
 
-        <!-- Ficha Dual-->
-        <div class="d-flex flex-column justify-content-start">
-            <h1 class="h3 mb-3">Ficha Dual</h1>
-            <p><strong>Año Academico </strong> año academico</p> <!-- TODO añadir año -->
-            <p><strong>Curso </strong> curso</p> <!-- TODO añadir curso -->
-            <p><strong>Empresa </strong> empresa</p> <!-- TODO añadir empresa -->
-            <p><strong>Tutor empresa </strong> tutor empresa</p> <!-- TODO tutor empresa -->
-            <p><strong>Tutor Academico  </strong> tutor academico</p> <!-- TODO tutor academico -->
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-center">
+                    <p class="fw-bold text-uppercase mb-0">Curso</p>
+                    <p>2</p>
+                </div>
+
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-center">
+                    <p class="fw-bold text-uppercase mb-0">Tutor Académico</p>
+                    <p>Rita La Pollera</p>
+                </div>
+
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-center">
+                    <p class="fw-bold text-uppercase mb-0">Empresa</p>
+                    <p>Funeraria Albia</p>
+                </div>
+
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-center">
+                    <p class="fw-bold text-uppercase mb-0">Tutor Empresa</p>
+                    <p>Doctor Muerte</p>
+                </div>
+            </div>
+            <!-- End Data -->
+
+            <!-- Botones -->
+            <div class="row mb-0 mb-sm-3 gx-0 d-flex justify-content-center">
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
+                    <button class="btn-guapo btn-outline-primary">Diario Aprendizaje</button>
+                </div>
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
+                    <button class="btn-guapo btn-outline-primary">Diario Seguimiento</button>
+                </div>
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
+                    <button class="btn-guapo btn-outline-primary">Evaluación</button>
+                </div>
+            </div>
+            <!-- End Botones -->
         </div>
         <!-- End Ficha Dual -->
 
+
+
     </div>
-    <!-- End Row -->
 
-    <!-- Row -->
-    <div class="row mb-0 mb-sm-4">
-
-        <!-- Diario de Aprendizaje -->
-        <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-            <a href="#" class="btn-guapo btn-primary">Diario de Aprendizaje</a> <!-- TODO añadir enlace -->
-        </div>
-
-        <!-- Diario de Seguimiento -->
-        <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-            <a href="#" class="btn-guapo btn-primary">Diario de Seguimiento</a> <!-- TODO añadir enlace -->
-        </div>
-
-        <!-- Evaluación -->
-        <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-            <a href="#" class="btn-guapo btn-primary">Evaluación</a> <!-- TODO añadir enlace -->
-        </div>
-    </div>
-    <!-- End Row -->
-
-    <a href="{{ route('students.index') }}">Volver</a>
 @endsection
