@@ -22,31 +22,20 @@
         </div>
         <!-- End Titulo -->
 
-        <!-- TODO Filtros -->
+        <!-- Filtros -->
         <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
 
             <form action="{{ route(Route::currentRouteName()) }}" method="GET">
-
-                <!-- Row -->
-                <div class="row mb-1 mb-sm-3 gx-0">
-
-                    <!-- Buscador --> <!-- TODO revisar que funcione -->
-                    <div class="d-inline-block d-md-none form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" name="search" placeholder="Buscar..." value="{{ $old_search }}"/>
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="bi bi-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Row -->
             
                 <!-- Row -->
                 <div class="row mb-0 mb-sm-3 gx-0">
+
+                    <!-- Buscador -->
+                    <div class="col-12 mb-3 col-sm-4 mb-sm-0 px-sm-1">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value="{{ $old_search }}"/>
+                        </div>
+                    </div>
 
                     <!-- Tipo de Tutor -->
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
@@ -63,7 +52,7 @@
                     </div>
 
                     <!-- Grados -->
-                    <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
+                    <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
                         <div class="form-group">
                             <select name="grade" class="form-select">
                                 <option value="" selected>Grado</option>
@@ -77,7 +66,7 @@
                     </div>
 
                     <!-- Empresas -->
-                    <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
+                    <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
                         <div class="form-group">
                             <select name="company" class="form-select">
                                 <option value="" selected>Empresa</option>
@@ -88,6 +77,11 @@
                                 @endforeach
                             </select>
                         </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="col-12 mb-3 col-sm-1 mb-sm-0 px-sm-1">
+                        <button class="btn-guapo btn-primary" type="submit">Filtrar</button>
                     </div>
 
                 </div>

@@ -32,6 +32,11 @@ Breadcrumbs::for('students.show', function (BreadcrumbTrail $trail, Person $stud
     $trail->push($student->fullName(), route('students.show', $student));
 });
 
+Breadcrumbs::for('students.edit', function (BreadcrumbTrail $trail, Person $student) {
+    $trail->parent('students.index');
+    $trail->push('Editar ' . $student->fullName(), route('students.edit', $student));
+});
+
 // Tutors
 Breadcrumbs::for('tutors.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');

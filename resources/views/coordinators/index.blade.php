@@ -24,44 +24,35 @@
 
         <!-- TODO Filtros -->
         <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
+            <form action="" method="GET">
+                <!-- Row -->
+                <div class="row mb-0 mb-sm-3 gx-0">
 
-            <!-- Row -->
-            <div class="row mb-1 mb-sm-3 gx-0">
-
-                <!-- Buscador --> <!-- TODO meter action -->
-                <form action="#" method="GET" 
-                    class="d-inline-block d-md-none form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Buscar...">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
+                    <!-- Buscador -->
+                    <div class="col-12 mb-3 col-sm-4 mb-sm-0 px-sm-1">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value=""/> <!-- TODO  value-->
                         </div>
                     </div>
-                </form>
-
-            </div>
-            <!-- End Row -->
-            
-            <!-- Row -->
-            <div class="row mb-0 mb-sm-3 gx-0">
-
-                <div class="col-12 mb-3 mb-sm-0 px-sm-1 d-flex justify-content-center align-items-center">
 
                     <!-- Es Tutor -->
-                    <div class="form-check d-flex justify-content-center align-items-center">
-                        <input class="form-check-input" type="checkbox" value="" name="es-tutor">
-                        <label class="form-check-label px-2 mt-1" for="es-tutor">
-                            Tutor
-                        </label>
+                    <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1 d-flex justify-content-center align-items-center">
+                        <div class="form-check d-flex justify-content-center align-items-center">
+                            <input class="form-check-input" type="checkbox" value="" name="es-tutor">
+                            <label class="form-check-label px-2 mt-1" for="es-tutor">
+                                Tutor
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="col-12 mb-3 col-sm-1 mb-sm-0 px-sm-1">
+                            <button class="btn-guapo btn-primary" type="submit">Filtrar</button>
                     </div>
 
                 </div>
-                <!-- End Checkboxes -->
-            </div>
-            <!-- End Row -->
-
+                <!-- End Row -->
+            </form>
         </div>
         <!-- End Filtros -->
 
