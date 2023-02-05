@@ -22,7 +22,7 @@ class DualSheet extends Model
 
     public function student()
     {
-        return $this->belongsTo(Person::class, 'sutdent_id');
+        return $this->belongsTo(Person::class, 'student_id');
     }
 
     public function academicTutor()
@@ -43,6 +43,26 @@ class DualSheet extends Model
     public function schoolYear()
     {
         return $this->belongsTo(SchoolYear::class, 'school_year_id');
+    }
+
+    public function diaryEntries()
+    {
+        return $this->hasMany(DiaryEntries::class, 'sheet_id');
+    }
+
+    public function followUps()
+    {
+        return $this->hasMany(FollowUp::class, 'sheet_id');
+    }
+
+    public function jobEvaluation()
+    {
+        return $this->hasOne(JobEvaluation::class, 'sheet_id');
+    }
+
+    public function diaryEvaluation()
+    {
+        return $this->hasOne(DiaryEvaluation::class, 'sheet_id');
     }
 
     public function scopeFromTutor(Builder $query, Person $tutor)

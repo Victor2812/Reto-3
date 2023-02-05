@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('diary_comments', function (Blueprint $table) {
             $table->id();
+            
             $table->foreignId('person_id'); // author
+
             $table->text('text');
+
             $table->unsignedBigInteger('diary_entry_id');
             $table->foreign('diary_entry_id')->references('id')->on('diary_entries');
+
             $table->timestamps();
         });
     }
