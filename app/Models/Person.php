@@ -95,9 +95,14 @@ class Person extends Model
         return $query->where('role_id', '!=', config('roles.ALUMNO'));
     }
 
+    public function scopeAllAcademicTutors($query)
+    {
+        return $query->where('role_id', '!=', config('roles.ALUMNO'))->where('role_id', '!=', config('roles.FACILITADOR_EMPRESA'));
+    }
+
     public function scopeIsTutorOnDualSheets($query) {
-        // Esta función deberá comprobar que un coordinador es tutor
-        throw new Exception('Función no implementada');
+        $tutorsOfDualSheets = DualSheet::select('tutor_id');
+        return $query->whereIn('id', $tutorsOfDualSheets);
     }
 
     public function scopeBySearchTerms($query, string $search_terms)

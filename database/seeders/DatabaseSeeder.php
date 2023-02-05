@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // Empresas y fichas duales
-        $tutorsArray = Person::studentTutors()->get()->toArray();
+        $tutorsArray = Person::allAcademicTutors()->get()->toArray();
         $studentsArray = Person::students()->get()->toArray();
         $coursesArray = Course::where('has_dual', '=', 1)->get()->toArray();
         $schoolYearsArray = SchoolYear::all()->toArray();
