@@ -7,19 +7,20 @@
 <!-- Breadcrumbs -->
 {{ Breadcrumbs::render('students.create') }}
 
-<!-- Titulo -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Añadir Alumno</h1>
-</div>
-<!-- End Titulo -->
+<div class="row bg-white shadow mx-2 gx-0">
 
-<div class="row">
+     <!-- Titulo -->
+    <div class="row px-4 pt-4 gx-0 mb-3">
+        <div class="d-flex align-items-center justify-content-start">
+            <h1 class="h3 mb-0">Añadir Alumno</h1>
+        </div>
+    </div>
+    <!-- End Titulo -->
 
     <!-- Formulario -->
-    <form action="{{ route('students.store') }}" class="requires-validation" method="POST">
-        @csrf
-        <div class="form-body">
-
+    <div class="row px-4 gx-sm-3 gx-0">
+        <form action="{{ route('students.store') }}" class="requires-validation" method="POST">
+            @csrf
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
 
@@ -168,13 +169,11 @@
 
             </div>
             <!-- End Row -->
-
-        </div>
-    </form>
+        </form>
+    </div>
     <!-- End Formulario -->
 
 </div>
 
-<a href="{{ route('students.index')}}">Volver</a>
 
 @endsection
