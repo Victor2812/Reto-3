@@ -4,6 +4,9 @@
 
 @section('main')
 
+<!-- Breadcrumbs -->
+{{ Breadcrumbs::render('students.create') }}
+
 <!-- Titulo -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Añadir Alumno</h1>
@@ -62,7 +65,7 @@
                         <select class="form-select" name="grado">
                             <option value="" selected>Grado</option> <!-- TODO cargar grados -->
                         </select>
-                    </div>
+                    </div> 
                 </div>
 
                 <!-- Curso -->

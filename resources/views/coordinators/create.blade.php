@@ -4,6 +4,9 @@
 
 @section('main')
 
+<!-- Breadcrumbs -->
+{{ Breadcrumbs::render('coordinators.create') }}
+
 <!-- Titulo -->
 <div class="d-flex align-items-center justify-content-between mb-4 px-4">
     <h1 class="h3 mb-0">Añadir Coordinador</h1>
@@ -12,7 +15,7 @@
 
 <!-- Row -->
 <div class="row">
-    <form action="{{ route('coordiantors.store') }}" class="requires-validation" novalidate>
+    <form action="#" class="requires-validation" novalidate> <!-- TODO accion -->
         <div class="form-body">
 
             <!-- Row -->
@@ -51,9 +54,7 @@
 
                         <select class="form-select" name="grado">
                             <option selected>Grado</option>
-                            @foreach ($grades as $g)
-                                <option value="{{ $g->id }}">{{ $g->name }}</option>
-                            @endforeach
+                            <!-- TODO cargar select -->
                         </select>
                     </div>
                 </div>

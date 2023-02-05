@@ -24,3 +24,9 @@
 }
 
 //divider
+.divider {
+    width: 0;
+    border-right: 1px solid $primary;
+    height: 1rem;
+    margin: auto 1rem;
+  }
