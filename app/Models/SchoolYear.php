@@ -13,6 +13,11 @@ class SchoolYear extends Model
 
     public $timestamps = false;
 
+    public function dualSheets()
+    {
+        return $this->hasMany(DualSheet::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Ayudantes

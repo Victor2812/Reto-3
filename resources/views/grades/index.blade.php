@@ -24,7 +24,8 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Cursos</th>
-                            <th>Acctiones</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,8 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('grades.edit', [$g->id]) }}">Editar</a>
+                                </td>
+                                <td>
                                     @include('partials.general.deletebutton', [
                                         'route' => route('grades.destroy', [$g->id])
                                     ])
