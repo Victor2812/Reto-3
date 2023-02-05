@@ -60,7 +60,7 @@
                             <th>{{ $id->email }}</th>
                             <th>{{ $id->phone }}</th>
                             <td><a href="{{ route('students.show', [$id->id])}}">Ver</a></td> <!-- TODO enlace --> 
-                            <td><a href="#">Editar</a></td> <!-- TODO enlace -->
+                            <td><a href="{{ route('students.edit', [$id->id]) }}">Editar</a></td> <!-- TODO enlace -->
                             <td><button>Eliminar</button></td> <!-- TODO enlace -->
                         </tr>
                     @endforeach
