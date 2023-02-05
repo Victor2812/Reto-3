@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Course;
 use App\Models\Person;
+use App\Models\SchoolYear;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Constraint\Count;
 
 class StudentsController extends Controller
 {
@@ -27,6 +31,11 @@ class StudentsController extends Controller
     {   
         // recoger lisado de alumno de la database
         $students = Person::students();
+        $courses = Course::hasDual();
+        $academicTutors = Person::studentTutors();
+        $companies = Company::all();
+        $companyTutors = Person::companyTutors();
+        $schoolYears = SchoolYear::all();
 
         // recoger el filtro del formulario buscador
         $search = $request->query('search');
@@ -39,6 +48,11 @@ class StudentsController extends Controller
         return view('students.index', [
             // info de la DB
             'students' => $students->paginate(13),
+            'courses' => $courses->get(),
+            'academicTutors' => $academicTutors->get(),
+            'companies' => $companies,
+            'companyTutors' => $companyTutors->get(),
+            'schoolYears' => $schoolYears,
             // terminos de busqueda previos
             'old_search' => $search,
         ]);

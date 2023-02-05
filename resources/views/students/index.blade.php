@@ -40,7 +40,7 @@
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
                         <div class="form-group">
                             <select class="form-select" name="grado">
-                                <option value="" selected>Grado</option> <!-- TODO cargar grados -->
+                                <option selected>Grado</option> <!-- TODO cargar grados -->
                             </select>
                         </div> 
                     </div>
@@ -49,7 +49,10 @@
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
                             <div class="form-group">
                                 <select class="form-select" name="tutor-academico">
-                                    <option value="" selected>Tutor Académico</option> <!-- TODO cargar tutor academico -->
+                                    <option selected>Tutor Académico</option> <!-- TODO cargar tutor academico -->
+                                    @foreach ($academicTutors as $tutor)
+                                        <option value="{{ $tutor->id }}">{{ $tutor->fullName() }}</option> <!-- TODO cargar cursos -->
+                                    @endforeach
                                 </select>
                             </div>
                     </div>
@@ -58,7 +61,10 @@
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
                         <div class="form-group">
                             <select class="form-select" name="empresa">
-                                <option value="" selected>Empresa</option> <!-- TODO cargar empresa -->
+                                <option selected>Empresa</option> <!-- TODO cargar empresa -->
+                                @foreach ($companies as $company)
+                                    <option value="{{ $company->id }}">{{ $company->name }}</option> <!-- TODO cargar cursos -->
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -73,7 +79,10 @@
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
                         <div class="form-group">
                             <select class="form-select" name="tutor-empresa">
-                                <option value="" selected>Tutor Empresa</option> <!-- TODO cargar empresa -->
+                                <option selected>Tutor Empresa</option> <!-- TODO cargar empresa -->
+                                @foreach ($companyTutors as $tutor)
+                                    <option value="{{ $tutor->id }}">{{ $tutor->fullName() }}</option> <!-- TODO cargar cursos -->
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -82,7 +91,10 @@
                     <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
                         <div class="form-group">
                             <select class="form-select" name="curso">
-                                <option value="" selected>Curso</option> <!-- TODO cargar cursos -->
+                                <option selected>Curso</option> <!-- TODO cargar cursos -->
+                                @foreach ($courses as $course)
+                                    <option value="{{ $course->id }}">{{ $course->toText() }}</option> <!-- TODO cargar cursos -->
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -91,7 +103,10 @@
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
                         <div class="form-group">
                             <select class="form-select" name="anio-academico">
-                                <option value="" selected>Año academico</option> <!-- TODO cargar curso academico -->
+                                <option selected>Año academico</option> <!-- TODO cargar curso academico -->
+                                @foreach ($schoolYears as $year)
+                                    <option value="{{ $year->id }}">{{ $year->toText() }}</option> <!-- TODO cargar cursos -->
+                                @endforeach
                             </select>
                         </div>
                     </div>

@@ -22,4 +22,16 @@ class Course extends Model
     {
         return $this->hasMany(DualSheet::class);
     }
+
+    public function toText()
+    {
+        $g = $this->grade()->first()->name;
+        $c = $this->name;
+        return "$g ($c)";
+    }
+
+    public function scopeHasDual($query)
+    {
+        $query->where('has_dual', '=', 1);
+    }
 }

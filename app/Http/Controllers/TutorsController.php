@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Course;
 use App\Models\Grade;
 use App\Models\Person;
 use App\Models\Role;
+use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 
 class TutorsController extends Controller
@@ -30,8 +33,11 @@ class TutorsController extends Controller
         // Información de la base de datos
         $tutors = Person::allTutors();
         $roles = Role::all();
-        // TODO: grados
-        // TODO: compañías
+        $courses = Course::hasDual();
+        $academicTutors = Person::studentTutors();
+        $companies = Company::all();
+        $companyTutors = Person::companyTutors();
+        $schoolYears = SchoolYear::all();
 
         // Obtener filtros
         $search = $request->query('search');
@@ -61,7 +67,11 @@ class TutorsController extends Controller
             'tutors' => $tutors->paginate(13),
             'roles' => $roles,
             'grades' => [],
-            'companies' => [],
+            'courses' => $courses,
+            'academicTutors' => $academicTutors,
+            'companyTutors' => $companyTutors,
+            'companies' => $companies,
+            'schoolYears' => $schoolYears,
             // Términos de búsqueda previos
             'old_search' => $search, // mostrar selección actual si la hay
             'old_role' => $role,
