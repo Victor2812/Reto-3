@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Company;
 use App\Models\Course;
+use App\Models\DualSheet;
 use App\Models\Grade;
 use App\Models\Person;
 use App\Models\Role;
@@ -75,10 +76,28 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // Empresas
+        // Empresas y fichas duales
+        $tutorsArray = Person::studentTutors()->get()->toArray();
+        $studentsArray = Person::students()->get()->toArray();
+        $coursesArray = Course::where('has_dual', '=', 1)->get()->toArray();
+        $schoolYearsArray = SchoolYear::all()->toArray();
+
         foreach (Person::where('role_id', '=', 3)->get() as $person) {
-            Company::factory()->create([
+            $company = Company::factory()->create([
                 'person_id' => $person->id,
+            ]);
+
+            $tutor = $tutorsArray[array_rand($tutorsArray)];
+            $student = $studentsArray[array_rand($studentsArray)];
+            $course = $coursesArray[array_rand($coursesArray)];
+            $schoolYear = $schoolYearsArray[array_rand($schoolYearsArray)];
+
+            DualSheet::factory()->create([
+                'tutor_id' => $tutor['id'],
+                'student_id' => $student['id'],
+                'company_id' => $company->id,
+                'course_id' => $course['id'],
+                'school_year_id' => $schoolYear['id'],
             ]);
         }
     }
