@@ -23,3 +23,12 @@
 @import "tables";
 @import "grades";
 @import "buttons";
+@import "forms";
+
+a {
+    font-weight: 500;
+}
+
+a:hover {
+    font-weight: 600;
+}

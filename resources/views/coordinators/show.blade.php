@@ -4,6 +4,9 @@
 
 @section('main')
 
+<!-- Breadcrumbs -->
+{{ Breadcrumbs::render('coordinators.show', $coordinator) }}
+
 <!-- Row -->
 <div class="row mb-4">
         <!-- Box -->

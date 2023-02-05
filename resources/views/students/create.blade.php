@@ -65,7 +65,7 @@
                         <select class="form-select" name="grado">
                             <option value="" selected>Grado</option> <!-- TODO cargar grados -->
                         </select>
-                    </div>
+                    </div> 
                 </div>
 
                 <!-- Curso -->

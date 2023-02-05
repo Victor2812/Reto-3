@@ -15,14 +15,16 @@
     </div>
 </form>
 
-<div>
+<div class="d-flex flex-row align-items-center justify-content-center">
     <!-- Header Usuario -->
-    <a href="" class="mr-2 d-none d-lg-inline text-gray-600 small">
+    <a href="" class="mr-2 d-none d-lg-inline text-decoration-none small">
         {{ Auth::user()->person()->first()->fullName() }}
     </a>
 
+    <div class="divider d-none d-lg-inline"></div>
+
     <!-- Header Logout -->
-    <a href="{{ route('logout') }}" class="text-gray-600 small">
+    <a href="{{ route('logout') }}" class="text-decoration-none small">
         Cerrar Sesión
     </a>
 </div>

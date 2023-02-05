@@ -4,6 +4,9 @@
 
 @section('main')
 
+<!-- Breadcrumbs -->
+{{ Breadcrumbs::render('tutors.show', $tutor) }}
+
 <!-- Row -->
 <div class="row mb-4">
         <!-- Box -->

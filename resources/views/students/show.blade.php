@@ -4,10 +4,13 @@
 
 @section('main')
 
+    <!-- Breadcrumbs -->
+    {{ Breadcrumbs::render('students.show', $student) }}
+
     <!-- Row -->
     <div class="row mb-4"> 
             <!-- Box -->
-            <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
+            <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white rounded">
 
                 <!-- Titulo + Mail -->
                 <div class="d-flex flex-column justify-content-start">
