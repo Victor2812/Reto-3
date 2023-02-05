@@ -74,8 +74,10 @@ class StudentsController extends Controller
      */
     public function show(Person $student)
     {
+        $sheets = $student->studentSheets()->latest()->get();
         return view('students.show', [
             'student' => $student,
+            'sheets' => $sheets,
         ]); 
     }
 

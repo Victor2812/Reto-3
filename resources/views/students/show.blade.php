@@ -32,37 +32,53 @@
     <!-- Row -->
     <div class="row mb-2">
 
-        <!-- Ficha Dual-->
-        <div class="d-flex flex-column justify-content-start">
-            <h1 class="h3 mb-3">Ficha Dual</h1>
-            <p><strong>Año Academico </strong> año academico</p> <!-- TODO añadir año -->
-            <p><strong>Curso </strong> curso</p> <!-- TODO añadir curso -->
-            <p><strong>Empresa </strong> empresa</p> <!-- TODO añadir empresa -->
-            <p><strong>Tutor empresa </strong> tutor empresa</p> <!-- TODO tutor empresa -->
-            <p><strong>Tutor Academico  </strong> tutor academico</p> <!-- TODO tutor academico -->
+        <div class="table-responsive-sm">
+            <table class="table table-hover border-secodary" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Año escolar</th>
+                        <th>Tutor</th>
+                        <th>Compañía</th>
+                        <th>Curso</th>
+                        <th>Diario</th>
+                        <th>Seguimiento</th>
+                        <th>Evaluación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach ($sheets as $sheet)
+                    <tr>
+                        <td>{{ $sheet->schoolYear()->first()->toText() }}</td>
+                        <td>{{ $sheet->academicTutor()->first()->fullName() }}</td>
+                        <td>{{ $sheet->company()->first()->name }}</td>
+                        <td>{{ $sheet->course()->first()->name }}</td>
+
+                        <!-- Ver -->
+                        <td>
+                            <button class="btn" href="#"><!-- TODO enlace -->
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </td>
+
+                        <!-- Editar -->
+                        <td> 
+                            <button class="btn" href="#"><!-- TODO enlace -->
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </td>
+
+                        <!-- Eliminar -->
+                        <td>
+                            <button class="btn"> <!-- TODO enlace -->
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
-        <!-- End Ficha Dual -->
 
-    </div>
-    <!-- End Row -->
-
-    <!-- Row -->
-    <div class="row mb-0 mb-sm-4">
-
-        <!-- Diario de Aprendizaje -->
-        <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-            <a href="#" class="btn-guapo btn-primary">Diario de Aprendizaje</a> <!-- TODO añadir enlace -->
-        </div>
-
-        <!-- Diario de Seguimiento -->
-        <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-            <a href="#" class="btn-guapo btn-primary">Diario de Seguimiento</a> <!-- TODO añadir enlace -->
-        </div>
-
-        <!-- Evaluación -->
-        <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-            <a href="#" class="btn-guapo btn-primary">Evaluación</a> <!-- TODO añadir enlace -->
-        </div>
     </div>
     <!-- End Row -->
 

@@ -38,6 +38,13 @@ class SchoolYear extends Model
         return (int)substr($this->end, 0, 4);
     }
 
+    public function toText()
+    {
+        $s = $this->startYear();
+        $e = $this->endYear();
+        return "$s-$e";
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Scopes
