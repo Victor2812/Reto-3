@@ -58,7 +58,7 @@
 
                 <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
                     <p class="fw-bold text-uppercase mb-0">Tutor Empresa</p>
-                    <p>Doctor Muerte</p>
+                    <p>Doctor Muertes</p>
                 </div>
             </div>
             <!-- End Data -->

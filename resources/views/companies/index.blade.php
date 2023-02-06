@@ -6,28 +6,7 @@
 
     <!-- Breadcrumbs -->
     {{ Breadcrumbs::render('companies.index') }}
-
-<<<<<<< HEAD
-    <!-- Titulo -->
-    <div class="d-flex align-items-center justify-content-between mb-4 px-4">
-        <h1 class="h3 mb-0">Empresas</h1>
-        <a href="{{ route('companies.create') }}" class="d-inline-block btn btn-sm btn-primary shadow-sm">
-            Nuevo
-        </a>
-    </div>
-    <!-- End Titulo -->
-
-    <!-- Filtros -->
-        <div>
-            <form action="" method="GET">
-                <input type="text" name="search" placeholder="CIF, Dirección, Nombre..." value="{{ $old_search }}">
-                <button type="submit">Buscar</button>
-            </form>
-        </div>
-    <!-- End Filtros -->
-
-=======
->>>>>>> m-forms-t
+    
     <!-- Row -->
     <div class="row bg-white shadow mx-2 gx-0">
 
@@ -53,7 +32,7 @@
                     <!-- Buscador -->
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value=""/> <!-- TODO  value-->
+                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value="{{ $old_search }}"/> <!-- TODO  value-->
                         </div>
                     </div>
 
@@ -97,30 +76,31 @@
                         </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
                         @foreach ($companies as $c)
                             @php ($tutor = $c->person)
                             <tr>
-                                <td>{{ $c->CIF }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $c->CIF }}</td>
                                 <td>{{ $c->name }}</td>
-                                <td>{{ $c->location }}</td>
-                                <td><a href="{{ route('tutors.show', [$tutor->id]) }}">{{ $tutor->fullName() }}</a></td>
-                                <td>{{ $tutor->email }} {{ $tutor->phone }}</td>
-
+                                <td class="d-none d-sm-table-cell">{{ $c->location }}</td>
+                                <td class="d-none d-sm-table-cell"><a href="{{ route('tutors.show', [$tutor->id]) }}">{{ $tutor->fullName() }}</a></td> <!-- TODO nombre tutor empresa y que pinchado vaya a su vista show -->
+                                <td class="d-none d-sm-table-cell"><a href="#">{{ $tutor->email}}</a></td> <!-- TODO mail tutor empresa -->
+                                <td class="d-none d-sm-table-cell"><a href="#">{{ $tutor->phone }}</a></td> <!-- TODO telefono tutor empresa -->
                                 <!-- Ver -->
                                 <td>
-                                    <a href="{{ route('companies.show', [$c->id])}}" class="btn">
-                                        <i class="bi bi-eye"></i>
+                                    <a href="{{ route('companies.show', [$c->id])}}">
+                                        <button class="btn">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
                                     </a>
                                 </td>
-    
+
                                 <!-- Editar -->
-                                <td> 
+                                <td>
                                     <a class="btn" href="{{ route('companies.edit', [$c->id]) }}">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                 </td>
-    
+
                                 <!-- Eliminar -->
                                 <td>
                                     @include('partials.general.deletebutton', [
@@ -129,42 +109,6 @@
                                 </td>
                             </tr>
                         @endforeach
-=======
-                    @foreach ($companies as $c)
-                        <tr>
-                            <td class="d-none d-sm-table-cell">{{ $c->CIF }}</td>
-                            <td>{{ $c->name }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $c->location }}</td>
-                            <td class="d-none d-sm-table-cell"><a href="#">tutor empresa</a></td> <!-- TODO nombre tutor empresa y que pinchado vaya a su vista show -->
-                            <td class="d-none d-sm-table-cell"><a href="#">mail tutor empresa</a></td> <!-- TODO mail tutor empresa -->
-                            <td class="d-none d-sm-table-cell"><a href="#">telefono tutor empresa</a></td> <!-- TODO telefono tutor empresa -->
-                            <!-- Ver -->
-                            <td>
-                                <a href="{{ route('companies.show', [$c->id])}}">
-                                    <button class="btn">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </a>
-                            </td>
-
-                            <!-- Editar -->
-                            <td>
-                                <a class="btn" href="{{ route('companies.edit', [$c->id]) }}">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                            </td>
-
-                            <!-- Eliminar -->
-                            <td>
-                                <td class="d-none d-sm-table-cell">
-                                    @include('partials.general.deletebutton', [
-                                        'route' => route('companies.destroy', [$c->id])
-                                    ])
-                                </td>
-                            </td>
-                        </tr>
-                    @endforeach
->>>>>>> m-forms-t
                     </tbody>
                 </table>
             </div>

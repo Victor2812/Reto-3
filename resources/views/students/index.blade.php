@@ -180,31 +180,16 @@
 
                             <!-- Editar -->
                             <td> 
-<<<<<<< HEAD
                                 <a class="btn" href="{{ route('students.edit', [$student->id]) }}">
                                     <i class="bi bi-pencil"></i>
-=======
-                                <a href="{{ route('students.edit', [$id->id]) }}">
-                                    <button class="btn">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
->>>>>>> views-v
                                 </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-<<<<<<< HEAD
                                 @include('partials.general.deletebutton', [
                                     'route' => route('students.destroy', [$student->id])
                                 ])
-=======
-                                <a href="{{ route('students.destroy', [$id->id]) }}">
-                                    <button class="btn"> 
-                                        <i class="bi bi-trash3"></i>
-                                    </button>
-                                </a>
->>>>>>> views-v
                             </td>
                         </tr>
                     @endforeach
