@@ -83,28 +83,24 @@
                             <!-- Ver -->
                             <td>
                                 <a href="{{ route('coordinators.show', [$p->id])}}">
-                                    <button class="btn">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
+                                    <i class="bi bi-eye"></i>
                                 </a>
                             </td>
 
                             <!-- Editar -->
                             <td>
                                 <a href="{{ route('coordinators.edit', [$p->id]) }}">
-                                    <button class="btn">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
+                                    <i class="bi bi-pencil"></i>
                                 </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-                                <a href="{{ route('coordinators.destroy', [$p->id]) }}">
-                                    <button class="btn"> 
-                                        <i class="bi bi-trash3"></i>
-                                    </button>
-                                </a>
+                                <td class="d-none d-sm-table-cell">
+                                    @include('partials.general.deletebutton', [
+                                        'route' => route('coordinators.destroy', [$p->id])
+                                    ])
+                                </td>
                             </td>
                         </tr>
                     @endforeach

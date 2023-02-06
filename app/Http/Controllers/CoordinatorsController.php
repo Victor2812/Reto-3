@@ -117,6 +117,7 @@ class CoordinatorsController extends Controller
      */
     public function destroy(Person $coordinator)
     {
-        Person::remove($coordinator);
+        $coordinator->delete();
+        return Redirect::route('coordinators.index', [$coordinator->id]);
     }
 }

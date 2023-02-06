@@ -1,6 +1,6 @@
 <!-- Header Logo -->
 <a href="{{ route('dashboard') }}">
-    <img src="../imgs/universidad-deusto.svg" alt="Universidad de Deusto" width="150px">
+    <img src="../../imgs/universidad-deusto.svg" alt="Universidad de Deusto" width="150px">
 </a>
 
 <!-- Header Buscador -->

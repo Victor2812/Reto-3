@@ -7,7 +7,7 @@
     {{  Breadcrumbs::render('grades.index') }}
 
     <!-- Row -->
-    <div class="row bg-white shadow mx-2 gx-0">
+    <div class="row bg-white shadow mx-2 gx-0 mb-4">
         <!-- Title -->
         <div class="row px-4 pt-4 gx-0 mb-4">
             <div class="d-sm-flex align-items-center justify-content-between">
@@ -64,7 +64,7 @@
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <a class="btn" href="{{ route('grades.edit', [$g->id]) }}">
-                                        <i class="bi bi-eye"></i>
+                                        <i class="bi bi-pencil"></i>
                                     </a>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
@@ -120,18 +120,23 @@
                 <div class="row mb-0 mb-sm-3 gx-0">
                 
                 <!-- Year start -->
-                <div class="col-12 mb-3 col-sm-4 wb-sm-0 px-sm-1">
+                <div class="col-12 mb-3 col-sm-3 wb-sm-0 px-sm-1">
                     <div class="form-outline">
                         <input type="number" class="form-control" name="ystart" placeholder="Desde" value="{{ $old_ystart }}" min="{{ $oldestYear->startYear() }}" max="{{ $newestYear->startYear() }}">
                     </div>
                 </div>
 
                 <!-- Year end -->
-                <div>
-                    <div>
-                <input type="number" name="yend" placeholder="Hasta" value="{{ $old_yend }}" min="{{ $oldestYear->endYear() }}" max="{{ $newestYear->endYear() }}">
+                <div class="col-12 mb-3 col-sm-3 wb-sm-0 px-sm-1">
+                    <div class="form-outline">
+                <input type="number" class="form-control" name="yend" placeholder="Hasta" value="{{ $old_yend }}" min="{{ $oldestYear->endYear() }}" max="{{ $newestYear->endYear() }}">
+                    </div>
+                </div>
 
-                <button type="submit"><i class="bi bi-search"></i></button>
+                <!-- Submit -->
+                <div class="col-12 mb-3 col-sm-1 mb-sm-0 px-sm-1">
+                    <button class="btn-guapo btn-primary" type="submit">Filtrar</button>
+                </div>
 
                 </div>
                 <!-- End Row -->
@@ -141,7 +146,7 @@
         <!-- Tabla años escolares -->
         <div class="row">
             <div class="col-12 px-4">
-                <table class="tablita-guapa table-striped table-bordered table-hovers" width="100%" cellspacing="0">
+                <table class="table table-hover text-center" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Inicio</th>

@@ -95,20 +95,18 @@
 
                             <!-- Editar -->
                             <td>
-                                <a href="{{ route('companies.edit', [$c->id]) }}">
-                                    <button class="btn">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
+                                <a class="btn" href="{{ route('companies.edit', [$c->id]) }}">
+                                    <i class="bi bi-pencil"></i>
                                 </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-                                <a href="{{ route('companies.destroy', [$c->id]) }}">
-                                    <button class="btn"> 
-                                        <i class="bi bi-trash3"></i>
-                                    </button>
-                                </a>
+                                <td class="d-none d-sm-table-cell">
+                                    @include('partials.general.deletebutton', [
+                                        'route' => route('companies.destroy', [$c->id])
+                                    ])
+                                </td>
                             </td>
                         </tr>
                     @endforeach

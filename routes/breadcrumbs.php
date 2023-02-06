@@ -10,6 +10,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 use App\Models\Person;
 use App\Models\Company;
+use App\Models\Grade;
 
 
 // Home
@@ -108,6 +109,11 @@ Breadcrumbs::for('companies.edit', function (BreadcrumbTrail $trail, Company $co
 Breadcrumbs::for('grades.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Grados', route('grades.index'));
+});
+
+Breadcrumbs::for('grades.edit', function (BreadcrumbTrail $trail, Grade $grade) {
+    $trail->parent('grades.index');
+    $trail->push('Editar: ' . $grade->name, route('grades.edit', $grade));
 });
 
 // TODO Charts
