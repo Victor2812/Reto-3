@@ -82,6 +82,8 @@ class DatabaseSeeder extends Seeder
         $coursesArray = Course::where('has_dual', '=', 1)->get()->toArray();
         $schoolYearsArray = SchoolYear::all()->toArray();
 
+        $trueFalse = [true, false];
+
         foreach (Person::where('role_id', '=', 3)->get() as $person) {
             $company = Company::factory()->create([
                 'person_id' => $person->id,
@@ -92,12 +94,19 @@ class DatabaseSeeder extends Seeder
             $course = $coursesArray[array_rand($coursesArray)];
             $schoolYear = $schoolYearsArray[array_rand($schoolYearsArray)];
 
+            $active = $trueFalse[array_rand($trueFalse)];
+            $graduated = !$active
+                ? $trueFalse[array_rand($trueFalse)]
+                : false;
+
             DualSheet::factory()->create([
                 'tutor_id' => $tutor['id'],
                 'student_id' => $student['id'],
                 'company_id' => $company->id,
                 'course_id' => $course['id'],
                 'school_year_id' => $schoolYear['id'],
+                'active' => $active,
+                'graduated' => $graduated,
             ]);
         }
     }

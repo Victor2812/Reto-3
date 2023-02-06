@@ -25,6 +25,10 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained();
             $table->foreignId('course_id')->constrained();
             $table->foreignId('school_year_id')->constrained();
+
+            $table->boolean('active');
+            $table->boolean('graduated');
+
             $table->timestamps();
         });
     }

@@ -16,6 +16,8 @@ class DualSheet extends Model
         'company_id',
         'course_id',
         'school_year_id',
+        'active',
+        'graduated',
     ];
 
     protected $table = 'dual_sheets';

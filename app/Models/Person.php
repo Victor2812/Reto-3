@@ -121,4 +121,46 @@ class Person extends Model
             }
         });
     }
+
+    public function scopeIsStudentOfGrade(Builder $query, int $courseId)
+    {
+        return $query->whereHas('studentSheets', function (Builder $query) use ($courseId){
+            $query->where('course_id', '=', $courseId);
+        });
+    }
+
+    public function scopeIsStudentOfTutor(Builder $query, int $tutorId)
+    {
+        return $query->whereHas('studentSheets', function (Builder $query) use ($tutorId){
+            $query->where('tutor_id', '=', $tutorId);
+        });
+    }
+
+    public function scopeIsStudentOfCompany(Builder $query, int $companyId)
+    {
+        return $query->whereHas('studentSheets', function (Builder $query) use ($companyId){
+            $query->where('company_id', '=', $companyId);
+        });
+    }
+
+    public function scopeIsStudentOfSchoolYear(Builder $query, int $schoolYearId)
+    {
+        return $query->whereHas('studentSheets', function (Builder $query) use ($schoolYearId){
+            $query->where('school_year_id', '=', $schoolYearId);
+        });
+    }
+
+    public function scopeHasStudentDualSheetsActive(Builder $query, $value = true)
+    {
+        return $query->whereHas('studentSheets', function (Builder $query) use ($value) {
+            $query->where('active', $value);
+        });
+    }
+
+    public function scopeHasStudentDualSheetsGraduated(Builder $query, $value = true)
+    {
+        return $query->whereHas('studentSheets', function (Builder $query) use ($value) {
+            $query->where('graduated', $value);
+        });
+    }
 }
