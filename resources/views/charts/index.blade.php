@@ -7,25 +7,32 @@
 <!-- Breadcrumbs -->
 
 
-<!-- Titulo -->
-<div class="d-flex align-items-center justify-content-between mb-4 px-4">
-    <h1 class="h3 mb-0">Estadísticas</h1>
-</div>
-<!-- End Titulo -->
+<div class="row bg-white shadow mx-2 gx-0">
 
-<!-- Chart -->
-<div class="row">
-    <div class="col-6">
-        <piechart-component></piechart-component>
+    <!-- Titulo -->
+    <div class="row px-4 pt-4 gx-0 mb-3">
+        <div class="d-flex align-items-center justify-content-between">
+            <h1 class="h3 mb-0">Estadísticas</h1>
+        </div>
     </div>
-    <div class="col-6">
-        <linechart-component></linechart-component>
-    </div>
-</div>
-<!-- End Chart -->
+    <!-- End Titulo -->
 
-<div class="row">
-    <a href="{{ route('dashboard') }}"><button class="btn btn-primary">Volver</button></a>
+    <!-- Charts -->
+    <div class="row">
+
+        <!-- Pie Chart -->
+        <div class="col-6">
+            <piechart-component></piechart-component>
+        </div>
+
+        <!-- Linear Chart -->
+        <div class="col-6">
+            <linechart-component></linechart-component>
+        </div>
+    </div>
+    <!-- End Charts -->
+
 </div>
+
 
 @endsection
