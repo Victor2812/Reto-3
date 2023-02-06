@@ -17,7 +17,12 @@
     <!-- End Titulo -->
 
     <!-- Filtros -->
-        <!-- TODO Buscador sólo versión móvil -->
+        <div>
+            <form action="" method="GET">
+                <input type="text" name="search" placeholder="CIF, Dirección, Nombre..." value="{{ $old_search }}">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
     <!-- End Filtros -->
 
     <!-- Row -->

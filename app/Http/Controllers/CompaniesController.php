@@ -16,12 +16,24 @@ class CompaniesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->validate([
+            'search' => 'nullable|string|max:255',
+        ]);
+
         $companies = Company::orderBy('id', 'DESC');
+
+        $search = $request->query('search');
+
+        if ($search) {
+            $companies->bySearchTerms($search);
+        }
 
         return view('companies.index', [
             'companies' => $companies->paginate(13),
+
+            'old_search' => $search,
         ]);
     }
 
