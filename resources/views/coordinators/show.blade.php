@@ -20,8 +20,8 @@
             </div>
             
             <!-- Boton Editar -->
-            <a href="#" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
-                Editar <!-- TODO añadir enlace -->
+            <a href="{{ route('coordinators.edit', [$coordinator->id]) }}" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
+                Editar 
             </a>
 
         </div>

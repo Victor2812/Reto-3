@@ -21,8 +21,8 @@
             </div>
             
             <!-- Boton Editar -->
-            <a href="#" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
-                Editar <!-- TODO añadir enlace -->
+            <a href="{{ route('tutors.edit', [$tutor->id]) }}" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
+                Editar 
             </a>
 
         </div>

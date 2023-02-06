@@ -20,7 +20,11 @@
                     <p class="mb-0">{{ $student->phone }}</p>
                 </div>
                 <div>
-                    <a href="#"><button class="btn btn-secondary text-primary">Editar</button></a>
+                    <a href="{{ route('students.edit', [$student->id]) }}">
+                        <button class="btn btn-secondary text-primary">
+                            Editar
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
