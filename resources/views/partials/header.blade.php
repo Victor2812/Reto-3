@@ -1,6 +1,6 @@
 <!-- Header Logo -->
 <a href="{{ route('dashboard') }}">
-    <img src="imgs/universidad-deusto.svg" alt="Universidad de Deusto" width="150px">
+    <img src="../imgs/universidad-deusto.svg" alt="Universidad de Deusto" width="150px">
 </a>
 
 <!-- Header Buscador -->
@@ -17,7 +17,7 @@
 
 <div class="d-flex flex-row align-items-center justify-content-center">
     <!-- Header Usuario -->
-    <a href="" class="mr-2 d-none d-lg-inline text-decoration-none small">
+    <a href="{{ route('coordinators.show', [Auth::user()->person()->first()->id]) }}" class="mr-2 d-none d-lg-inline text-decoration-none small">
         {{ Auth::user()->person()->first()->fullName() }}
     </a>
 
