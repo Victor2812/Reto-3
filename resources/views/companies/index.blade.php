@@ -7,6 +7,7 @@
     <!-- Breadcrumbs -->
     {{ Breadcrumbs::render('companies.index') }}
 
+<<<<<<< HEAD
     <!-- Titulo -->
     <div class="d-flex align-items-center justify-content-between mb-4 px-4">
         <h1 class="h3 mb-0">Empresas</h1>
@@ -25,26 +26,78 @@
         </div>
     <!-- End Filtros -->
 
+=======
+>>>>>>> m-forms-t
     <!-- Row -->
-    <div class="row">
-        <div class="col-12 px-4">
+    <div class="row bg-white shadow mx-2 gx-0">
 
-            <!-- Tabla -->
-            <div class="table-responsive">
-                <table class="tablita-guapa table-striped table-bordered table-hovers" width="100%" cellspacing="0">
+        <!-- Titulo -->
+        <div class="row px-4 pt-4 gx-0 mb-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1 class="h3 mb-0">Empresas</h1>
+                <div>
+                    <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filtros">Filtros</a>
+                    <a href="{{ route('companies.create') }}"><button class="btn btn-primary">Nuevo</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- End Titulo -->
+
+        <!-- TODO Filtros -->
+        <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
+            <form action="" method="GET">
+
+                <!-- Row -->
+                <div class="row mb-0 mb-sm-3 gx-0">
+
+                    <!-- Buscador -->
+                    <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value=""/> <!-- TODO  value-->
+                        </div>
+                    </div>
+
+                    <!-- Grado -->
+                    <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
+                        <div class="form-group">
+                            <select class="form-select" name="grado">
+                                <option value="" selected>Grado</option> <!-- TODO cargar grados -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="col-12 mb-3 col-sm-1 mb-sm-0 px-sm-1">
+                        <button class="btn-guapo btn-primary" type="submit">Filtrar</button>
+                    </div>
+
+                </div>
+                <!-- End Row -->
+
+            </form>
+        </div>
+        <!-- End Filtros -->
+
+        <!-- Table -->
+        <div class="row px-4 gx-0">
+
+            <div class="table-responsive-sm">
+                <table class="table table-hover border-secodary" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>CIF</th>
+                            <th class="d-none d-sm-table-cell">CIF</th>
                             <th>Nombre</th>
-                            <th>Dirección</th>
-                            <th>Tutor de Empresa</th>
-                            <th>Contacto</th>
+                            <th class="d-none d-sm-table-cell">Direccion</th>
+                            <th class="d-none d-sm-table-cell">Tutor de Empresa</th>
+                            <th class="d-none d-sm-table-cell">Mail</th>
+                            <th class="d-none d-sm-table-cell">Telefono</th>
                             <th>Ver</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
+<<<<<<< HEAD
                         @foreach ($companies as $c)
                             @php ($tutor = $c->person)
                             <tr>
@@ -76,19 +129,54 @@
                                 </td>
                             </tr>
                         @endforeach
+=======
+                    @foreach ($companies as $c)
+                        <tr>
+                            <td class="d-none d-sm-table-cell">{{ $c->CIF }}</td>
+                            <td>{{ $c->name }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $c->location }}</td>
+                            <td class="d-none d-sm-table-cell"><a href="#">tutor empresa</a></td> <!-- TODO nombre tutor empresa y que pinchado vaya a su vista show -->
+                            <td class="d-none d-sm-table-cell"><a href="#">mail tutor empresa</a></td> <!-- TODO mail tutor empresa -->
+                            <td class="d-none d-sm-table-cell"><a href="#">telefono tutor empresa</a></td> <!-- TODO telefono tutor empresa -->
+                            <!-- Ver -->
+                            <td>
+                                <a href="{{ route('companies.show', [$c->id])}}">
+                                    <button class="btn">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </a>
+                            </td>
+
+                            <!-- Editar -->
+                            <td>
+                                <button class="btn" href="#"><!-- TODO enlace -->
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+
+                            <!-- Eliminar -->
+                            <td>
+                                <button class="btn"> <!-- TODO enlace -->
+                                    <i class="bi bi-trash3"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+>>>>>>> m-forms-t
                     </tbody>
                 </table>
+            </div>
+
 
                 <!-- Paginacion -->
                 <div>
                     {{ $companies->links() }}
                 </div>
-                <!-- End Paginacion -->
 
-            </div>
-            <!-- End Tabla -->
 
         </div>
+        <!-- End Table -->
+
     </div>
     <!-- End Row -->
 

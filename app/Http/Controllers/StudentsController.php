@@ -111,7 +111,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('students.create'); 
+        return view('students.create');
     }
 
     /**
@@ -138,7 +138,7 @@ class StudentsController extends Controller
         return view('students.show', [
             'student' => $student,
             'sheets' => $sheets,
-        ]); 
+        ]);
     }
 
     /**
@@ -149,7 +149,7 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        // 
+        //
     }
 
     /**
