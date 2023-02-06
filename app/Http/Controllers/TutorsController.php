@@ -118,13 +118,57 @@ class TutorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Person $tutor)
+    public function show(Request $request, Person $tutor)
     {
+        $request->validate([
+            'search' => 'nullable|string|max:255',
+            'course' => 'nullable|numeric|not_in:0',
+            'company' => 'nullable|numeric|not_in:0',
+            'graduated' => 'nullable|numeric|not_in:0|max:1',
+            'notactive' => 'nullable|numeric|not_in:0|max:1',
+        ]);
+
         $students = Person::students()->isStudentOfTutor($tutor->id);
+        $courses = Course::all();
+        $companies = Company::all();
+
+        // recoger el filtro del formulario buscador
+        $search = $request->query('search');
+        $course = $request->query('course');
+        $company = $request->query('company');
+        $graduated = (bool)$request->query('graduated');
+        $notactive = (bool)$request->query('notactive');
+
+        // Aplicar texto de busqueda
+        if ($search) {
+            $students->bySearchTerms($search);
+        }
+
+        if ($course) {
+            $students->isStudentOfGrade($course);
+        }
+
+        if ($company) {
+            $students->isStudentOfCompany($company);
+        }
+
+        if ($graduated) {
+            $students->hasStudentDualSheetsGraduated();
+        }
+
+        $students->hasStudentDualSheetsGraduated(!$notactive);
 
         return view('tutors.show', [
             'tutor' => $tutor,
             'students' => $students->paginate(13),
+            'courses' => $courses,
+            'companies' => $companies,
+
+            'old_search' => $search,
+            'old_course' => $course,
+            'old_company' => $company,
+            'old_graduated' => $graduated,
+            'old_notactive' => $notactive,
         ]);
     }
 

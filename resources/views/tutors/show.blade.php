@@ -34,26 +34,73 @@
     <div class="row mb-2">
 
         <!-- Info Grado -->
-        <div class="d-flex flex-column justify-content-start">
-            <h1 class="h3 mb-3">Alumnos</h1>
-            
+        <div class="row px-4 pt-4 gx-0 mb-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1 class="h3 mb-0">Alumnos</h1>
+                <div>
+                    <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filtros">Filtros</a>
+                </div>
+            </div>
         </div>
         <!-- End Info Grado -->
 
         <!-- TODO Filtros -->
+        <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
+            <form action="" method="get">
+                <input type="text" name="search" value="{{ $old_search }}">
+                
+                <!-- Curso -->
+                <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
+                    <div class="form-group">
+                        <select class="form-select" name="course">
+                            <option value="" @selected(!$old_course)>Curso</option>
+                            @foreach ($courses as $course)
+                                <option value="{{ $course->id }}" @selected($course->id == $old_course)>{{ $course->toText() }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
-            <!-- Buscador -->
+                <!-- Empresa -->
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
+                    <div class="form-group">
+                        <select class="form-select" name="company">
+                            <option value="" @selected(!$old_company)>Empresa</option>
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->id }}" @selected($old_company == $company->id)>{{ $company->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
-            <!-- Curso -->
+                <!-- Checkboxes -->
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 d-flex justify-content-center align-items-center">
+        
+                    <!-- Titulados -->
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                        <input class="form-check-input" type="checkbox" value="1" name="graduated" id="graduated" @checked($old_graduated)>
+                        <label class="form-check-label px-2 mt-1" for="graduated">
+                            Titulados
+                        </label>
+                    </div>
+        
+                    <!-- No Activos -->
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                        <input class="form-check-input" type="checkbox" value="1" name="notactive" id="notactive" @checked($old_notactive)>
+                        <label class="form-check-label px-2 mt-1" for="notactive">
+                            No Activos
+                        </label>
+                    </div>
+        
+                </div>
+                <!-- End Checkboxes -->
 
-            <!-- Grado -->
-
-            <!-- Empresa -->
-
-            <!-- Titulados checkbox -->
-
-            <!-- Activos checkbox seleccionado por default -->
-
+                <!-- Submit -->
+                <div class="col-12 mb-3 col-sm-1 mb-sm-0 px-sm-1">
+                    <button class="btn-guapo btn-primary" type="submit">Filtrar</button>
+                </div>
+            </form>
+        </div>
         <!-- End Filtros -->
 
         <!-- Table -->

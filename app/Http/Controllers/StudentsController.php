@@ -28,7 +28,7 @@ class StudentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
+    {
         $request->validate([
             'search' => 'nullable|string|max:255',
             'course' => 'nullable|numeric|not_in:0',
@@ -82,9 +82,7 @@ class StudentsController extends Controller
             $students->hasStudentDualSheetsGraduated();
         }
 
-        if ($notactive) {
-            $students->hasStudentDualSheetsGraduated(false);
-        }
+        $students->hasStudentDualSheetsGraduated(!$notactive);
 
         return view('students.index', [
             // info de la DB
