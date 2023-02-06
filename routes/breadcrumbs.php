@@ -10,6 +10,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 use App\Models\Person;
 use App\Models\Company;
+use App\Models\Grade;
 
 
 // Home
@@ -35,7 +36,7 @@ Breadcrumbs::for('students.show', function (BreadcrumbTrail $trail, Person $stud
 
 Breadcrumbs::for('students.edit', function (BreadcrumbTrail $trail, Person $student) {
     $trail->parent('students.index');
-    $trail->push('Editar ' . $student->fullName(), route('students.edit', $student));
+    $trail->push('Editar: ' . $student->fullName(), route('students.edit', $student));
 });
 
 // Tutors
@@ -54,6 +55,11 @@ Breadcrumbs::for('tutors.show', function (BreadcrumbTrail $trail, Person $tutor)
     $trail->push($tutor->fullName(), route('tutors.show', $tutor));
 });
 
+Breadcrumbs::for('tutors.edit', function (BreadcrumbTrail $trail, Person $tutor) {
+    $trail->parent('tutors.index');
+    $trail->push('Editar: ' . $tutor->fullName(), route('tutors.edit', $tutor));
+});
+
 // Coordinators
 Breadcrumbs::for('coordinators.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
@@ -70,6 +76,11 @@ Breadcrumbs::for('coordinators.show', function (BreadcrumbTrail $trail, Person $
     $trail->push($coordinator->fullName(), route('coordinators.show', $coordinator));
 });
 
+Breadcrumbs::for('coordinators.edit', function (BreadcrumbTrail $trail, Person $coordinator) {
+    $trail->parent('coordinators.index');
+    $trail->push('Editar: ' . $coordinator->fullName(), route('coordinators.edit', $coordinator));
+});
+
 // Companies
 Breadcrumbs::for('companies.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
@@ -83,12 +94,27 @@ Breadcrumbs::for('companies.create', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('companies.show', function (BreadcrumbTrail $trail, Company $company) {
     $trail->parent('companies.index');
-    $trail->push($company->name, route('companies.show'));
+    $trail->push($company->name, route('companies.show', $company));
+});
+
+Breadcrumbs::for('companies.edit', function (BreadcrumbTrail $trail, Company $company) {
+    $trail->parent('companies.index');
+    $trail->push($company->name, route('companies.edit', $company));
 });
 
 
 
+
 // TODO Grades
+Breadcrumbs::for('grades.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Grados', route('grades.index'));
+});
+
+Breadcrumbs::for('grades.edit', function (BreadcrumbTrail $trail, Grade $grade) {
+    $trail->parent('grades.index');
+    $trail->push('Editar: ' . $grade->name, route('grades.edit', $grade));
+});
 
 // TODO Charts
 

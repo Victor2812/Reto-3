@@ -8,7 +8,6 @@ use App\Models\Person;
 use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use PHPUnit\Framework\Constraint\Count;
 
 class StudentsController extends Controller
 {
@@ -144,30 +143,40 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Person $student
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $student)
     {
-        //
+        return view('students.edit', [
+            'student' => $student,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Person $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Person $student)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|min:4',
+            'apellidos' => 'required|string@min|min:5'
+            
+        ]);
+
+
+
+        return Redirect::route('students.edit', [$student->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Person $student
      * @return \Illuminate\Http\Response
      */
     public function destroy(Person $student)

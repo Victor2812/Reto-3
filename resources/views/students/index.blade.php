@@ -149,7 +149,7 @@
         <div class="row px-4 gx-0">
 
             <div class="table-responsive-sm">
-                <table class="table table-hover border-secodary" width="100%" cellspacing="0">
+                <table class="table table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="d-none d-sm-table-cell">DNI</th>
@@ -180,16 +180,31 @@
 
                             <!-- Editar -->
                             <td> 
+<<<<<<< HEAD
                                 <a class="btn" href="{{ route('students.edit', [$student->id]) }}">
                                     <i class="bi bi-pencil"></i>
+=======
+                                <a href="{{ route('students.edit', [$id->id]) }}">
+                                    <button class="btn">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+>>>>>>> views-v
                                 </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
+<<<<<<< HEAD
                                 @include('partials.general.deletebutton', [
                                     'route' => route('students.destroy', [$student->id])
                                 ])
+=======
+                                <a href="{{ route('students.destroy', [$id->id]) }}">
+                                    <button class="btn"> 
+                                        <i class="bi bi-trash3"></i>
+                                    </button>
+                                </a>
+>>>>>>> views-v
                             </td>
                         </tr>
                     @endforeach

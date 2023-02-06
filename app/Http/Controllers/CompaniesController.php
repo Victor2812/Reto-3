@@ -117,7 +117,6 @@ class CompaniesController extends Controller
         }
 
         $students->hasStudentDualSheetsGraduated(!$notactive);
-
         return view('companies.show', [
             'company' => $company,
             'coordinator' => $coordinator,

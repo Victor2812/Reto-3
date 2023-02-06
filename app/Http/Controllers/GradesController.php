@@ -179,7 +179,7 @@ class GradesController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        Grade::destroy($grade->id);
+        $grade->delete();
         return Redirect::route('grades.index', [$grade->id]);
     }
 }

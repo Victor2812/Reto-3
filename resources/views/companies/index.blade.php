@@ -82,7 +82,7 @@
         <div class="row px-4 gx-0">
 
             <div class="table-responsive-sm">
-                <table class="table table-hover border-secodary" width="100%" cellspacing="0">
+                <table class="table table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="d-none d-sm-table-cell">CIF</th>
@@ -149,16 +149,18 @@
 
                             <!-- Editar -->
                             <td>
-                                <button class="btn" href="#"><!-- TODO enlace -->
+                                <a class="btn" href="{{ route('companies.edit', [$c->id]) }}">
                                     <i class="bi bi-pencil"></i>
-                                </button>
+                                </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-                                <button class="btn"> <!-- TODO enlace -->
-                                    <i class="bi bi-trash3"></i>
-                                </button>
+                                <td class="d-none d-sm-table-cell">
+                                    @include('partials.general.deletebutton', [
+                                        'route' => route('companies.destroy', [$c->id])
+                                    ])
+                                </td>
                             </td>
                         </tr>
                     @endforeach

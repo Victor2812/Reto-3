@@ -60,7 +60,7 @@
         <div class="row px-4 gx-0">
             
             <div class="table-responsive-sm">
-                <table class="table table-hover border-secodary" width="100%" cellspacing="0">
+                <table class="table table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="d-none d-sm-table-cell">DNI</th>
@@ -82,23 +82,40 @@
 
                             <!-- Ver -->
                             <td>
+<<<<<<< HEAD
                                 <a href="{{ route('coordinators.show', [$p->id])}}" class="btn">
+=======
+                                <a href="{{ route('coordinators.show', [$p->id])}}">
+>>>>>>> views-v
                                     <i class="bi bi-eye"></i>
                                 </a>
                             </td>
 
                             <!-- Editar -->
+<<<<<<< HEAD
                             <td> 
                                 <a class="btn" href="{{ route('coordinators.edit', [$p->id]) }}">
+=======
+                            <td>
+                                <a href="{{ route('coordinators.edit', [$p->id]) }}">
+>>>>>>> views-v
                                     <i class="bi bi-pencil"></i>
                                 </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
+<<<<<<< HEAD
                                 @include('partials.general.deletebutton', [
                                     'route' => route('coordinators.destroy', [$p->id])
                                 ])
+=======
+                                <td class="d-none d-sm-table-cell">
+                                    @include('partials.general.deletebutton', [
+                                        'route' => route('coordinators.destroy', [$p->id])
+                                    ])
+                                </td>
+>>>>>>> views-v
                             </td>
                         </tr>
                     @endforeach

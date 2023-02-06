@@ -5,7 +5,7 @@
 @section('main')
 
 <!-- Breadcrumbs -->
-{{ Breadcrumbs::render('students.create') }}
+{{ Breadcrumbs::render('students.edit', $student) }}
 
 <div class="row bg-white shadow mx-2 gx-0">
 
@@ -19,7 +19,7 @@
 
     <!-- Formulario -->
     <div class="row px-4 gx-sm-3 gx-0">
-        <form action="{{ route('students.store') }}" class="requires-validation" method="POST">
+        <form action="{{ route('students.update', [$student->id]) }}" class="requires-validation" method="POST">
             @csrf
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
@@ -30,7 +30,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{ $student->name }}">
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+                        <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="{{ $student->surname }}">
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="dni" placeholder="DNI">
+                        <input type="text" class="form-control" name="dni" placeholder="DNI" value="{{ $student->dni }}">
                     </div>
                 </div>
 
@@ -131,7 +131,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="email" class="form-control" name="mail" placeholder="Mail">
+                        <input type="email" class="form-control" name="mail" placeholder="Mail" value="{{ $student->email }}">
                     </div>
                 </div>
 
@@ -151,7 +151,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="telefono" placeholder="Teléfono">
+                        <input type="text" class="form-control" name="telefono" placeholder="Teléfono" value="{{ $student->phone }}">
                     </div>
                 </div>
 
@@ -164,7 +164,7 @@
 
                 <!-- Submit -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <button type="submit" class="btn btn-primary">Añadir Alumno</button>
+                    <button type="submit" class="btn btn-primary">Editar Alumno</button>
                 </div>
 
             </div>
@@ -174,6 +174,4 @@
     <!-- End Formulario -->
 
 </div>
-
-
 @endsection

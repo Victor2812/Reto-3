@@ -1,25 +1,24 @@
 @extends('layouts.app')
 
-@section('title', 'Añadir Tutor')
+@section('title', "Editar Tutor")
 
 @section('main')
 
-<!-- Breadcrumbs -->
-{{ Breadcrumbs::render('tutors.create') }}
+{{ Breadcrumbs::render('tutors.edit', $tutor) }}
 
 <div class="row bg-white shadow mx-2 gx-0">
 
     <!-- Titulo -->
     <div class="row px-4 pt-4 gx-0 mb-3">
         <div class="d-flex align-items-center justify-content-start">
-            <h1 class="h3 mb-0">Añadir Tutor</h1>
+            <h1 class="h3 mb-0">Editar Tutor</h1>
         </div>
     </div>
     <!-- End Titulo -->
 
     <!-- Formulario -->
     <div class="row px-4 gx-sm-3 px-0">
-        <form action="{{ route('tutors.store') }}" class="requires-validation" novalidate>
+        <form action="{{ route('tutors.update', [$tutor->id]) }}" class="requires-validation" novalidate>
             <div class="form-body">
     
                 <!-- Row -->
@@ -28,21 +27,21 @@
                     <!-- Nombre -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{ $tutor->name }}">
                         </div>
                     </div>
     
                     <!-- Apellidos -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+                            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="{{ $tutor->surname }}">
                         </div>
                     </div>
     
                     <!-- DNI -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="dni" placeholder="DNI">
+                            <input type="text" class="form-control" name="dni" placeholder="DNI" value="{{ $tutor->dni }}">
                         </div>
                     </div>
     
@@ -86,7 +85,7 @@
                     <!-- Mail -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                         <div class="form-outline">
-                            <input type="mail" class="form-control" name="email" placeholder="Mail">
+                            <input type="mail" class="form-control" name="email" placeholder="Mail" value="{{ $tutor->email }}">
                         </div>
                     </div>
     
@@ -100,7 +99,7 @@
                     <!-- Teléfono -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="pass" placeholder="Teléfono">
+                            <input type="text" class="form-control" name="pass" placeholder="Teléfono" value="{{ $tutor->phone }}">
                         </div>
                     </div>
     
@@ -112,7 +111,7 @@
     
                     <!-- Submit -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                        <button type="submit" class="btn btn-primary">Añadir Tutor</button>
+                        <button type="submit" class="btn btn-primary">Editar Tutor</button>
                     </div>
     
                 </div>
