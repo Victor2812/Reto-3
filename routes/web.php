@@ -5,7 +5,10 @@ use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\CoordinatorsController;
 use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\DiaryController;
+use App\Http\Controllers\DiaryEvaluationController;
 use App\Http\Controllers\DualSheetsController;
+use App\Http\Controllers\JobEvaluationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TutorsController;
 use App\Models\Course;
@@ -39,8 +42,13 @@ Route::resource('/coordinators', CoordinatorsController::class)
     ->middleware('auth');
 Route::resource('/companies', CompaniesController::class)
     ->middleware('auth');
-
 Route::resource('/grades', GradesController::class)
+    ->middleware('auth');
+Route::resource('/diaries', DiaryController::class)
+    ->middleware('auth');
+Route::resource('/jobev', JobEvaluationController::class)
+    ->middleware('auth');
+Route::resource('/diaryev', DiaryEvaluationController::class)
     ->middleware('auth');
 
 Route::get('/dashboard', function() {
