@@ -12,8 +12,8 @@
 
         <!-- Titulo -->
         <div class="row px-4 pt-4 gx-0 mb-3">
-            <div class="d-flex align-items-center justify-content-center">
-                <h1 class="h3 mb-0">Añadir Empresa</h1>
+            <div class="d-flex align-items-center justify-content-start">
+                <h1 class="h3 mb-0">Editar Empresa</h1>
             </div>
         </div>
         <!-- End Titulo -->
