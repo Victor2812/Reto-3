@@ -1,5 +1,7 @@
 <form action="{{ $route }}" method="POST" clas="delete-form">
     @method('DELETE')
     @csrf
-    <input type="submit" value="Eliminar">             
+    <button class="btn" type="submit" value="Eliminar">
+        <i class="bi bi-trash3"></i>
+    </button>            
 </form>

@@ -105,6 +105,10 @@ Breadcrumbs::for('companies.edit', function (BreadcrumbTrail $trail, Company $co
 
 
 // TODO Grades
+Breadcrumbs::for('grades.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Grados', route('grades.index'));
+});
 
 // TODO Charts
 

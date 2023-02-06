@@ -60,7 +60,7 @@
         <div class="row px-4 gx-0">
             
             <div class="table-responsive-sm">
-                <table class="table table-hover border-secodary" width="100%" cellspacing="0">
+                <table class="table table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="d-none d-sm-table-cell">DNI</th>
