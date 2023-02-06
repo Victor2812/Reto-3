@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Course;
 use App\Models\Person;
+use App\Models\Grade;
 use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -110,7 +111,19 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $grades = Grade::all();
+        $empresas = Company::all();
+        $academicTutors = Person::studentTutors();
+        $companyTutors = Person::companyTutors();
+        $schoolYears = SchoolYear::all();
+
+        return view('students.create', [
+            'grades' => $grades,
+            'empresa' => $empresas,
+            'academicTutors' => $academicTutors->get(),
+            'companyTutors' => $companyTutors->get(),
+            'schoolYears' => $schoolYears,
+        ]);
     }
 
     /**
@@ -147,9 +160,20 @@ class StudentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Person $student)
-    {
+    {   
+        $grades = Grade::all();
+        $empresas = Company::all();
+        $academicTutors = Person::studentTutors();
+        $companyTutors = Person::companyTutors();
+        $schoolYears = SchoolYear::all();
+
         return view('students.edit', [
             'student' => $student,
+            'grades' => $grades,
+            'empresa' => $empresas,
+            'academicTutors' => $academicTutors->get(),
+            'companyTutors' => $companyTutors->get(),
+            'schoolYears' => $schoolYears,
         ]);
     }
 

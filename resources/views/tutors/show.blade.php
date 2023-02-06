@@ -134,17 +134,15 @@
                     <tbody>
                         @foreach ($students as $student)
                             <tr>
-                                <td>{{$student->dni}}</td>
+                                <td class="d-none d-sm-table-cell">{{$student->dni}}</td>
                                 <td>{{$student->fullName()}}</td>
-                                <td>{{$student->email}}</td>
-                                <td>{{$student->phone}}</td>
+                                <td class="d-none d-sm-table-cell">{{$student->email}}</td>
+                                <td class="d-none d-sm-table-cell">{{$student->phone}}</td>
     
                                 <!-- Ver -->
                                 <td>
-                                    <a href="{{ route('students.show', [$student->id])}}">
-                                        <button class="btn">
-                                            <i class="bi bi-eye"></i>
-                                        </button>
+                                    <a class="btn" href="{{ route('students.show', [$student->id])}}">
+                                        <i class="bi bi-eye"></i>
                                     </a>
                                 </td>
     
@@ -178,5 +176,5 @@
         <!-- End Alumnos -->
 
     </div>
-
+</div>
 @endsection
