@@ -68,12 +68,12 @@ Route::get('/stats', function () {
         [
             "item" => "Aprobado",
             "count"=> 80,
-            "color" => "lightblue",
+            "color" => "#0C4395",
         ],
         [
             "item" => "Suspendido",
             "count" => 20,
-            "color" => "pink", 
+            "color" => "#24C8AF", 
         ]
     ]);
 });

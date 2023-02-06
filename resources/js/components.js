@@ -183,20 +183,12 @@ class piechart extends HTMLElement {
     renderChart(json) {
         
         const shadowRoot = this.attachShadow({ mode: 'open' });
-
-        const contenedor = document.createElement('div');
-        contenedor.className += "row";
-
-        const divisor = document.createElement('div');
-        divisor.className += "col-6";
-
+        const div = document.createElement('div');
+        div.setAttribute('width', '90%');
         const canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'pieChart');
-
-        divisor.appendChild(canvas);
-        contenedor.appendChild(divisor);
-
-        shadowRoot.appendChild(contenedor);
+        div.appendChild(canvas);
+        shadowRoot.appendChild(div);
 
         new Chart(
             canvas,
@@ -211,6 +203,10 @@ class piechart extends HTMLElement {
                     backgroundColor: json.map(row => row.color)
                 }
                 ]
+            },
+            options : {
+                resposive : true,
+                maintainAspectRatio: false
             }
             }
         );
@@ -247,20 +243,12 @@ class lineChart extends HTMLElement {
         console.log(data);
 
         const shadowRoot = this.attachShadow({ mode: 'open' });
-
-        const contenedor = document.createElement('div');
-        contenedor.className += "row";
-
-        const divisor = document.createElement('div');
-        divisor.className += "col-6";
-
+        const div = document.createElement('div');
+        div.setAttribute('width', '90%');
         const canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'lineChart');
-
-        divisor.appendChild(canvas);
-        contenedor.appendChild(divisor);
-
-        shadowRoot.appendChild(contenedor);
+        div.appendChild(canvas);
+        shadowRoot.appendChild(div);
 
         new Chart(
             canvas,
@@ -272,8 +260,8 @@ class lineChart extends HTMLElement {
                 {
                     label: 'Aprobados',
                     data: data,
-                    backgroundColor: 'blue',
-                    borderColor: 'blue',
+                    backgroundColor: '#C89F24',
+                    borderColor: '#C89F24',
                     tension: 0.4,
                     parsing: {
                         xAxisKey: 'year',
@@ -283,15 +271,19 @@ class lineChart extends HTMLElement {
                 {
                     label: 'Suspendidos',
                     data: data,
-                    backgroundColor: 'red',
-                    borderColor: 'red',
+                    backgroundColor: '#FBDA79',
+                    borderColor: '#FBDA79',
                     tension: 0.4,
                     parsing: {
                         xAxisKey: 'year',
                         yAxisKey: 'count.suspensos'
                     }
                 }
-                ]
+                ],
+                options : {
+                    resposive : true,
+                    maintainAspectRatio: false
+                }
             }
             }
         );
