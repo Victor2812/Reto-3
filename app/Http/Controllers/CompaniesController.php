@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Course;
 use App\Models\Grade;
 use App\Models\Person;
 use Illuminate\Http\Request;
@@ -85,10 +86,53 @@ class CompaniesController extends Controller
      * @param  Company $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show(Request $request, Company $company)
     {
+        $request->validate([
+            'search' => 'nullable|string|max:255',
+            'course' => 'nullable|numeric|not_in:0',
+            'graduated' => 'nullable|numeric|not_in:0',
+            'notactive' => 'nullable|numeric|not_in:0',
+        ]);
+
+        $coordinator = $company->person;
+        $students = Person::isStudentOfCompany($company->id);
+        $courses = Course::all();
+
+        // recoger el filtro del formulario buscador
+        $search = $request->query('search');
+        $course = $request->query('course');
+        $graduated = (bool)$request->query('graduated');
+        $notactive = (bool)$request->query('notactive');
+
+        // Aplicar texto de busqueda
+        if ($search) {
+            $students->bySearchTerms($search);
+            dump($search);
+        }
+
+        if ($course) {
+            $students->isStudentOfGrade($course);
+            dump($course);
+        }
+
+        if ($graduated) {
+            $students->hasStudentDualSheetsGraduated();
+            dump($graduated);
+        }
+
+        $students->hasStudentDualSheetsGraduated(!$notactive);
+
         return view('companies.show', [
             'company' => $company,
+            'coordinator' => $coordinator,
+            'students' => $students->paginate(13),
+            'courses' => $courses,
+
+            'old_search' => $search,
+            'old_course' => $course,
+            'old_graduated' => $graduated,
+            'old_notactive' => $notactive,
         ]);
     }
 

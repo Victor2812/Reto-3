@@ -44,7 +44,7 @@
         </div>
         <!-- End Info Grado -->
 
-        <!-- TODO Filtros -->
+        <!-- Filtros -->
         <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
             <form action="" method="get">
                 <input type="text" name="search" value="{{ $old_search }}">

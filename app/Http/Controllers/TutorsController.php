@@ -30,6 +30,13 @@ class TutorsController extends Controller
      */
     public function index(Request $request)
     {
+        $request->validate([
+            'search' => 'nullable|string|max:255',
+            'role' => 'nullable|numeric|not_in:0',
+            'grade' => 'nullable|numeric|not_in:0',
+            'company' => 'nullable|numeric|not_in:0|max:1',
+        ]);
+
         // Información de la base de datos
         $tutors = Person::allTutors();
         $roles = Role::all();
