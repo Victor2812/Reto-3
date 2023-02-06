@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('CIF', '9')->unique();
             $table->string('location');
             $table->string('picture')->nullable();
-            $table->foreignId('person_id')->nullable()->constrained(); // Facilitador de Empresa
+            $table->foreignId('person_id')->nullable()->constrained()->onDelete('cascade'); // Facilitador de Empresa
             $table->timestamps();
         });
     }

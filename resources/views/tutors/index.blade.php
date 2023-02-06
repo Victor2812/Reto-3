@@ -120,25 +120,23 @@
 
                             <!-- Ver -->
                             <td>
-                                <a href="{{ route('tutors.show', [$t->id])}}">
-                                    <button class="btn">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
+                                <a href="{{ route('tutors.show', [$t->id])}}" class="btn">
+                                    <i class="bi bi-eye"></i>
                                 </a>
                             </td>
 
                             <!-- Editar -->
                             <td> 
-                                <button class="btn" href="#"><!-- TODO enlace -->
+                                <a class="btn" href="{{ route('tutors.edit', [$t->id]) }}">
                                     <i class="bi bi-pencil"></i>
-                                </button>
+                                </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-                                <button class="btn"> <!-- TODO enlace -->
-                                    <i class="bi bi-trash3"></i>
-                                </button>
+                                @include('partials.general.deletebutton', [
+                                    'route' => route('tutors.destroy', [$t->id])
+                                ])
                             </td>
                         </tr>
                     @endforeach

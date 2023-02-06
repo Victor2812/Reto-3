@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Course;
-use App\Models\Grade;
 use App\Models\Person;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Redirect;
 
 class CompaniesController extends Controller
@@ -108,17 +106,14 @@ class CompaniesController extends Controller
         // Aplicar texto de busqueda
         if ($search) {
             $students->bySearchTerms($search);
-            dump($search);
         }
 
         if ($course) {
             $students->isStudentOfGrade($course);
-            dump($course);
         }
 
         if ($graduated) {
             $students->hasStudentDualSheetsGraduated();
-            dump($graduated);
         }
 
         $students->hasStudentDualSheetsGraduated(!$notactive);

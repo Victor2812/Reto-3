@@ -9,6 +9,7 @@ use App\Models\Person;
 use App\Models\Role;
 use App\Models\SchoolYear;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TutorsController extends Controller
 {
@@ -208,8 +209,9 @@ class TutorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Person $tutor)
     {
-        //
+        Person::destroy($tutor->id);
+        return Redirect::route('tutors.index');
     }
 }

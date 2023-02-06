@@ -104,7 +104,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- TODO cargar tabla con los alumnos del tutor en concreto -->
                     @foreach ($students as $student)
                         <tr>
                             <td>{{$student->dni}}</td>
@@ -114,10 +113,8 @@
 
                             <!-- Ver -->
                             <td>
-                                <a href="{{ route('students.show', [$student->id])}}">
-                                    <button class="btn">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
+                                <a href="{{ route('students.show', [$student->id])}}" class="btn">
+                                    <i class="bi bi-eye"></i>
                                 </a>
                             </td>
 
@@ -139,7 +136,7 @@
                 </tbody>
             </table>
 
-            <!-- TODO Paginacion -->
+            <!-- Paginacion -->
             <div>
                 {{ $students->links() }}
             </div>

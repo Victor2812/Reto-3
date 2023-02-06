@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             
             $table->unsignedBigInteger('sheet_id');
-            $table->foreign('sheet_id')->references('id')->on('dual_sheets');
+            $table->foreign('sheet_id')->references('id')->on('dual_sheets')->onDelete('cascade');
 
             $table->date('from_date');
             $table->date('to_date');

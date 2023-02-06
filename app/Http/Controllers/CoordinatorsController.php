@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CoordinatorsController extends Controller
 {
@@ -113,8 +114,9 @@ class CoordinatorsController extends Controller
      * @param  Person $person
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Person $person)
+    public function destroy(Person $coordinator)
     {
-        //
+        Person::destroy($coordinator->id);
+        return Redirect::route('coordinators.index');
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Person;
 use App\Models\SchoolYear;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use PHPUnit\Framework\Constraint\Count;
 
 class StudentsController extends Controller
@@ -169,8 +170,9 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Person $student)
     {
-        //
+        Person::destroy($student->id);
+        return Redirect::route('students.index');
     }
 }

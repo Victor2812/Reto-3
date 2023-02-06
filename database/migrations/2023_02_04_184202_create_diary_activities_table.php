@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('difficulties');
             
             $table->unsignedBigInteger('diary_entry_id');
-            $table->foreign('diary_entry_id')->references('id')->on('diary_entries');
+            $table->foreign('diary_entry_id')->references('id')->on('diary_entries')->onDelete('cascade');
 
             $table->timestamps();
         });

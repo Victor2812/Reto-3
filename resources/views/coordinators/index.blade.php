@@ -22,7 +22,7 @@
         </div>
         <!-- End Titulo -->
 
-        <!-- TODO Filtros -->
+        <!-- Filtros -->
         <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
             <form action="" method="GET">
                 <!-- Row -->
@@ -31,7 +31,7 @@
                     <!-- Buscador -->
                     <div class="col-12 mb-3 col-sm-4 mb-sm-0 px-sm-1">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value="{{ $old_search }}"/> <!-- TODO  value-->
+                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value="{{ $old_search }}"/>
                         </div>
                     </div>
 
@@ -82,25 +82,23 @@
 
                             <!-- Ver -->
                             <td>
-                                <a href="{{ route('coordinators.show', [$p->id])}}">
-                                    <button class="btn">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
+                                <a href="{{ route('coordinators.show', [$p->id])}}" class="btn">
+                                    <i class="bi bi-eye"></i>
                                 </a>
                             </td>
 
                             <!-- Editar -->
                             <td> 
-                                <button class="btn" href="#"><!-- TODO enlace -->
+                                <a class="btn" href="{{ route('coordinators.edit', [$p->id]) }}">
                                     <i class="bi bi-pencil"></i>
-                                </button>
+                                </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-                                <button class="btn"> <!-- TODO enlace -->
-                                    <i class="bi bi-trash3"></i>
-                                </button>
+                                @include('partials.general.deletebutton', [
+                                    'route' => route('coordinators.destroy', [$p->id])
+                                ])
                             </td>
                         </tr>
                     @endforeach

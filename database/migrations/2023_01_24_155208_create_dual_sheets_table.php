@@ -17,14 +17,14 @@ return new class extends Migration
             $table->id();
             
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('people');
+            $table->foreign('student_id')->references('id')->on('people')->onDelete('cascade');
 
             $table->unsignedBigInteger('tutor_id');
-            $table->foreign('tutor_id')->references('id')->on('people');
+            $table->foreign('tutor_id')->references('id')->on('people')->onDelete('cascade');
 
-            $table->foreignId('company_id')->constrained();
-            $table->foreignId('course_id')->constrained();
-            $table->foreignId('school_year_id')->constrained();
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->foreignId('school_year_id')->constrained()->onDelete('cascade');
 
             $table->boolean('active');
             $table->boolean('graduated');
