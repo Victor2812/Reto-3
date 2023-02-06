@@ -117,7 +117,16 @@ Breadcrumbs::for('grades.edit', function (BreadcrumbTrail $trail, Grade $grade) 
 });
 
 // TODO Charts
+Breadcrumbs::for('charts.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Estadísticas', route('charts.index'));
+});
 
+// TODO Charts
+Breadcrumbs::for('diaries.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Diario', route('diaries.index'));
+});
 
 
 

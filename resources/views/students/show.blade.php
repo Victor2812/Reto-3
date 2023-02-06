@@ -66,7 +66,9 @@
             <!-- Botones -->
             <div class="row mb-0 mb-sm-3 gx-0 d-flex justify-content-center">
                 <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                    <button class="btn-guapo btn-outline-primary">Diario Aprendizaje</button>
+                    <a href="{{ route('diaries.index') }}">
+                        <button class="btn-guapo btn-outline-primary">Diario Aprendizaje</button>
+                    </a>
                 </div>
                 <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
                     <button class="btn-guapo btn-outline-primary">Diario Seguimiento</button>

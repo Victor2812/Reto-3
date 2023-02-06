@@ -14,6 +14,7 @@ class DiaryController extends Controller
     public function index()
     {
         //
+        return view('diaries.index');
     }
 
     /**
@@ -24,6 +25,7 @@ class DiaryController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -35,6 +37,7 @@ class DiaryController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
@@ -46,6 +49,7 @@ class DiaryController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -57,6 +61,7 @@ class DiaryController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**
