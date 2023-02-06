@@ -24,7 +24,7 @@
                                 <div class="form-outline mb-4">
                                     <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" />
                                 </div>
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                                <button class="btn-guapo btn-primary btn-lg btn-block" type="submit">Login</button>
                             </form>
 
                         </div>

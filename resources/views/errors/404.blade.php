@@ -14,6 +14,7 @@
                         <div id="app">
                             <error-component></error-component>
                         </div>
+                        <a href="{{ route('dashboard') }}"><button class="btn btn-primary">Volver</button></a>
                     </div>
                 </div>
             </div>
