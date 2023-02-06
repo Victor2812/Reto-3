@@ -13,6 +13,11 @@ class Company extends Model
         'name', 'CIF', 'location'
     ];
 
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
+
     public function dualSheets()
     {
         return $this->hasMany(DualSheet::class);

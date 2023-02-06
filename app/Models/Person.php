@@ -40,6 +40,11 @@ class Person extends Model
         return $this->hasMany(DualSheet::class, 'tutor_id');
     }
 
+    public function tutoredCompany()
+    {
+        return $this->hasOne(Company::class);
+    }
+
     public function comments()
     {
         return $this->hasMany(DiaryComments::class);

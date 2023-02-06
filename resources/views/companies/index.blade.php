@@ -41,19 +41,20 @@
                     </thead>
                     <tbody>
                         @foreach ($companies as $c)
+                            @php ($tutor = $c->person)
                             <tr>
                                 <td>{{ $c->CIF }}</td>
                                 <td>{{ $c->name }}</td>
                                 <td>{{ $c->location }}</td>
-                                <td><a href="#">{{ 'a' }}</a></td> <!-- TODO nombre tutor empresa -->
-                                <td>{{ 'a' }}</td> <!-- TODO mail tutor empresa -->
+                                <td><a href="{{ route('tutors.show', [$tutor->id]) }}">{{ $tutor->fullName() }}</a></td>
+                                <td>{{ $tutor->email }} {{ $tutor->phone }}</td>
                                 <td><a href="{{ route('companies.show', [$c->id]) }}">Ver</a></td>
-                                <td><a href="{{ route('companies.edit', [$c->id]) }}">Editar</a></td> <!-- TODO enlace -->
+                                <td><a href="{{ route('companies.edit', [$c->id]) }}">Editar</a></td>
                                 <td>
                                     @include('partials.general.deletebutton', [
                                         'route' => route('companies.destroy', [$c->id])
                                     ])
-                                </td> <!-- TODO enlace -->
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
