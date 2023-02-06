@@ -31,14 +31,14 @@
                     <!-- Buscador -->
                     <div class="col-12 mb-3 col-sm-4 mb-sm-0 px-sm-1">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value=""/> <!-- TODO  value-->
+                            <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value="{{ $old_search }}"/> <!-- TODO  value-->
                         </div>
                     </div>
 
                     <!-- Es Tutor -->
                     <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1 d-flex justify-content-center align-items-center">
                         <div class="form-check d-flex justify-content-center align-items-center">
-                            <input class="form-check-input" type="checkbox" value="" name="es-tutor">
+                            <input class="form-check-input" type="checkbox" value="1" name="is_tutor" id="es-tutor" @checked($old_istutor)>
                             <label class="form-check-label px-2 mt-1" for="es-tutor">
                                 Tutor
                             </label>

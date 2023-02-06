@@ -30,7 +30,7 @@ class CoordinatorsController extends Controller
 
         // Obtener filtros
         $search = $request->query('search');
-        $is_tutor = $request->query('is_tutor') === 'on';
+        $is_tutor = $request->query('is_tutor') === '1';
 
         if ($search) {
             $coordinators->bySearchTerms($search);
@@ -44,7 +44,8 @@ class CoordinatorsController extends Controller
             // Información de la base de datos
             'coordinators' => $coordinators->paginate(13),
             // Términos de búsqueda previos
-            'old_search' => $search, // mostrar selección actual si la hay
+            'old_search' => $search,
+            'old_istutor' => $is_tutor,
         ]);
     }
 
