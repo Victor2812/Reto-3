@@ -120,8 +120,11 @@ class TutorsController extends Controller
      */
     public function show(Person $tutor)
     {
+        $students = Person::students()->isStudentOfTutor($tutor->id);
+
         return view('tutors.show', [
             'tutor' => $tutor,
+            'students' => $students->paginate(13),
         ]);
     }
 

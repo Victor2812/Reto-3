@@ -72,12 +72,43 @@
                 </thead>
                 <tbody>
                     <!-- TODO cargar tabla con los alumnos del tutor en concreto -->
+                    @foreach ($students as $student)
+                        <tr>
+                            <td>{{$student->dni}}</td>
+                            <td>{{$student->fullName()}}</td>
+                            <td>{{$student->email}}</td>
+                            <td>{{$student->phone}}</td>
+
+                            <!-- Ver -->
+                            <td>
+                                <a href="{{ route('students.show', [$student->id])}}">
+                                    <button class="btn">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </a>
+                            </td>
+
+                            <!-- Editar -->
+                            <td> 
+                                <a class="btn" href="{{ route('students.edit', [$student->id]) }}">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </td>
+
+                            <!-- Eliminar -->
+                            <td>
+                                @include('partials.general.deletebutton', [
+                                    'route' => route('students.destroy', [$student->id])
+                                ])
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 
             <!-- TODO Paginacion -->
             <div>
-                
+                {{ $students->links() }}
             </div>
             <!-- End Paginacion -->
 

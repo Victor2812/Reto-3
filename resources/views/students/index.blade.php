@@ -162,16 +162,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($students as $id)
+                    @foreach ($students as $student)
                         <tr>
-                            <td class="d-none d-sm-table-cell">{{ $id->dni }}</td>
-                            <td>{{ $id->fullName() }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $id->email }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $id->phone }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $student->dni }}</td>
+                            <td>{{ $student->fullName() }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $student->email }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $student->phone }}</td>
 
                             <!-- Ver -->
                             <td>
-                                <a href="{{ route('students.show', [$id->id])}}">
+                                <a href="{{ route('students.show', [$student->id])}}">
                                     <button class="btn">
                                         <i class="bi bi-eye"></i>
                                     </button>
@@ -180,16 +180,16 @@
 
                             <!-- Editar -->
                             <td> 
-                                <button class="btn" href="#"><!-- TODO enlace -->
+                                <a class="btn" href="{{ route('students.edit', [$student->id]) }}">
                                     <i class="bi bi-pencil"></i>
-                                </button>
+                                </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-                                <button class="btn"> <!-- TODO enlace -->
-                                    <i class="bi bi-trash3"></i>
-                                </button>
+                                @include('partials.general.deletebutton', [
+                                    'route' => route('students.destroy', [$student->id])
+                                ])
                             </td>
                         </tr>
                     @endforeach
