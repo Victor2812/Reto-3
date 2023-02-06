@@ -162,7 +162,7 @@ class TutorsController extends Controller
      */
     public function destroy(Person $tutor)
     {
-        $tutor->delete();
-        return Redirect::route('tutors.index');
+        Person::destroy($tutor->id);
+        //return Redirect::route('tutors.index', [$tutor->id]);
     }
 }

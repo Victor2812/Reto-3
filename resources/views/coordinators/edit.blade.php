@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Nuevo Coordinador')
+@section('title', 'Editar Coordinador')
 
 @section('main')
 
     <!-- Breadcrumbs -->
-    {{ Breadcrumbs::render('coordinators.create') }}
+    {{ Breadcrumbs::render('coordinators.edit', $coordinator) }}
 
 
     <!-- Row -->
@@ -20,7 +20,7 @@
 
             <!-- Row -->
             <div class="row">
-                <form action="#" class="requires-validation" novalidate> <!-- TODO accion -->
+                <form action="{{ route('coordinators.update', $coordinator) }}" class="requires-validation" novalidate> <!-- TODO accion -->
                     <div class="form-body">
 
                         <!-- Row -->
@@ -29,21 +29,21 @@
                             <!-- Nombre -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                                 <div class="form-outline">
-                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{ $coordinator->name }}">
                                 </div>
                             </div>
 
                             <!-- Apellidos -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                                 <div class="form-outline">
-                                    <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+                                    <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="{{ $coordinator->surname }}">
                                 </div>
                             </div>
 
                             <!-- DNI -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                                 <div class="form-outline">
-                                    <input type="text" class="form-control" name="dni" placeholder="DNI">
+                                    <input type="text" class="form-control" name="dni" placeholder="DNI" value="{{ $coordinator->dni }}">
                                 </div>
                             </div>
 
@@ -73,7 +73,7 @@
                             <!-- Mail -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                                 <div class="form-outline">
-                                    <input type="mail" class="form-control" name="email" placeholder="Mail">
+                                    <input type="mail" class="form-control" name="email" placeholder="Mail" value="{{ $coordinator->email }}">
                                 </div>
                             </div>
 
@@ -87,7 +87,7 @@
                             <!-- Teléfono -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                                 <div class="form-outline">
-                                    <input type="text" class="form-control" name="pass" placeholder="Teléfono">
+                                    <input type="text" class="form-control" name="pass" placeholder="Teléfono" value="{{ $coordinator->phone }}">
                                 </div>
                             </div>
 

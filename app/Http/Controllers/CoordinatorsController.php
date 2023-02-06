@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CoordinatorsController extends Controller
 {
@@ -73,7 +74,7 @@ class CoordinatorsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Person $person
+     * @param  Person $coordinator
      * @return \Illuminate\Http\Response
      */
     public function show(Person $coordinator)
@@ -86,34 +87,36 @@ class CoordinatorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Person $person
+     * @param  Person $coordinator
      * @return \Illuminate\Http\Response
      */
-    public function edit(Person $person)
+    public function edit(Person $coordinator)
     {
-        //
+        return view("coordinators.edit", [
+            'coordinator' => $coordinator
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Person $person
+     * @param  Person $coordinator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Person $person)
+    public function update(Request $request, Person $coordinator)
     {
-        //
+        return Redirect::route('coordinators.edit', [$coordinator->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Person $person
+     * @param  Person $coordinator
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Person $person)
+    public function destroy(Person $coordinator)
     {
-        //
+        Person::remove($coordinator);
     }
 }

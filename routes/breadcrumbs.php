@@ -74,6 +74,11 @@ Breadcrumbs::for('coordinators.show', function (BreadcrumbTrail $trail, Person $
     $trail->push($coordinator->fullName(), route('coordinators.show', $coordinator));
 });
 
+Breadcrumbs::for('coordinators.edit', function (BreadcrumbTrail $trail, Person $coordinator) {
+    $trail->parent('coordinators.index');
+    $trail->push('Editar: ' . $coordinator->fullName(), route('coordinators.edit', $coordinator));
+});
+
 // Companies
 Breadcrumbs::for('companies.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
