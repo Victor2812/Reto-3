@@ -25,7 +25,7 @@
         <!-- TODO Filtros -->
         <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
             <form action="" method="GET">
-                
+
                 <!-- Row -->
                 <div class="row mb-0 mb-sm-3 gx-0">
 
@@ -42,7 +42,7 @@
                             <select class="form-select" name="grado">
                                 <option value="" selected>Grado</option> <!-- TODO cargar grados -->
                             </select>
-                        </div> 
+                        </div>
                     </div>
 
                     <!-- Tutor Academico -->
@@ -132,7 +132,7 @@
 
         <!-- Table -->
         <div class="row px-4 gx-0">
-            
+
             <div class="table-responsive-sm">
                 <table class="table table-hover border-secodary" width="100%" cellspacing="0">
                     <thead>
@@ -164,7 +164,7 @@
                             </td>
 
                             <!-- Editar -->
-                            <td> 
+                            <td>
                                 <button class="btn" href="#"><!-- TODO enlace -->
                                     <i class="bi bi-pencil"></i>
                                 </button>
@@ -181,14 +181,13 @@
                     </tbody>
                 </table>
             </div>
-                
 
-                <!-- Paginacion -->
-                <div>
-                    {{ $students->links() }}
-                </div>
+            <!-- Paginacion -->
+            <div>
+                {{ $students->links() }}
+            </div>
 
-            
+
         </div>
         <!-- End Table -->
 

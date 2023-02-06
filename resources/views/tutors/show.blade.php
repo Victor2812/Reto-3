@@ -1,95 +1,156 @@
 @extends('layouts.app')
 
-@section('title', "Tutor | $tutor->name $tutor->surname")
+@section('title', "Tutor | $tutor->name $tutor->surname ")
 
 @section('main')
 
-<!-- Breadcrumbs -->
-{{ Breadcrumbs::render('tutors.show', $tutor) }}
-
-<!-- Row -->
-<div class="row mb-4">
-        <!-- Box -->
-        <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
-
-            <!-- Titulo + Mail -->
-            <div class="d-flex flex-column justify-content-start">
-                <h1 class="h3 mb-0">{{ $tutor->name }} {{ $tutor->surname }}</h1>
-                <p class="h5 mb-1">{{ $tutor->role_id }}</p> <!-- TODO que ponga si es tutor academico, de empresa o coordinador -->
-                <p class="mb-0">{{ $tutor->email }}</p>
-                <p class="mb-0">{{ $tutor->phone }}</p>  
-            </div>
-            
-            <!-- Boton Editar -->
-            <a href="#" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
-                Editar <!-- TODO añadir enlace -->
-            </a>
-
-        </div>
-        <!-- End Box -->
-    </div>
-    <!-- End Row -->
+    <!-- Breadcrumbs -->
+    {{ Breadcrumbs::render('tutors.show', $tutor) }}
 
     <!-- Row -->
-    <div class="row mb-2">
+    <div class="row bg-white shadow mx-2 gx-0">
 
-        <!-- Info Grado -->
-        <div class="d-flex flex-column justify-content-start">
-            <h1 class="h3 mb-3">Alumnos</h1>
-            
-        </div>
-        <!-- End Info Grado -->
-
-        <!-- TODO Filtros -->
-
-            <!-- Buscador -->
-
-            <!-- Curso -->
-
-            <!-- Grado -->
-
-            <!-- Empresa -->
-
-            <!-- Titulados checkbox -->
-
-            <!-- Activos checkbox seleccionado por default -->
-
-        <!-- End Filtros -->
-
-        <!-- Table -->
-        <div class="table-responsive">
-            <table class="tablita-guapa table-striped table-bordered table-hovers" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>DNI</th>
-                        <th>Nombre</th>
-                        <th>Mail</th>
-                        <th>Telefono</th>
-                        <th>Ver</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- TODO cargar tabla con los alumnos del tutor en concreto -->
-                </tbody>
-            </table>
-
-            <!-- TODO Paginacion -->
-            <div>
-                
+        <!-- Titulo -->
+        <div class="row px-4 pt-4 gx-0 mb-3">
+            <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
+                <div>
+                    <h1 class="h3 mb-0">{{ $tutor->fullName() }}</h1>
+                    <p class="text-uppercase">grado del que es tutor</p> <!-- meter grado -->
+                    <p class="mb-0">{{ $tutor->email }}</p>
+                    <p class="mb-0">{{ $tutor->phone }}</p>
+                </div>
+                <div>
+                    <a href="#"><button class="btn btn-secondary text-primary">Editar</button></a>
+                </div>
             </div>
-            <!-- End Paginacion -->
+        </div>
+        <!-- End Titulo -->
+
+        <!-- Alumnos -->
+        <div class="row px-4 gx-0 my-3">
+
+            <div class="d-flex align-items-center justify-content-between">
+                <h1 class="h3 mb-0">Alumnos</h1>
+                <div>
+                    <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filtros">Filtros</a>
+                </div>
+            </div>
+
+            <!-- Caja Filtros -->
+            <div class="row mb-0 mt-3 mb-sm-3 mx-2 gx-0">
+
+                <!-- Filtros -->
+                <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
+
+                    <form action="" method="GET"> <!-- TODO accion -->
+
+                        <!-- Row -->
+                        <div class="row mb-0 mb-sm-3 gx-0">
+
+                            <!-- Buscador -->
+                            <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
+                                <div class="form-outline">
+                                    <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value=""/> <!-- TODO value -->
+                                </div>
+                            </div>
+
+                            <!-- Curso -->
+                            <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
+                                <div class="form-group">
+                                    <select name="curso" class="form-select">
+                                        <option value="" selected>Curso</option>
+                                        <!-- TODO foreach -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Grado -->
+                            <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
+                                <div class="form-group">
+                                    <select name="grade" class="form-select">
+                                        <option value="" selected>Grado</option>
+                                        <!-- TODO foreach -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Empresa -->
+                            <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
+                                <div class="form-group">
+                                    <select name="company" class="form-select">
+                                        <option value="" selected>Empresa</option>
+                                        <!-- TODO foreach -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Checkboxes -->
+                            <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 d-flex justify-content-center align-items-center">
+
+                                <!-- Titulados -->
+                                <div class="form-check d-flex justify-content-center align-items-center">
+                                    <input class="form-check-input" type="checkbox" value="" name="titulados">
+                                    <label class="form-check-label px-2 mt-1" for="titulados">
+                                        Titulados
+                                    </label>
+                                </div>
+
+                                <!-- No Activos -->
+                                <div class="form-check d-flex justify-content-center align-items-center">
+                                    <input class="form-check-input" type="checkbox" value="" name="no-activos">
+                                    <label class="form-check-label px-2 mt-1" for="no-activos">
+                                        No Activos
+                                    </label>
+                                </div>
+
+                            </div>
+                            <!-- End Checkboxes -->
+
+                            <!-- Submit -->
+                            <div class="col-12 mb-3 col-sm-1 mb-sm-0 px-sm-1">
+                                <button class="btn-guapo btn-primary" type="submit">Filtrar</button>
+                            </div>
+
+                        </div>
+                        <!-- End Row -->
+
+                    </form>
+
+                </div>
+                <!-- End Filtros -->
+
+            </div>
+            <!-- End Caja Filtros -->
+
+            <div class="table-responsive-sm">
+                <table class="table table-hover border-secodary text-center" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="d-none d-sm-table-cell">DNI</th>
+                            <th>Nombre</th>
+                            <th class="d-none d-sm-table-cell">Mail</th>
+                            <th class="d-none d-sm-table-cell">Telefono</th>
+                            <th>Ver</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- TODO foreach -->
+                    </tbody>
+                </table>
+            </div>
+
+
+                <!-- Paginacion -->
+                <div>
+                    <!-- TODO paginacion -->
+                </div>
+
 
         </div>
-        <!-- End Table -->
+        <!-- End Alumnos -->
 
     </div>
-    <!-- End Row -->
-
-
-    <a href="{{ route('tutors.index') }}">Volver</a>
-
-
 
 @endsection
