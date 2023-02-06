@@ -8,26 +8,7 @@
 
 <!-- Row -->
 <div class="row mb-4">
-        <!-- Box -->
-        <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
-
-            <!-- Titulo + Mail -->
-            <div class="d-flex flex-column justify-content-start">
-                <h1 class="h3 mb-0">{{ $tutor->name }} {{ $tutor->surname }}</h1>
-                <p class="h5 mb-1">{{ $tutor->role_id }}</p> <!-- TODO que ponga si es tutor academico, de empresa o coordinador -->
-                <p class="mb-0">{{ $tutor->email }}</p>
-                <p class="mb-0">{{ $tutor->phone }}</p>  
-            </div>
-            
-            <!-- Boton Editar -->
-            <a href="{{ route('tutors.edit', [$tutor->id]) }}" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
-                Editar 
-            </a>
-
-        </div>
-        <!-- End Box -->
-    </div>
-    <!-- End Row -->
+       
 
     <!-- Row -->
     <div class="row bg-white shadow mx-2 gx-0">
