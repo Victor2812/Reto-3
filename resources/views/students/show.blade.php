@@ -40,29 +40,29 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Filtrar</button>
                 </div>
-                
+
             </div>
             <!-- End Titulo -->
 
             <!-- Data -->
             <div class="row mb-0 mt-3 mb-sm-3 mx-2 gx-0 d-flex justify-content-center">
 
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-center">
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
                     <p class="fw-bold text-uppercase mb-0">Curso</p>
                     <p>2</p>
                 </div>
 
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-center">
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
                     <p class="fw-bold text-uppercase mb-0">Tutor Académico</p>
                     <p>Rita La Pollera</p>
                 </div>
 
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-center">
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
                     <p class="fw-bold text-uppercase mb-0">Empresa</p>
                     <p>Funeraria Albia</p>
                 </div>
 
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-center">
+                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
                     <p class="fw-bold text-uppercase mb-0">Tutor Empresa</p>
                     <p>Doctor Muerte</p>
                 </div>

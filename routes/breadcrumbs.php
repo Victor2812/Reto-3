@@ -9,6 +9,7 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 use App\Models\Person;
+use App\Models\Company;
 
 
 // Home
@@ -79,6 +80,13 @@ Breadcrumbs::for('companies.create', function (BreadcrumbTrail $trail) {
     $trail->parent('companies.index');
     $trail->push('Nueva Empresa', route('companies.create'));
 });
+
+Breadcrumbs::for('companies.show', function (BreadcrumbTrail $trail, Company $company) {
+    $trail->parent('companies.index');
+    $trail->push($company->name, route('companies.show'));
+});
+
+
 
 // TODO Grades
 
