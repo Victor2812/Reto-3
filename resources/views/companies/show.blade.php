@@ -13,9 +13,9 @@
             <div class="d-flex flex-column justify-content-start">
                 <h1 class="h3 mb-0">{{ $company->name }}</h1>
                 <p class="mb-0">{{ $coordinator->CIF }}</p>
-                <p class="mb-0">{{ $coordinator->location }}</p>  
+                <p class="mb-0">{{ $coordinator->location }}</p>
             </div>
-            
+
             <!-- Boton Editar -->
             <a href="#" class="d-inline-block btn btn-sm btn-secondary shadow-sm text-primary">
                 Editar <!-- TODO añadir enlace -->

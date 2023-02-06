@@ -24,7 +24,7 @@ class StudentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
+    {
         // recoger lisado de alumno de la database
         $students = Person::students();
 
@@ -51,7 +51,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('students.create'); 
+        return view('students.create');
     }
 
     /**
@@ -76,7 +76,7 @@ class StudentsController extends Controller
     {
         return view('students.show', [
             'student' => $student,
-        ]); 
+        ]);
     }
 
     /**
@@ -87,7 +87,7 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        // 
+        //
     }
 
     /**
