@@ -95,6 +95,22 @@
         </div>
     </a>
 
+    <!-- Fichas Duales -->
+    <a href="#" class="col-xl-3 col-md-6 mb-4">
+        <div class="card text-center text-primary shadow h-100 py-2">
+            <div class="card-body">
+                <h2>
+                    <i class="bi bi-file-earmark-spreadsheet"></i>
+                </h2>
+                <div class="row no-gutters align-items-center">
+                    <div class="col auto">
+                        <h5>Fichas Duales</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+
     <!-- Estadísticas -->
     <a href="{{ route('charts')}}" class="col-xl-3 col-md-6 mb-4">
         <div class="card text-center text-primary shadow h-100 py-2">
