@@ -148,29 +148,22 @@ class CoordinatorsController extends Controller
             'phone' => 'min:9',
             'pass' => 'min:0',
         ]);
-        //dd($coordinator);
 
         $coordinator->name = $request->nombre;
         $coordinator->surname = $request->apellidos;
         $coordinator->dni = $request->dni;
         $coordinator->email = $request->email;
         $coordinator->phone = $request->phone;
-        //dd($coordinator);
+
         $coordinator->save();
 
-        
+        if ($pass = $request->post('pass')) {
+            $user = $coordinator->user;
+            $user->password = Hash::make($pass);
+            $user->save();
+        }
 
-        /*
-        $coordinator->update([
-            'name' => $request->nombre,
-            'surname' => $request->apellidos,
-            'dni' => $request->dni,
-            'phone' => $request->phone,
-            'email' => $request->email,
-        ]);
-        */
-
-        return Redirect::route('coordinators.index');
+        return Redirect::route('coordinators.edit', [$coordinator->id]);
     }
 
     /**

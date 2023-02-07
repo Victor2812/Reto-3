@@ -37,11 +37,11 @@
                                 </div>
                             </div>
 
-                            <!-- Apellidos -->
-                            @error('apellidos')
-                                <strong>{{ $message }}</strong>
-                            @enderror
+                            <!-- Apellidos -->                          
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('apellidos')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="{{ $coordinator->surname }}">
                                 </div>
@@ -49,6 +49,9 @@
 
                             <!-- DNI -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('dni')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="text" class="form-control" name="dni" placeholder="DNI" value="{{ $coordinator->dni }}">
                                 </div>
@@ -60,31 +63,31 @@
                         <!-- Row -->
                         <div class="row mb-0 mb-sm-4">
 
-                            <!-- Mail -->
-                            @error('email')
-                                <strong>{{ $message }}</strong>
-                            @enderror
+                            <!-- Mail -->                           
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('email')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="mail" class="form-control" name="email" placeholder="Mail" value="{{ $coordinator->email }}">
                                 </div>
                             </div>
 
-                            <!-- Password -->
-                            @error('pass')
-                                <strong>{{ $message }}</strong>
-                            @enderror
+                            <!-- Password -->                           
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('pass')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="password" class="form-control" name="pass" placeholder="Contraseña">
                                 </div>
                             </div>
 
                             <!-- Teléfono -->
-                            @error('phone')
-                                <strong>{{ $message }}</strong>
-                            @enderror
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('phone')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="text" class="form-control" name="phone" placeholder="Teléfono" value="{{ $coordinator->phone }}">
                                 </div>

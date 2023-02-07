@@ -20,7 +20,7 @@
 
             <!-- Row -->
             <div class="row">
-                <form action="{{ route('coordinators.store') }}" class="requires-validation" novalidate method="post"> <!-- TODO accion -->
+                <form action="{{ route('coordinators.store') }}" class="requires-validation" novalidate method="post">
                     <div class="form-body">
                         @csrf 
                         <!-- Row -->
@@ -28,33 +28,33 @@
 
                             <!-- Nombre -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('nombre')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="text" class="form-control" name="nombre" placeholder="Nombre">
                                 </div>
                             </div>
-                            @error('nombre')
-                                <strong>{{ $message }}</strong>
-                            @enderror
 
                             <!-- Apellidos -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('apellidos')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
                                 </div>
                             </div>
-                            @error('apellidos')
-                                <strong>{{ $message }}</strong>
-                            @enderror
 
                             <!-- DNI -->
+                            @error('dni')
+                                <strong>{{ $message }}</strong>
+                            @enderror
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                                 <div class="form-outline">
                                     <input type="text" class="form-control" name="dni" placeholder="DNI">
                                 </div>
                             </div>
-                            @error('dni')
-                                <strong>{{ $message }}</strong>
-                            @enderror
 
                         </div>
                         <!-- End Row -->
@@ -82,33 +82,33 @@
 
                             <!-- Mail -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('email')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="mail" class="form-control" name="email" placeholder="Mail">
                                 </div>
                             </div>
-                            @error('email')
-                                <strong>{{ $message }}</strong>
-                            @enderror
 
                             <!-- Password -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('pass')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="password" class="form-control" name="pass" placeholder="Contraseña">
                                 </div>
-                            </div>
-                            @error('pass')
-                                <strong>{{ $message }}</strong>
-                            @enderror
+                            </div>                           
 
                             <!-- Teléfono -->
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                                @error('phone')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                                 <div class="form-outline">
                                     <input type="text" class="form-control" name="phone" placeholder="Teléfono">
                                 </div>
-                            </div>
-                            @error('phone')
-                                <strong>{{ $message }}</strong>
-                            @enderror
+                            </div>                         
 
                         </div>
                         <!-- End Row -->
