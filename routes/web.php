@@ -44,6 +44,8 @@ Route::resource('/companies', CompaniesController::class)
     ->middleware('auth');
 Route::resource('/grades', GradesController::class)
     ->middleware('auth');
+Route::resource('/sheets', DualSheetsController::class)
+    ->middleware('auth');
 Route::resource('/diaries', DiaryController::class)
     ->middleware('auth');
 Route::resource('/jobev', JobEvaluationController::class)
