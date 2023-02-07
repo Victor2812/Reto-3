@@ -18,7 +18,9 @@
 
     <!-- Formulario -->
     <div class="row px-4 gx-sm-3 px-0">
-        <form action="{{ route('tutors.update', [$tutor->id]) }}" class="requires-validation" novalidate>
+        <form action="{{ route('tutors.update', [$tutor->id]) }}" class="requires-validation" method="POST">
+            @csrf
+            @method('PUT')
             <div class="form-body">
     
                 <!-- Row -->
@@ -26,20 +28,29 @@
     
                     <!-- Nombre -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                        @error('name')
+                            <strong>{{ $message }}</strong>
+                        @enderror
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{ $tutor->name }}">
+                            <input type="text" class="form-control" name="name" placeholder="Nombre" value="{{ $tutor->name }}">
                         </div>
                     </div>
     
                     <!-- Apellidos -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                        @error('surname')
+                            <strong>{{ $message }}</strong>
+                        @enderror
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="{{ $tutor->surname }}">
+                            <input type="text" class="form-control" name="surname" placeholder="Apellidos" value="{{ $tutor->surname }}">
                         </div>
                     </div>
     
                     <!-- DNI -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                        @error('dni')
+                            <strong>{{ $message }}</strong>
+                        @enderror
                         <div class="form-outline">
                             <input type="text" class="form-control" name="dni" placeholder="DNI" value="{{ $tutor->dni }}">
                         </div>
@@ -52,27 +63,27 @@
                 <div class="row mb-0 mb-sm-4">
     
                     <!-- Tipo de Tutor -->
-                    <div class="col-12 mb-4 col-sm-6 mb-sm-0">
+                    <div class="col-12 mb-6 col-sm-6 mb-sm-0">
+                        @error('role')
+                            <strong>{{ $message }}</strong>
+                        @enderror
                         <div class="form-group">
-                            <select class="form-select" name="tipoTutor">
-                                <option selected>Tipo de tutor</option>
+                            <select class="form-select" name="role">
+                                <option value="">Tipo de tutor</option>
                                 @foreach ($roles as $key => $value)
-                                    <option value="{{ $value }}">{{ $key }}</option>
+                                    <option value="{{ $value }}" @selected($value == $tutor->role_id)>{{ $key }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
     
-                    <!-- Grado -->
-                    <div class="col-12 mb-4 col-sm-6 mb-sm-0">
-                        <div class="form-group">
-    
-                            <select class="form-select" name="grado">
-                                <option selected>Grado</option>
-                                @foreach ($grades as $g)
-                                    <option value="{{ $g->id }}">{{ $g->name }}</option>
-                                @endforeach
-                            </select>
+                    <!-- Password -->
+                    <div class="col-12 mb-6 col-sm-6 mb-sm-0">
+                        @error('pass')
+                            <strong>{{ $message }}</strong>
+                        @enderror
+                        <div class="form-outline">
+                            <input type="password" class="form-control" name="pass" placeholder="Contraseña">
                         </div>
                     </div>
     
@@ -83,23 +94,22 @@
                 <div class="row mb-0 mb-sm-4">
     
                     <!-- Mail -->
-                    <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                    <div class="col-12 mb-6 col-sm-6 mb-sm-0">
+                        @error('email')
+                            <strong>{{ $message }}</strong>
+                        @enderror
                         <div class="form-outline">
                             <input type="mail" class="form-control" name="email" placeholder="Mail" value="{{ $tutor->email }}">
                         </div>
                     </div>
     
-                    <!-- Password -->
-                    <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                        <div class="form-outline">
-                            <input type="password" class="form-control" name="pass" placeholder="Contraseña">
-                        </div>
-                    </div>
-    
                     <!-- Teléfono -->
-                    <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                    <div class="col-12 mb-6 col-sm-6 mb-sm-0">
+                        @error('phone')
+                            <strong>{{ $message }}</strong>
+                        @enderror
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="pass" placeholder="Teléfono" value="{{ $tutor->phone }}">
+                            <input type="text" class="form-control" name="phone" placeholder="Teléfono" value="{{ $tutor->phone }}">
                         </div>
                     </div>
     

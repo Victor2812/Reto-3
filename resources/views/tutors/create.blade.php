@@ -19,7 +19,8 @@
 
     <!-- Formulario -->
     <div class="row px-4 gx-sm-3 px-0">
-        <form action="{{ route('tutors.store') }}" class="requires-validation" novalidate>
+        <form action="{{ route('tutors.store') }}" class="requires-validation" novalidate method="POST">
+            @csrf
             <div class="form-body">
     
                 <!-- Row -->
@@ -28,14 +29,14 @@
                     <!-- Nombre -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                            <input type="text" class="form-control" name="name" placeholder="Nombre">
                         </div>
                     </div>
     
                     <!-- Apellidos -->
                     <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+                            <input type="text" class="form-control" name="surname" placeholder="Apellidos">
                         </div>
                     </div>
     
@@ -55,8 +56,8 @@
                     <!-- Tipo de Tutor -->
                     <div class="col-12 mb-4 col-sm-6 mb-sm-0">
                         <div class="form-group">
-                            <select class="form-select" name="tipoTutor">
-                                <option selected>Tipo de tutor</option>
+                            <select class="form-select" name="role">
+                                <option value="">Tipo de tutor</option>
                                 @foreach ($roles as $key => $value)
                                     <option value="{{ $value }}">{{ $key }}</option>
                                 @endforeach
@@ -66,14 +67,8 @@
     
                     <!-- Grado -->
                     <div class="col-12 mb-4 col-sm-6 mb-sm-0">
-                        <div class="form-group">
-    
-                            <select class="form-select" name="grado">
-                                <option selected>Grado</option>
-                                @foreach ($grades as $g)
-                                    <option value="{{ $g->id }}">{{ $g->name }}</option>
-                                @endforeach
-                            </select>
+                        <div class="form-outline">
+                            <input type="password" class="form-control" name="pass" placeholder="Contraseña">
                         </div>
                     </div>
     
@@ -84,23 +79,16 @@
                 <div class="row mb-0 mb-sm-4">
     
                     <!-- Mail -->
-                    <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                    <div class="col-12 mb-6 col-sm-6 mb-sm-0">
                         <div class="form-outline">
-                            <input type="mail" class="form-control" name="email" placeholder="Mail">
-                        </div>
-                    </div>
-    
-                    <!-- Password -->
-                    <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                        <div class="form-outline">
-                            <input type="password" class="form-control" name="pass" placeholder="Contraseña">
+                            <input type="email" class="form-control" name="email" placeholder="Mail">
                         </div>
                     </div>
     
                     <!-- Teléfono -->
-                    <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                    <div class="col-12 mb-6 col-sm-6 mb-sm-0">
                         <div class="form-outline">
-                            <input type="text" class="form-control" name="pass" placeholder="Teléfono">
+                            <input type="text" class="form-control" name="phone" placeholder="Teléfono">
                         </div>
                     </div>
     

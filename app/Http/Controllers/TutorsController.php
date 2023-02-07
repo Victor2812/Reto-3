@@ -8,7 +8,9 @@ use App\Models\Grade;
 use App\Models\Person;
 use App\Models\Role;
 use App\Models\SchoolYear;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class TutorsController extends Controller
@@ -95,7 +97,6 @@ class TutorsController extends Controller
      */
     public function create()
     {
-        $grades = Grade::all();
         $roles = [
             'Academico' => config('roles.FACTILITADOR_ACADEMICO'),
             'Empresa' => config('roles.FACTILITADOR_EMPRESA'),
@@ -103,7 +104,6 @@ class TutorsController extends Controller
 
         // Devuelve la vista con el formulario
         return view('tutors.create', [
-            'grades' => $grades,
             'roles' => $roles,
         ]);
     }
@@ -117,7 +117,34 @@ class TutorsController extends Controller
     public function store(Request $request)
     {
         // Esta funcion recoge el POST del formulario de creación
-        $request->validate([]);
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'surname' => 'required|string|max:100',
+            'dni' => 'required|string|min:9|max:9',
+            'role' => 'required|numeric|max:100',
+            'pass' => 'required|string|min:4',
+            'email' => 'required|string|max:100',
+            'phone' => 'required|string|max:16',
+        ]);
+
+        $person = new Person([
+            'name'=> $request->post('name'),
+            'surname'=> $request->post('surname'),
+            'dni'=> $request->post('dni'),
+            'email'=> $request->post('email'),
+            'phone'=> $request->post('phone'),
+            'role_id'=> $request->post('role'),
+        ]);
+        $person->save();
+
+        $user = new User([
+            'name' => $request->post('name') . $request->post('surname'),
+            'person_id' => $person->id,
+            'password' => Hash::make($request->post('pass')),
+        ]);
+        $user->save();
+
+        return Redirect::route('tutors.edit', [$person->id]);
     }
 
     /**
@@ -188,16 +215,14 @@ class TutorsController extends Controller
      */
     public function edit(Person $tutor)
     {
-        $grades = Grade::all();
         $roles = [
             'Academico' => config('roles.FACTILITADOR_ACADEMICO'),
-            'Empresa' => config('roles.FACTILITADOR_EMPRESA'),
+            'Empresa' => config('roles.FACILITADOR_EMPRESA'),
         ];
 
         // Devuelve la vista con el formulario
         return view('tutors.edit', [
             'tutor' => $tutor,
-            'grades' => $grades,
             'roles' => $roles,
         ]);
     }
@@ -211,8 +236,30 @@ class TutorsController extends Controller
      */
     public function update(Request $request, Person $tutor)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'surname' => 'required|string|max:100',
+            'dni' => 'required|string|min:9|max:9',
+            'role' => 'required|numeric|min:2|max:3',
+            'pass' => 'nullable|string|min:4',
+            'email' => 'required|string|max:100',
+            'phone' => 'required|string|max:16',
+        ]);
 
+        $tutor->name = $request->post('name');
+        $tutor->surname = $request->post('surname');
+        $tutor->dni = $request->post('dni');
+        $tutor->role_id = (int)$request->post('role');
+        $tutor->email = $request->post('email');
+        $tutor->phone = $request->post('phone');
+
+        if ($pass = $request->post('pass')) {
+            $user = $tutor->user;
+            $user->password = Hash::make($pass);
+            $user->save();
+        }
+
+        $tutor->save();
 
         return Redirect::route('tutors.edit', ['tutor' => $tutor]);
     }
