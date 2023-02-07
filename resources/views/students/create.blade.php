@@ -30,7 +30,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <input type="text" class="form-control" name="name" placeholder="Nombre">
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+                        <input type="text" class="form-control" name="surname" placeholder="Apellidos">
                     </div>
                 </div>
 
@@ -60,93 +60,13 @@
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
 
-                <!-- Grado -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="grado">
-                        <option selected>Grado</option>
-                        @foreach($grades as $g)
-                            <option value="{{ $g->id }}">{{ $g->name }}</option>
-                        @endforeach
-                        </select>
-                    </div> 
-                </div>
-
-                <!-- Curso -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="curso"><!-- TODO cargar curso académico -->
-                        <option selected>Curso</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Año Academico -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="anio-academico">
-                        <option selected>Año academico</option>
-                        @foreach($schoolYears as $year)
-                            <option value="{{ $year->id }}">{{ $year->toText() }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <!-- End Row -->
-
-            <!-- Row -->
-            <div class="row mb-0 mb-sm-4">
-
-                <!-- Tutor Academico -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="tutor-academico">
-                        <option selected>Tutor Académico</option>
-                        @foreach($academicTutors as $academic)
-                            <option value="{{ $academic->id }}">{{ $academic->fullName() }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-                
-                <!-- Empresa -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="empresa">
-                        <option selected>Empresa</option> 
-                        @foreach($empresa as $e)
-                            <option value="{{ $e->id }}">{{ $e->name }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Tutor Empresa -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="tutor-empresa">
-                        <option selected>Tutor Empresa</option>
-                        @foreach($companyTutors as $company)
-                            <option value="{{ $company->id }}">{{ $company->fullName() }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-            <!-- End Row -->
-
-            <!-- Row -->
-            <div class="row mb-0 mb-sm-4">
-
                 <!-- Mail -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                     @error('cif')
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="email" class="form-control" name="mail" placeholder="Mail">
+                        <input type="email" class="form-control" name="email" placeholder="Mail">
                     </div>
                 </div>
 
@@ -166,7 +86,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="telefono" placeholder="Teléfono">
+                        <input type="text" class="form-control" name="phone" placeholder="Teléfono">
                     </div>
                 </div>
 

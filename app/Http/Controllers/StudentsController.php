@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Course;
+use App\Models\DualSheet;
 use App\Models\Person;
 use App\Models\Grade;
 use App\Models\SchoolYear;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class StudentsController extends Controller
@@ -111,17 +114,15 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        $grades = Grade::all();
         $empresas = Company::all();
         $academicTutors = Person::studentTutors();
-        $companyTutors = Person::companyTutors();
+        $courses = Course::all();
         $schoolYears = SchoolYear::all();
 
         return view('students.create', [
-            'grades' => $grades,
             'empresa' => $empresas,
             'academicTutors' => $academicTutors->get(),
-            'companyTutors' => $companyTutors->get(),
+            'courses' => $courses,
             'schoolYears' => $schoolYears,
         ]);
     }
@@ -135,7 +136,33 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         // Esta funcion recoge el POST del formulario de creación
-        $request->validate([]);
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'surname' => 'required|string|max:100',
+            'dni' => 'required|string|min:9|max:9',
+            'email' => 'required|string|max:100',
+            'phone' => 'required|string|max:16',
+            'pass' => 'required|string|min:4',
+        ]);
+
+        $person = new Person([
+            'name'=> $request->post('name'),
+            'surname'=> $request->post('surname'),
+            'dni'=> $request->post('dni'),
+            'email'=> $request->post('email'),
+            'phone'=> $request->post('phone'),
+            'role_id'=> config('roles.ALUMNO'),
+        ]);
+        $person->save();
+
+        $user = new User([
+            'name' => $request->post('name') . $request->post('surname'),
+            'person_id' => $person->id,
+            'password' => Hash::make($request->post('pass')),
+        ]);
+        $user->save();
+
+        return Redirect::route('students.edit', [$person->id]);
     }
 
     /**
@@ -187,12 +214,28 @@ class StudentsController extends Controller
     public function update(Request $request, Person $student)
     {
         $request->validate([
-            'nombre' => 'required|string|min:4',
-            'apellidos' => 'required|string@min|min:5'
-            
+            'name' => 'required|string|max:100',
+            'surname' => 'required|string|max:100',
+            'dni' => 'required|string|min:9|max:9',
+            'email' => 'required|string|max:100',
+            'phone' => 'required|string|max:16',
+            'pass' => 'nullable|string|min:4',
         ]);
 
+        $student->name = $request->post('name');
+        $student->surname = $request->post('surname');
+        $student->dni = $request->post('dni');
+        $student->email = $request->post('email');
+        $student->phone = $request->post('phone');
+        $student->email = $request->post('name');
 
+        $student->save();
+
+        if ($pass = $request->post('pass')) {
+            $user = $student->user;
+            $user->password = Hash::make($pass);
+            $user->save();
+        }
 
         return Redirect::route('students.edit', [$student->id]);
     }
