@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class CoordinatorsController extends Controller
 {
@@ -69,7 +71,37 @@ class CoordinatorsController extends Controller
     public function store(Request $request)
     {
         // Esta funcion recoge el POST del formulario de creación
-        $request->validate([]);
+        $request->validate([
+            'nombre' => 'required|string|min:3',
+            'apellidos' => 'required|string|min:4',
+            'dni' => 'required|string|min:9|max:9',
+            'email' => 'required|string|',
+            'phone' => 'required|integer|min:9',
+            'pass' => 'required|string|min:4',
+        ]);
+
+        $coordinator = new Person([
+            'name' => $request->nombre,
+            'surname' => $request->apellidos,
+            'dni' => $request->dni,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'role_id' => 1,
+        ]);
+
+        $coordinator->save();
+        //dd($coordinator);
+        $pass = Hash::make($request->pass);
+        //$new_coor = Person::where('dni', '=', $request->dni)->get()->first();
+        $user = new User([
+            'name' => $request->nombre,
+            'person_id' => $coordinator->id,
+            'password' => $pass,
+        ]);
+        
+        $user->save();
+
+        return Redirect::route('coordinators.create');
     }
 
     /**
@@ -79,7 +111,7 @@ class CoordinatorsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Person $coordinator)
-    {
+    {   
         return view('coordinators.show', [
             'coordinator' => $coordinator,
         ]);
@@ -106,7 +138,24 @@ class CoordinatorsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Person $coordinator)
-    {
+    {   
+        $request->validate([
+            'nombre' => 'required|string|min:3',
+            'apellidos' => 'required|string|min:4',
+            'dni' => 'required|string|min:9|max:9',
+            'email' => 'required|string|',
+            'phone' => 'required|integer|min:9',
+            //'pass' => 'required|string|min:4',
+        ]);
+
+        $coordinator->update([
+            'name' => $request->nombre,
+            'surname' => $request->apellidos,
+            'dni' => $request->dni,
+            'phone' => $request->phone,
+            'email' => $request->email,
+        ]);
+
         return Redirect::route('coordinators.edit', [$coordinator->id]);
     }
 

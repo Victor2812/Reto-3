@@ -20,7 +20,7 @@
 
             <!-- Row -->
             <div class="row">
-                <form action="{{ route('coordinators.update', $coordinator) }}" class="requires-validation" novalidate> <!-- TODO accion -->
+                <form action="{{ route('coordinators.update', $coordinator->id) }}" class="requires-validation" novalidate> <!-- TODO accion -->
                     <div class="form-body">
 
                         <!-- Row -->
@@ -44,23 +44,6 @@
                             <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                                 <div class="form-outline">
                                     <input type="text" class="form-control" name="dni" placeholder="DNI" value="{{ $coordinator->dni }}">
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Row -->
-                        <div class="row mb-0 mb-sm-4">
-
-                            <!-- Grado -->
-                            <div class="col-12 mb-4 mb-sm-0">
-                                <div class="form-group">
-
-                                    <select class="form-select" name="grado">
-                                        <option selected>Grado</option>
-                                        <!-- TODO cargar select -->
-                                    </select>
                                 </div>
                             </div>
 
