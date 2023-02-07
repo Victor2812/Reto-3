@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Evaluación Diario | $student->name $student->surname")
+@section('title', "Evaluación Empresa | $student->name $student->surname")
 
 @section('main')
 
@@ -35,8 +35,8 @@
 
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0">Evaluación Diario</h1>
-                <a href="{{ route('diaryEvaluations.edit', [$student]) }}"><button class="btn btn-primary">Editar</button></a>
+                <h1 class="h3 mb-0">Evaluación Empresa</h1>
+                <a href="{{ route('companyEvaluations.edit', [$student]) }}"><button class="btn btn-primary">Editar</button></a>
             </div>
             <!-- End Titulo -->
 

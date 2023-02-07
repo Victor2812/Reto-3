@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\CoordinatorsController;
 use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\CompanyEvaluationsController;
 use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\DiaryEvaluationController;
 use App\Http\Controllers\DualSheetsController;
@@ -56,6 +57,8 @@ Route::resource('/diaryev', DiaryEvaluationController::class)
 Route::resource('/dualSheets', DualSheetsController::class)
 ->middleware('auth');
 Route::resource('/diaryEvaluations', DiaryEvaluationController::class)
+->middleware('auth');
+Route::resource('/companyEvaluations', CompanyEvaluationsController::class)
 ->middleware('auth');
 
 Route::get('/dashboard', function() {
