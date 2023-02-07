@@ -75,6 +75,27 @@
                     </div>
                 </div>
 
+                <!-- Checkboxes -->
+                <div class="col-12 mb-4 col-sm-4 mb-sm-0 px-sm-1 d-flex justify-content-center align-items-center">
+                    <!-- Titulados -->
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                        <input class="form-check-input" type="checkbox" value="1" name="graduated" id="graduated">
+                        <label class="form-check-label px-2 mt-1" for="graduated">
+                            Titulados
+                        </label>
+                    </div>
+
+                    <!-- No Activos -->
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                        <input class="form-check-input" type="checkbox" value="1" name="notactive" id="notactive">
+                        <label class="form-check-label px-2 mt-1" for="notactive">
+                            No Activos
+                        </label>
+                    </div>
+
+                </div>
+                <!-- End Checkboxes -->
+
             </div>
             <!-- End Row -->
 

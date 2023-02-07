@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="col-12 col-sm-3">
-                    <a href="#" class="btn-guapo btn-outline-primary">
+                    <a href="{{ route('diaryEvaluations.show', [$student])}}" class="btn-guapo btn-outline-primary">
                         Evaluación Diario
                     </a>
                 </div>

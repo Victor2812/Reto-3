@@ -12,6 +12,7 @@ use App\Http\Controllers\JobEvaluationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TutorsController;
 use App\Models\Course;
+use App\Models\DiaryEvaluation;
 use App\Models\Frase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
@@ -52,8 +53,10 @@ Route::resource('/jobev', JobEvaluationController::class)
     ->middleware('auth');
 Route::resource('/diaryev', DiaryEvaluationController::class)
     ->middleware('auth');
-    Route::resource('/dualSheets', DualSheetsController::class)
-    ->middleware('auth');
+Route::resource('/dualSheets', DualSheetsController::class)
+->middleware('auth');
+Route::resource('/diaryEvaluations', DiaryEvaluationController::class)
+->middleware('auth');
 
 Route::get('/dashboard', function() {
     return view('dashboard');
