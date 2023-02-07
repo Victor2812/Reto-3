@@ -171,12 +171,20 @@ class StudentsController extends Controller
      * @param  Person $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Person $student)
+    public function show(Request $request, Person $student)
     {
-        $sheets = $student->studentSheets()->latest()->get();
+        if (($sheetId = (int)$request->query('sheet')) > 0) {
+            $sheet = DualSheet::where('id', $sheetId)->first();
+
+            if (!$sheet || $sheet->student_id != $student->id) {
+                abort(404);
+            }
+        } else {
+            $sheet = $student->studentSheets()->latest()->get()->first();
+        }
         return view('students.show', [
             'student' => $student,
-            'sheets' => $sheets,
+            'sheet' => $sheet,
         ]);
     }
 
@@ -187,7 +195,7 @@ class StudentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Person $student)
-    {   
+    {
         $grades = Grade::all();
         $empresas = Company::all();
         $academicTutors = Person::studentTutors();

@@ -1,5 +1,5 @@
 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-    
+
 <!-- Titulo -->
     <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <span class="fs-5 d-none d-sm-inline">COORDINADOR</span>
@@ -8,7 +8,7 @@
 
     <!-- Lista Nav -->
     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-        
+
         <!-- Home -->
         <li class="nav-item">
             <a href="{{ route('dashboard') }}" class="nav-link align-middle px-0 text-white">
@@ -50,13 +50,20 @@
             </a>
         </li>
 
+        <!-- Fichas Duales -->
+        <li class="nav-item">
+            <a href="{{ route('dualSheets.index') }}" class="nav-link align-middle px-0 text-white">
+                <i class="fs-4 bi-file-earmark-spreadsheet"></i> <span class="ms-1 d-none d-sm-inline">Fichas Duales</span>
+            </a>
+        </li>
+
         <!-- Estadisticas -->
         <li class="nav-item">
             <a href="{{ route('charts') }}" class="nav-link align-middle px-0 text-white">
                 <i class="fs-4 bi-bar-chart"></i> <span class="ms-1 d-none d-sm-inline">Estadísticas</span>
             </a>
         </li>
-        
+
     </ul>
     <!-- End Lista Nav -->
 

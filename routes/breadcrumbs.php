@@ -10,6 +10,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 use App\Models\Person;
 use App\Models\Company;
+use App\Models\DualSheet;
 use App\Models\Grade;
 
 
@@ -31,7 +32,7 @@ Breadcrumbs::for('students.create', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('students.show', function (BreadcrumbTrail $trail, Person $student) {
     $trail->parent('students.index');
-    $trail->push($student->fullName(), route('students.show', $student));
+    $trail->push('Ficha Dual ' . $student->fullName(), route('students.show', $student));
 });
 
 Breadcrumbs::for('students.edit', function (BreadcrumbTrail $trail, Person $student) {
@@ -102,9 +103,6 @@ Breadcrumbs::for('companies.edit', function (BreadcrumbTrail $trail, Company $co
     $trail->push($company->name, route('companies.edit', $company));
 });
 
-
-
-
 // TODO Grades
 Breadcrumbs::for('grades.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
@@ -117,7 +115,37 @@ Breadcrumbs::for('grades.edit', function (BreadcrumbTrail $trail, Grade $grade) 
 });
 
 // TODO Charts
+Breadcrumbs::for('charts.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Estadísticas', route('charts.index'));
+});
 
+// TODO Diaries
+Breadcrumbs::for('diaries.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Diario', route('diaries.index'));
+});
+
+// TODO Dual Sheets
+Breadcrumbs::for('dualSheets.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Fichas Duales', route('dualSheets.index'));
+});
+
+Breadcrumbs::for('dualSheets.show', function (BreadcrumbTrail $trail, Person $student) {
+    $trail->parent('dualSheets.index');
+    $trail->push('Fichas Duales' . $student->fullName(), route('dualSheets.show', $student));
+});
+
+Breadcrumbs::for('dualSheets.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('dualSheets.index');
+    $trail->push('Nueva Ficha Dual', route('dualSheets.create'));
+});
+
+Breadcrumbs::for('dualSheets.edit', function (BreadcrumbTrail $trail, Person $student) {
+    $trail->parent('dualSheets.show');
+    $trail->push('Editar' . $student->fullName(), route('dualSheets.edit'));
+});
 
 
 

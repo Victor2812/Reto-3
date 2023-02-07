@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Alumnos')
+@section('title', 'Fichas Duales')
 
 @section('main')
 
     <!-- Breadcrumbs -->
-    {{ Breadcrumbs::render('students.index') }}
+    {{ Breadcrumbs::render('dualSheets.index') }}
 
     <!-- Row -->
     <div class="row bg-white shadow mx-2 gx-0">
@@ -13,10 +13,10 @@
         <!-- Titulo -->
         <div class="row px-4 pt-4 gx-0 mb-3">
             <div class="d-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0">Alumnos</h1>
+                <h1 class="h3 mb-0">Fichas Duales</h1>
                 <div>
                     <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filtros">Filtros</a>
-                    <a href="{{ route('students.create') }}"><button class="btn btn-primary">Nuevo</button></a>
+                    <a href="{{ route('dualSheets.create') }}"><button class="btn btn-primary">Nuevo</button></a>
                 </div>
             </div>
         </div>
@@ -36,25 +36,16 @@
                         </div>
                     </div>
 
-                    <!-- Grado -->
-                    <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                        <div class="form-group">
-                            <select class="form-select" name="grado">
-                                <option value="" selected>Grado</option> <!-- TODO cargar grados -->
-                            </select>
-                        </div>
-                    </div>
-
                     <!-- Tutor Academico -->
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                            <div class="form-group">
-                                <select class="form-select" name="atutor">
-                                    <option value="" @selected(!$old_atutor)>Tutor Académico</option> <!-- TODO cargar tutor academico -->
-                                    @foreach ($academicTutors as $tutor)
-                                        <option value="{{ $tutor->id }}" @selected($old_atutor == $tutor->id)>{{ $tutor->fullName() }}</option> <!-- TODO cargar cursos -->
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <select class="form-select" name="atutor">
+                                <option value="" @selected(!$old_atutor)>Tutor Académico</option> <!-- TODO cargar tutor academico -->
+                                @foreach ($academicTutors as $tutor)
+                                    <option value="{{ $tutor->id }}" @selected($old_atutor == $tutor->id)>{{ $tutor->fullName() }}</option> <!-- TODO cargar cursos -->
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Empresa -->
@@ -69,12 +60,6 @@
                         </div>
                     </div>
 
-                </div>
-                <!-- End Row -->
-
-                <!-- Row -->
-                <div class="row mb-0 mb-sm-3 gx-0">
-
                     <!-- Tutor Empresa -->
                     <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
                         <div class="form-group">
@@ -86,6 +71,12 @@
                             </select>
                         </div>
                     </div>
+
+                </div>
+                <!-- End Row -->
+
+                <!-- Row -->
+                <div class="row mb-0 mb-sm-3 gx-0">
 
                     <!-- Curso -->
                     <div class="col-12 mb-3 col-sm-2 mb-sm-0 px-sm-1">
@@ -149,16 +140,14 @@
         <div class="row px-4 gx-0">
 
             <div class="table-responsive-sm">
-                <table class="table table-hover" width="100%" cellspacing="0">
+                <table class="table table-hover text-center" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="d-none d-sm-table-cell">DNI</th>
                             <th>Nombre</th>
                             <th class="d-none d-sm-table-cell">Mail</th>
                             <th class="d-none d-sm-table-cell">Telefono</th>
-                            <th>Ver</th> 
-                            <th>Editar</th>
-                            <th>Eliminar</th>
+                            <th>Ver</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -171,26 +160,13 @@
 
                             <!-- Ver -->
                             <td>
-                                <a href="{{ route('students.show', [$student->id])}}">
+                                <a href="{{ route('dualSheets.show', [$student->id])}}">
                                     <button class="btn">
                                         <i class="bi bi-eye"></i>
                                     </button>
                                 </a>
                             </td>
 
-                            <!-- Editar -->
-                            <td>
-                                <a class="btn" href="{{ route('students.edit', [$student->id]) }}">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                            </td>
-
-                            <!-- Eliminar -->
-                            <td>
-                                @include('partials.general.deletebutton', [
-                                    'route' => route('students.destroy', [$student->id])
-                                ])
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>

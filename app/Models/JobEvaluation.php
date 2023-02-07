@@ -12,6 +12,7 @@ class JobEvaluation extends Model
     protected $table = 'job_evaluations';
 
     protected $fillable = [
+        'sheet_id',
         'attitude_and_disposition',
         'attitude_and_disposition_observation',
         'timeliness',

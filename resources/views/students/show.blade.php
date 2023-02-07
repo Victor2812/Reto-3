@@ -35,99 +35,54 @@
 
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0">Ficha Dual</h1>
+                <h1 class="h3 mb-0 px-4">Ficha Dual</h1>
             </div>
             <!-- End Titulo -->
 
             <!-- Data -->
-            <div class="row mb-0 mt-3 mb-sm-3 mx-2 gx-0 d-flex justify-content-center">
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
-                    <p class="fw-bold text-uppercase mb-0">Curso</p>
-                    <p>2</p>
-                </div>
-
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
-                    <p class="fw-bold text-uppercase mb-0">Tutor Académico</p>
-                    <p>Rita La Pollera</p>
-                </div>
-
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
-                    <p class="fw-bold text-uppercase mb-0">Empresa</p>
-                    <p>Funeraria Albia</p>
-                </div>
-
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
-                    <p class="fw-bold text-uppercase mb-0">Tutor Empresa</p>
-                    <p>Doctor Muertes</p>
-                </div>
+            <div class="row px-4 gx-0 my-3">
+                <ul class="list-group list-group-light">
+                    <li class="list-group-item"><strong>TUTOR </strong>{{ $sheet->academicTutor()->first()->fullName() }}</li>
+                    <li class="list-group-item"><strong>EMPRESA </strong>{{ $sheet->company()->first()->name }}</li>
+                    <li class="list-group-item"><strong>TUTOR EMPRESA </strong> {{ $sheet->academicTutor->fullName()}}</li>
+                    <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear()->first()->toText() }}</li>
+                    <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course()->first()->name }}</li>
+                </ul>         
             </div>
             <!-- End Data -->
 
             <!-- Botones -->
-            <div class="row mb-0 mb-sm-3 gx-0 d-flex justify-content-center">
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                    <button class="btn-guapo btn-outline-primary">Diario Aprendizaje</button>
+            <div class="row px-4  my-3">
+                
+                <div class="col-12 col-sm-3">
+                    <a href="#" class="btn-guapo btn-outline-primary">
+                        Diario de Aprendizaje
+                    </a>
                 </div>
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                    <button class="btn-guapo btn-outline-primary">Diario Seguimiento</button>
+
+                <div class="col-12 col-sm-3">
+                    <a href="#" class="btn-guapo btn-outline-primary">
+                        Diario Segumiento
+                    </a>
                 </div>
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                    <button class="btn-guapo btn-outline-primary">Evaluación</button>
+
+                <div class="col-12 col-sm-3">
+                    <a href="#" class="btn-guapo btn-outline-primary">
+                        Evaluación Diario
+                    </a>
                 </div>
+
+                <div class="col-12 col-sm-3">
+                    <a href="#" class="btn-guapo btn-outline-primary">
+                        Evaluación Empresa
+                    </a>
+                </div>
+
             </div>
             <!-- End Botones -->
+
         </div>
         <!-- End Ficha Dual -->
 
-        <div>
-            <div class="table-responsive-sm">
-                <table class="table table-hover border-secodary" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Año escolar</th>
-                            <th>Tutor</th>
-                            <th>Compañía</th>
-                            <th>Curso</th>
-                            <th>Diario</th>
-                            <th>Seguimiento</th>
-                            <th>Evaluación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($sheets as $sheet)
-                        <tr>
-                            <td>{{ $sheet->schoolYear()->first()->toText() }}</td>
-                            <td>{{ $sheet->academicTutor()->first()->fullName() }}</td>
-                            <td>{{ $sheet->company()->first()->name }}</td>
-                            <td>{{ $sheet->course()->first()->name }}</td>
-    
-                            <!-- Ver -->
-                            <td>
-                                <button class="btn" href="#"><!-- TODO enlace -->
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </td>
-    
-                            <!-- Editar -->
-                            <td> 
-                                <button class="btn" href="#"><!-- TODO enlace -->
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </td>
-    
-                            <!-- Eliminar -->
-                            <td>
-                                <button class="btn"> <!-- TODO enlace -->
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- End Row -->
     </div>
-
 @endsection
