@@ -106,7 +106,7 @@
                 <h1 class="h3 mb-0 text-gray-800">Años escolares</h1>
                 <div>
                     <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filtrosYear">Filtros</a>
-                    <a href="#"><button class="btn btn-primary">Nuevo</button></a>
+                    <a href="{{ route('schoolyears.new') }}"><button class="btn btn-primary">Nuevo</button></a>
                 </div>
             </div>
         </div>
