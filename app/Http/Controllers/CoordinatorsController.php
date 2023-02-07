@@ -139,15 +139,28 @@ class CoordinatorsController extends Controller
      */
     public function update(Request $request, Person $coordinator)
     {   
+        //dd($coordinator);
         $request->validate([
             'nombre' => 'required|string|min:3',
             'apellidos' => 'required|string|min:4',
             'dni' => 'required|string|min:9|max:9',
             'email' => 'required|string|',
-            'phone' => 'required|integer|min:9',
-            //'pass' => 'required|string|min:4',
+            'phone' => 'min:9',
+            'pass' => 'min:0',
         ]);
+        //dd($coordinator);
 
+        $coordinator->name = $request->nombre;
+        $coordinator->surname = $request->apellidos;
+        $coordinator->dni = $request->dni;
+        $coordinator->email = $request->email;
+        $coordinator->phone = $request->phone;
+        //dd($coordinator);
+        $coordinator->save();
+
+        
+
+        /*
         $coordinator->update([
             'name' => $request->nombre,
             'surname' => $request->apellidos,
@@ -155,8 +168,9 @@ class CoordinatorsController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
         ]);
+        */
 
-        return Redirect::route('coordinators.edit', [$coordinator->id]);
+        return Redirect::route('coordinators.index');
     }
 
     /**
