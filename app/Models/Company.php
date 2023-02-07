@@ -12,7 +12,7 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'CIF', 'location'
+        'name', 'CIF', 'location', 'person_id'
     ];
 
     public function person()

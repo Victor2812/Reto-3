@@ -70,9 +70,9 @@
                             <div class="form-group">
 
                                 <select class="form-select" name="tutor">
-                                    <option value="" selected>Tutor</option>
+                                    <option value="">Tutor</option>
                                     @foreach ($tutors as $tutor)
-                                        <option value="{{ $tutor->id }}">{{$tutor->fullName()}}</option>
+                                        <option value="{{ $tutor->id }}" @selected($tutor->id == $company->person_id)>{{$tutor->fullName()}}</option>
                                     @endforeach
                                 </select>
                             </div>
