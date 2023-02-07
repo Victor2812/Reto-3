@@ -145,6 +145,8 @@
                         <tr>
                             <th class="d-none d-sm-table-cell">DNI</th>
                             <th>Nombre</th>
+                            <th class="d-none d-sm-table-cell">Mail</th>
+                            <th class="d-none d-sm-table-cell">Telefono</th>
                             <th>Ver</th>
                         </tr>
                     </thead>
@@ -153,6 +155,8 @@
                         <tr>
                             <td class="d-none d-sm-table-cell">{{ $student->dni }}</td>
                             <td>{{ $student->fullName() }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $student->email }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $student->phone }}</td>
 
                             <!-- Ver -->
                             <td>

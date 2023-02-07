@@ -31,7 +31,7 @@ Breadcrumbs::for('students.create', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('students.show', function (BreadcrumbTrail $trail, Person $student) {
     $trail->parent('students.index');
-    $trail->push($student->fullName(), route('students.show', $student));
+    $trail->push('Ficha Dual ' . $student->fullName(), route('students.show', $student));
 });
 
 Breadcrumbs::for('students.edit', function (BreadcrumbTrail $trail, Person $student) {
@@ -136,7 +136,7 @@ Breadcrumbs::for('dualSheets.index', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('dualSheets.show', function (BreadcrumbTrail $trail, Person $student) {
     $trail->parent('dualSheets.index');
-    $trail->push($student->fullName(), route('dualSheets.show', $student));
+    $trail->push('Fichas Duales' . $student->fullName(), route('dualSheets.show', $student));
 });
 
 

@@ -44,9 +44,9 @@
                     <thead>
                         <tr>
                             <th>Año escolar</th>
-                            <th>Tutor</th>
-                            <th>Compañía</th>
-                            <th>Curso</th>
+                            <th class="d-none d-sm-table-cell">Tutor</th>
+                            <th class="d-none d-sm-table-cell">Compañía</th>
+                            <th class="d-none d-sm-table-cell">Curso</th>
                             <th>Ver</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
@@ -56,9 +56,9 @@
                     @foreach ($sheets as $sheet)
                         <tr>
                             <td>{{ $sheet->schoolYear()->first()->toText() }}</td>
-                            <td>{{ $sheet->academicTutor()->first()->fullName() }}</td>
-                            <td>{{ $sheet->company()->first()->name }}</td>
-                            <td>{{ $sheet->course()->first()->name }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $sheet->academicTutor()->first()->fullName() }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $sheet->company()->first()->name }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $sheet->course()->first()->name }}</td>
 
                             <!-- Ver -->
                             <td>

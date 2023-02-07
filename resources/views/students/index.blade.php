@@ -156,7 +156,7 @@
                             <th>Nombre</th>
                             <th class="d-none d-sm-table-cell">Mail</th>
                             <th class="d-none d-sm-table-cell">Telefono</th>
-                            <th>Ver</th>
+                            <th>Ver</th> 
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
