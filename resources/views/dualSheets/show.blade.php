@@ -62,23 +62,23 @@
 
                             <!-- Ver -->
                             <td>
-                                <a class="btn" href="#"><!-- TODO enlace -->
+                                <a class="btn" href="{{ route('students.show', [$sheet->student_id, 'sheet' => $sheet->id]) }}">
                                     <i class="bi bi-eye"></i>
                                 </a>
                             </td>
 
                             <!-- Editar -->
                             <td>
-                                <a class="btn" href="{{ route('dualSheets.edit', [$student, $sheet]) }}"><!-- TODO enlace -->
+                                <a class="btn" href="{{ route('dualSheets.edit', [$student, 'sheet' => $sheet]) }}">
                                     <i class="bi bi-pencil"></i>
                                 </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
-                                <button class="btn"> <!-- TODO enlace -->
-                                    <i class="bi bi-trash3"></i>
-                                </button>
+                                @include('partials.general.deletebutton', [
+                                    'route' => route('dualSheets.destroy', [$sheet->id])
+                                ])
                             </td>
                         </tr>
                     @endforeach

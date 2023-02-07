@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Course;
+use App\Models\DualSheet;
 use App\Models\Person;
 use App\Models\Grade;
 use App\Models\SchoolYear;
@@ -144,9 +145,17 @@ class StudentsController extends Controller
      * @param  Person $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Person $student)
+    public function show(Request $request, Person $student)
     {
-        $sheet = $student->studentSheets()->latest()->get()->first();
+        if (($sheetId = (int)$request->query('sheet')) > 0) {
+            $sheet = DualSheet::where('id', $sheetId)->first();
+
+            if (!$sheet || $sheet->student_id != $student->id) {
+                abort(404);
+            }
+        } else {
+            $sheet = $student->studentSheets()->latest()->get()->first();
+        }
         return view('students.show', [
             'student' => $student,
             'sheet' => $sheet,

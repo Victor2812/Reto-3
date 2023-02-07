@@ -44,7 +44,7 @@
                 <ul class="list-group list-group-light">
                     <li class="list-group-item"><strong>TUTOR </strong>{{ $sheet->academicTutor()->first()->fullName() }}</li>
                     <li class="list-group-item"><strong>EMPRESA </strong>{{ $sheet->company()->first()->name }}</li>
-                    <li class="list-group-item"><strong>TUTOR EMPRESA </strong></li>
+                    <li class="list-group-item"><strong>TUTOR EMPRESA </strong> {{ $sheet->academicTutor->fullName()}}</li>
                     <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear()->first()->toText() }}</li>
                     <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course()->first()->name }}</li>
                 </ul>         

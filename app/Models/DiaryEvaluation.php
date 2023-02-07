@@ -12,6 +12,7 @@ class DiaryEvaluation extends Model
     protected $table = 'diary_evaluations';
 
     protected $fillable = [
+        'sheet_id',
         'effort_and_regularity',
         'effort_and_regularity_observation',
         'order_structure_presentation',

@@ -19,35 +19,54 @@
 
     <!-- Formulario -->
     <div class="row px-4 gx-sm-3 gx-0">
-        <form action="" class="requires-validation" method="POST">
+        <form action="{{ route('dualSheets.update', [$sheet->id]) }}" class="requires-validation" method="POST">
             @csrf
+            @method('PUT')
 
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
 
-                <!-- Tutor Académico -->
+                <!-- Alumno -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                     <div class="form-group">
-                        <select class="form-select" name="tutor-academico">
-                            <option selected>Tutor Académico</option>
+                        @error('student')
+                            <strong>{{ $message }}</strong>    
+                        @enderror
+                        <select class="form-select" name="student">
+                            <option value="">Alumno</option>
+                            @foreach ($students as $st)
+                                <option value="{{ $st->id }}" @selected($st->id == $student->id)>{{ $st->fullName() }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
 
-                <!-- Tutor Empresa -->
+                <!-- Tutor Académico -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                     <div class="form-group">
-                        <select class="form-select" name="tutor-empresa">
-                            <option selected>Tutor Empresa</option>
+                        @error('tutor')
+                            <strong>{{ $message }}</strong>    
+                        @enderror
+                        <select class="form-select" name="tutor">
+                            <option value="">Tutor Académico</option>
+                            @foreach ($tutors as $tutor)
+                                <option value="{{ $tutor->id }}" @selected($tutor->id == $sheet->tutor_id)>{{ $tutor->fullName() }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
 
                 <!-- Empresa -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                    @error('company')
+                        <strong>{{ $message }}</strong>    
+                    @enderror
                     <div class="form-group">
-                        <select class="form-select" name="empresa">
-                            <option selected>Empresa</option>
+                        <select class="form-select" name="company">
+                            <option value="">Empresa</option>
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->id }}" @selected($company->id == $sheet->company_id)>{{ $company->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -60,8 +79,14 @@
                 <!-- Tutor Academico -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                     <div class="form-group">
-                        <select class="form-select" name="anio">
-                            <option selected>Año Académico</option>
+                        @error('year')
+                            <strong>{{ $message }}</strong>    
+                        @enderror
+                        <select class="form-select" name="year">
+                            <option value="">Año Académico</option>
+                            @foreach ($schoolYears as $year)
+                                <option value="{{ $year->id }}" @selected($year->id == $sheet->school_year_id)>{{ $year->toText() }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -69,8 +94,14 @@
                 <!-- Curso -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                     <div class="form-group">
-                        <select class="form-select" name="curso">
-                            <option selected>Curso</option>
+                        @error('course')
+                            <strong>{{ $message }}</strong>    
+                        @enderror
+                        <select class="form-select" name="course">
+                            <option value="">Curso</option>
+                            @foreach ($courses as $course)
+                                <option value="{{ $course->id }}" @selected($course->id == $sheet->course_id)>{{ $course->toText() }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
