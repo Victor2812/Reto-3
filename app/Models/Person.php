@@ -70,6 +70,11 @@ class Person extends Model
     |
     */
 
+    public function scopeGetPersonById($query, $id)
+    {
+        return $query->where('id', '=', $id);
+    }
+
     public function scopeCoordinators($query)
     {
         return $query->where('role_id', '=', config('roles.COORDINADOR'));

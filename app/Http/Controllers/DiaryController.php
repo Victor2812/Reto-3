@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DualSheet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Person;
 
 class DiaryController extends Controller
 {
@@ -11,10 +14,16 @@ class DiaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($student)
     {
-        //
-        return view('diaries.index');
+        //$sheets = $student->studentSheets()->latest()->get();
+        $alumno = Person::where('id', '=', $student)->get()->first();
+
+        return view('diaries.index', [
+            'student' => $alumno,
+
+        ]);
+
     }
 
     /**
@@ -25,7 +34,7 @@ class DiaryController extends Controller
     public function create()
     {
         //
-        
+
     }
 
     /**
@@ -37,7 +46,7 @@ class DiaryController extends Controller
     public function store(Request $request)
     {
         //
-        
+
     }
 
     /**
@@ -46,10 +55,15 @@ class DiaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($student)
     {
-        //
-        
+        $alumno = Person::where('id', '=', $student)->get()->first();
+
+        return view('diaries.show', [
+            'student' => $alumno,
+
+        ]);
+
     }
 
     /**
@@ -61,7 +75,7 @@ class DiaryController extends Controller
     public function edit($id)
     {
         //
-        
+
     }
 
     /**

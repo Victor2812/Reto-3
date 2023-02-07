@@ -39,48 +39,6 @@
             </div>
             <!-- End Titulo -->
 
-            <!-- Data -->
-            <div class="row mb-0 mt-3 mb-sm-3 mx-2 gx-0 d-flex justify-content-center">
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
-                    <p class="fw-bold text-uppercase mb-0">Curso</p>
-                    <p>2</p>
-                </div>
-
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
-                    <p class="fw-bold text-uppercase mb-0">Tutor Académico</p>
-                    <p>Rita La Pollera</p>
-                </div>
-
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
-                    <p class="fw-bold text-uppercase mb-0">Empresa</p>
-                    <p>Funeraria Albia</p>
-                </div>
-
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1 text-start text-sm-center">
-                    <p class="fw-bold text-uppercase mb-0">Tutor Empresa</p>
-                    <p>Doctor Muertes</p>
-                </div>
-            </div>
-            <!-- End Data -->
-
-            <!-- Botones -->
-            <div class="row mb-0 mb-sm-3 gx-0 d-flex justify-content-center">
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                    <a href="{{ route('diaries.index') }}">
-                        <button class="btn-guapo btn-outline-primary">Diario Aprendizaje</button>
-                    </a>
-                </div>
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                    <button class="btn-guapo btn-outline-primary">Diario Seguimiento</button>
-                </div>
-                <div class="col-12 mb-3 col-sm-3 mb-sm-0 px-sm-1">
-                    <button class="btn-guapo btn-outline-primary">Evaluación</button>
-                </div>
-            </div>
-            <!-- End Botones -->
-        </div>
-        <!-- End Ficha Dual -->
-
         <div>
             <div class="table-responsive-sm">
                 <table class="table table-hover border-secodary" width="100%" cellspacing="0">
@@ -102,21 +60,21 @@
                             <td>{{ $sheet->academicTutor()->first()->fullName() }}</td>
                             <td>{{ $sheet->company()->first()->name }}</td>
                             <td>{{ $sheet->course()->first()->name }}</td>
-    
+
                             <!-- Ver -->
+                            <td>
+                                <a class="btn" href="{{ route('diaries.show', [$student]) }}"><!-- TODO enlace -->
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </td>
+
+                            <!-- Editar -->
                             <td>
                                 <button class="btn" href="#"><!-- TODO enlace -->
                                     <i class="bi bi-eye"></i>
                                 </button>
                             </td>
-    
-                            <!-- Editar -->
-                            <td> 
-                                <button class="btn" href="#"><!-- TODO enlace -->
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </td>
-    
+
                             <!-- Eliminar -->
                             <td>
                                 <button class="btn"> <!-- TODO enlace -->
