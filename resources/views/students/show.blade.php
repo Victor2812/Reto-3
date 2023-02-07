@@ -35,59 +35,24 @@
 
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0">Ficha Dual</h1>
+                <h1 class="h3 mb-0 px-4">Ficha Dual</h1>
             </div>
             <!-- End Titulo -->
 
-        <div>
-            <div class="table-responsive-sm">
-                <table class="table table-hover border-secodary" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Año escolar</th>
-                            <th>Tutor</th>
-                            <th>Compañía</th>
-                            <th>Curso</th>
-                            <th>Diario</th>
-                            <th>Seguimiento</th>
-                            <th>Evaluación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($sheets as $sheet)
-                        <tr>
-                            <td>{{ $sheet->schoolYear()->first()->toText() }}</td>
-                            <td>{{ $sheet->academicTutor()->first()->fullName() }}</td>
-                            <td>{{ $sheet->company()->first()->name }}</td>
-                            <td>{{ $sheet->course()->first()->name }}</td>
+        <div class="row px-4 gx-0 my-3">
 
-                            <!-- Ver -->
-                            <td>
-                                <a class="btn" href="{{ route('diaries.show', [$student]) }}"><!-- TODO enlace -->
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                            </td>
 
-                            <!-- Editar -->
-                            <td>
-                                <button class="btn" href="#"><!-- TODO enlace -->
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </td>
-
-                            <!-- Eliminar -->
-                            <td>
-                                <button class="btn"> <!-- TODO enlace -->
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+            <!-- Ficha Dual -->
+            <div>
+                            <p>{{ $sheet->schoolYear()->first()->toText() }}</p>
+                            <p>{{ $sheet->academicTutor()->first()->fullName() }}</p>
+                            <p>{{ $sheet->company()->first()->name }}</p>
+                            <p>{{ $sheet->course()->first()->name }}</p>
             </div>
+            <!-- End Ficha Dual -->
+
         </div>
         <!-- End Row -->
     </div>
-
+</div>
 @endsection

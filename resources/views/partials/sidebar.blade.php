@@ -52,8 +52,8 @@
 
         <!-- Fichas Duales -->
         <li class="nav-item">
-            <a href="#" class="nav-link align-middle px-0 text-white">
-                <i class="fs-4 bi-file-earmark-spreadsheet"></i> <span class="ms-1 d-none d-sm-inline">Estadísticas</span>
+            <a href="{{ route('dualSheets.index') }}" class="nav-link align-middle px-0 text-white">
+                <i class="fs-4 bi-file-earmark-spreadsheet"></i> <span class="ms-1 d-none d-sm-inline">Fichas Duales</span>
             </a>
         </li>
 

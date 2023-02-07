@@ -69,7 +69,7 @@
                             <option value="{{ $g->id }}">{{ $g->name }}</option>
                         @endforeach
                         </select>
-                    </div> 
+                    </div>
                 </div>
 
                 <!-- Curso -->
@@ -109,12 +109,12 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <!-- Empresa -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                     <div class="form-group">
                         <select class="form-select" name="empresa">
-                        <option selected>Empresa</option> 
+                        <option selected>Empresa</option>
                         @foreach($empresa as $e)
                             <option value="{{ $e->id }}">{{ $e->name }}</option>
                         @endforeach

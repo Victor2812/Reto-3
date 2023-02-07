@@ -96,7 +96,7 @@
     </a>
 
     <!-- Fichas Duales -->
-    <a href="#" class="col-xl-3 col-md-6 mb-4">
+    <a href="{{ route('dualSheets.index') }}" class="col-xl-3 col-md-6 mb-4">
         <div class="card text-center text-primary shadow h-100 py-2">
             <div class="card-body">
                 <h2>

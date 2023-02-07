@@ -179,7 +179,7 @@
                             </td>
 
                             <!-- Editar -->
-                            <td> 
+                            <td>
                                 <a class="btn" href="{{ route('students.edit', [$student->id]) }}">
                                     <i class="bi bi-pencil"></i>
                                 </a>

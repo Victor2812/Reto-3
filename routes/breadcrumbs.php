@@ -122,10 +122,21 @@ Breadcrumbs::for('charts.index', function (BreadcrumbTrail $trail) {
     $trail->push('Estadísticas', route('charts.index'));
 });
 
-// TODO Charts
+// TODO Diaries
 Breadcrumbs::for('diaries.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Diario', route('diaries.index'));
+});
+
+// TODO Dual Sheets
+Breadcrumbs::for('dualSheets.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Fichas Duales', route('dualSheets.index'));
+});
+
+Breadcrumbs::for('dualSheets.show', function (BreadcrumbTrail $trail, Person $student) {
+    $trail->parent('dualSheets.index');
+    $trail->push($student->fullName(), route('dualSheets.show', $student));
 });
 
 

@@ -146,10 +146,10 @@ class StudentsController extends Controller
      */
     public function show(Person $student)
     {
-        $sheets = $student->studentSheets()->latest()->get();
+        $sheet = $student->studentSheets()->latest()->get()->first();
         return view('students.show', [
             'student' => $student,
-            'sheets' => $sheets,
+            'sheet' => $sheet,
         ]);
     }
 
@@ -160,7 +160,7 @@ class StudentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Person $student)
-    {   
+    {
         $grades = Grade::all();
         $empresas = Company::all();
         $academicTutors = Person::studentTutors();

@@ -52,6 +52,8 @@ Route::resource('/jobev', JobEvaluationController::class)
     ->middleware('auth');
 Route::resource('/diaryev', DiaryEvaluationController::class)
     ->middleware('auth');
+    Route::resource('/dualSheets', DualSheetsController::class)
+    ->middleware('auth');
 
 Route::get('/dashboard', function() {
     return view('dashboard');
@@ -83,7 +85,7 @@ Route::get('/stats', function () {
         [
             "item" => "Suspendido",
             "count" => 20,
-            "color" => "#24C8AF", 
+            "color" => "#24C8AF",
         ]
     ]);
 });
