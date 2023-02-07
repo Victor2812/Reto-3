@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Course;
+use App\Models\DualSheet;
 use App\Models\Person;
 use App\Models\Grade;
 use App\Models\SchoolYear;
@@ -137,9 +138,13 @@ class DualSheetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $student, DualSheet $sheet)
     {
         //
+        return view("dualSheets.edit", [
+            'student' => $student,
+            'sheet' => $sheet
+        ]);
     }
 
     /**

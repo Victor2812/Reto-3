@@ -10,6 +10,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 use App\Models\Person;
 use App\Models\Company;
+use App\Models\DualSheet;
 use App\Models\Grade;
 
 
@@ -102,9 +103,6 @@ Breadcrumbs::for('companies.edit', function (BreadcrumbTrail $trail, Company $co
     $trail->push($company->name, route('companies.edit', $company));
 });
 
-
-
-
 // TODO Grades
 Breadcrumbs::for('grades.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
@@ -137,6 +135,16 @@ Breadcrumbs::for('dualSheets.index', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('dualSheets.show', function (BreadcrumbTrail $trail, Person $student) {
     $trail->parent('dualSheets.index');
     $trail->push('Fichas Duales' . $student->fullName(), route('dualSheets.show', $student));
+});
+
+Breadcrumbs::for('dualSheets.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('dualSheets.index');
+    $trail->push('Nueva Ficha Dual', route('dualSheets.create'));
+});
+
+Breadcrumbs::for('dualSheets.edit', function (BreadcrumbTrail $trail, Person $student) {
+    $trail->parent('dualSheets.show');
+    $trail->push('Editar' . $student->fullName(), route('dualSheets.edit'));
 });
 
 

@@ -69,9 +69,9 @@
 
                             <!-- Editar -->
                             <td>
-                                <button class="btn" href="#"><!-- TODO enlace -->
+                                <a class="btn" href="{{ route('dualSheets.edit', [$student, $sheet]) }}"><!-- TODO enlace -->
                                     <i class="bi bi-pencil"></i>
-                                </button>
+                                </a>
                             </td>
 
                             <!-- Eliminar -->

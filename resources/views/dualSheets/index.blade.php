@@ -16,7 +16,7 @@
                 <h1 class="h3 mb-0">Fichas Duales</h1>
                 <div>
                     <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#filtros">Filtros</a>
-                    <a href="#"><button class="btn btn-primary">Nuevo</button></a>
+                    <a href="{{ route('dualSheets.create') }}"><button class="btn btn-primary">Nuevo</button></a>
                 </div>
             </div>
         </div>
