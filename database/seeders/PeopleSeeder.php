@@ -18,7 +18,7 @@ class PeopleSeeder extends Seeder
      */
     public function run()
     {
-        Person::factory()->count(500)->state(new Sequence(
+        Person::factory()->count(400)->state(new Sequence(
             fn ($sequence) => ['role_id' => Role::all()->random()]
         ))->create();
 

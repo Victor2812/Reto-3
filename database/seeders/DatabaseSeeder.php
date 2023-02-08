@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             GradesSeeder::class,
             CompaniesSeeder::class,
             FrasesSeeder::class,
-        ]);        
+            PersistentSeeder::class
+        ]);   
     }
 }
