@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Course;
+use App\Models\DualSheet;
+use App\Models\Person;
+use App\Models\Grade;
+use App\Models\SchoolYear;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class DiaryEvaluationController extends Controller
 {
@@ -43,9 +50,12 @@ class DiaryEvaluationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($student)
     {
-        //
+        $alumno = Person::where('id', '=', $student)->get()->first();
+        return view('diaryEvaluations.show', [
+            'student' => $alumno
+        ]); 
     }
 
     /**
@@ -54,9 +64,12 @@ class DiaryEvaluationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $student)
     {
         //
+        return view("diaryEvaluations.edit", [
+            'student' => $student,
+        ]);
     }
 
     /**

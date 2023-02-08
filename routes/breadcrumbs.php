@@ -148,6 +148,12 @@ Breadcrumbs::for('dualSheets.edit', function (BreadcrumbTrail $trail, Person $st
 });
 
 
+// Diary Evaluations
+Breadcrumbs::for('diaryEvaluations.show', function (BreadcrumbTrail $trail, Person $student) {
+    $trail->parent('students.show');
+    $trail->push('Evaluación Diario' . $student->fullName(), route('diaryEvaluations.show', $student));
+});
+
 
 
 
