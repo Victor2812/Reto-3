@@ -11,4 +11,4 @@ VANTA.WAVES({
     scale: 1.00,
     scaleMobile: 1.00,
     color: "#003FA2",
-  })
+});

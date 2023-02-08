@@ -10,6 +10,8 @@ use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\DiaryEntryController;
 use App\Http\Controllers\DiaryEvaluationController;
 use App\Http\Controllers\DualSheetsController;
+use App\Http\Controllers\FollowUpController;
+use App\Http\Controllers\FollowUpEntriesController;
 use App\Http\Controllers\JobEvaluationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TutorsController;
@@ -39,29 +41,47 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::resource('/students', StudentsController::class)
     ->middleware('auth');
+
 Route::resource('/tutors', TutorsController::class)
     ->middleware('auth');
+
 Route::resource('/coordinators', CoordinatorsController::class)
     ->middleware('auth');
+
 Route::resource('/companies', CompaniesController::class)
     ->middleware('auth');
+
 Route::resource('/grades', GradesController::class)
     ->middleware('auth');
+
 Route::resource('/sheets', DualSheetsController::class)
     ->middleware('auth');
+
 Route::resource('/diaries', DiaryController::class)
     ->middleware('auth');
+
 Route::resource('/jobev', JobEvaluationController::class)
     ->middleware('auth');
+
 Route::resource('/diaryev', DiaryEvaluationController::class)
     ->middleware('auth');
+
 Route::resource('/dualSheets', DualSheetsController::class)
 ->middleware('auth');
+
 Route::resource('/diaryEvaluations', DiaryEvaluationController::class)
 ->middleware('auth');
+
 Route::resource('/companyEvaluations', CompanyEvaluationsController::class)
 ->middleware('auth');
+
 Route::resource('/diaryEntries', DiaryEntryController::class)
+->middleware('auth');
+
+Route::resource('/followUpEntries', FollowUpEntriesController::class)
+->middleware('auth');
+
+Route::resource('/followUps', FollowUpController::class)
 ->middleware('auth');
 
 Route::get('/dashboard', function() {

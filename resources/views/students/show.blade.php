@@ -47,13 +47,13 @@
                     <li class="list-group-item"><strong>TUTOR EMPRESA </strong></li>
                     <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear()->first()->toText() }}</li>
                     <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course()->first()->name }}</li>
-                </ul>         
+                </ul>
             </div>
             <!-- End Data -->
 
             <!-- Botones -->
             <div class="row px-4  my-3">
-                
+
                 <div class="col-12 col-sm-3">
                     <a href="{{ route('diaryEntries.show', [$student])}}" class="btn-guapo btn-outline-primary">
                         Diario de Aprendizaje
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="col-12 col-sm-3">
-                    <a href="#" class="btn-guapo btn-outline-primary">
+                    <a href="{{ route('followUpEntries.show', [$student])}}" class="btn-guapo btn-outline-primary">
                         Diario Segumiento
                     </a>
                 </div>
