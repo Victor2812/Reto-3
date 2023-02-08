@@ -14,9 +14,16 @@ class DiaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($student)
+    public function index(DualSheet $dualSheet)
     {
+        $student = $dualSheet->student;
+        $entries = $dualSheet->diaryEntries()->latest();
 
+        return view('diaries.index', [
+            'sheet' => $dualSheet,
+            'student' => $student,
+            'entries' => $entries->paginate(13),
+        ]);
     }
 
     /**

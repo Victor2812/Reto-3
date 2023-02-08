@@ -34,8 +34,8 @@
 
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0 px-1 px-sm-5">Entradas Seguimiento</h1>
-                <a href="{{ route('diaries.create') }}" class="px-1 px-sm-5"><button class="btn btn-primary">Nueva</button></a>
+                <h1 class="h3 mb-0 px-1 px-sm-5">Entradas del Diario</h1>
+                <a href="{{ route('dualSheets.diaryEntries.create', [$sheet->id]) }}" class="px-1 px-sm-5"><button class="btn btn-primary">Nueva</button></a>
             </div>
             <!-- End Titulo -->
 
@@ -51,33 +51,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Prueba</td>
+                        @foreach ($entries as $entry)
+                            <tr>
+                                <td>{{ $entry->toText() }}</td>
 
-                            <!-- Ver -->
-                            <td>
-                                <a class="btn" href="{{ route('diaries.show', [$student]) }}">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                            </td>
-
-                            <!-- Editar -->
-                            <td>
-                                <a class="btn" href="{{ route('diaries.edit', [$student]) }}">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                            </td>
-
-                            <!-- Eliminar -->
-                            <td>
-                                <a class="btn" href="#">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                            </td>
-
-                        </tr>
+                                <!-- Ver -->
+                                <td>
+                                    <a class="btn" href="{{ route('dualSheets.diaryEntries.show', [$sheet->id, $entry->id]) }}">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                </td>
+    
+                                <!-- Editar -->
+                                <td>
+                                    <a class="btn" href="{{ route('dualSheets.diaryEntries.edit', [$sheet->id, $entry->id]) }}">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                </td>
+    
+                                <!-- Eliminar -->
+                                <td>
+                                    @include('partials.general.deletebutton', [
+                                        'route' => route('dualSheets.diaryEntries.destroy', [$sheet->id, $entry->id])
+                                    ])
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
+
+                <div>
+                    {{ $entries->links() }}
+                </div>
             </div>
         </div>
         <!-- End Row -->

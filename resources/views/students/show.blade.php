@@ -55,13 +55,13 @@
             <div class="row px-4 my-3 gx-0 gx-sm-3">
 
                 <div class="col-12 col-sm-3 mb-3 mb-sm-0">
-                    <a href="{{ route('diaryEntries.show', [$student])}}" class="btn-guapo btn-outline-primary">
+                    <a href="{{ route('dualSheets.diaryEntries.index', [$sheet->id])}}" class="btn-guapo btn-outline-primary">
                         Diario de Aprendizaje
                     </a>
                 </div>
 
                 <div class="col-12 col-sm-3 mb-3 mb-sm-0">
-                    <a href="{{ route('followUpEntries.show', [$student])}}" class="btn-guapo btn-outline-primary">
+                    <a href="{{ route('dualSheets.followUps.index', [$sheet->id])}}" class="btn-guapo btn-outline-primary">
                         Diario Segumiento
                     </a>
                 </div>

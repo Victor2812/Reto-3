@@ -7,20 +7,13 @@ use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\CompanyEvaluationsController;
 use App\Http\Controllers\DiaryController;
-use App\Http\Controllers\DiaryEntryController;
 use App\Http\Controllers\DiaryEvaluationController;
 use App\Http\Controllers\DualSheetsController;
-use App\Http\Controllers\FollowUpController;
-use App\Http\Controllers\FollowUpEntriesController;
-use App\Http\Controllers\JobEvaluationController;
+use App\Http\Controllers\FollowUpsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SchoolYearsController;
 use App\Http\Controllers\TutorsController;
-use App\Models\Course;
-use App\Models\DiaryEvaluation;
-use App\Models\DualSheet;
 use App\Models\Frase;
-use App\Models\SchoolYear;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 
@@ -57,26 +50,20 @@ Route::resource('/companies', CompaniesController::class)
 Route::resource('/grades', GradesController::class)
     ->middleware('auth');
 
-Route::resource('/diaries', DiaryController::class)
-    ->middleware('auth');
-
 Route::resource('/dualSheets', DualSheetsController::class)
     ->middleware('auth');
-    
+
 Route::resource('/diaryEvaluations', DiaryEvaluationController::class)
     ->middleware('auth');
 
 Route::resource('/companyEvaluations', CompanyEvaluationsController::class)
     ->middleware('auth');
 
-Route::resource('/diaryEntries', DiaryEntryController::class)
+Route::resource('dualSheets.diaryEntries', DiaryController::class)
     ->middleware('auth');
 
-Route::resource('/followUpEntries', FollowUpEntriesController::class)
-->middleware('auth');
-
-Route::resource('/followUps', FollowUpController::class)
-->middleware('auth');
+Route::resource('dualSheets.followUps', FollowUpsController::class)
+    ->middleware('auth');
 
 Route::get('/dashboard', function() {
     return view('dashboard');

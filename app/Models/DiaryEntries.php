@@ -11,6 +11,14 @@ class DiaryEntries extends Model
 
     protected $table = 'diary_entries';
 
+    public function toText()
+    {
+        $a = $this->from_date;
+        $b = $this->to_date;
+
+        return "$a - $b";
+    }
+
     public function dualSheet()
     {
         return $this->belongsTo(DualSheet::class, 'sheet_id');

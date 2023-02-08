@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-use App\Models\Course;
 use App\Models\DualSheet;
 use App\Models\Person;
-use App\Models\Grade;
-use App\Models\SchoolYear;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
-class DiaryEntryController extends Controller
+class FollowUpsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(DualSheet $dualSheet)
     {
-        //
+        $student = $dualSheet->student;
+        $followUps = $dualSheet->followUps()->latest();
+
+        return view('followUps.index', [
+            'sheet' => $dualSheet,
+            'student' => $student,
+            'followUps' => $followUps->paginate(13),
+        ]);
     }
 
     /**
@@ -30,7 +32,7 @@ class DiaryEntryController extends Controller
      */
     public function create()
     {
-        //
+        return view('followUps.create');
     }
 
     /**
@@ -53,9 +55,12 @@ class DiaryEntryController extends Controller
     public function show($student)
     {
         $alumno = Person::where('id', '=', $student)->get()->first();
-        return view('diaryEntries.show', [
-            'student' => $alumno
-        ]); 
+
+        return view('followUps.show', [
+            'student' => $alumno,
+
+        ]);
+
     }
 
     /**
@@ -64,9 +69,12 @@ class DiaryEntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $student)
     {
         //
+        return view("followUps.edit", [
+            'student' => $student
+        ]);
     }
 
     /**
