@@ -62,16 +62,15 @@ class CompaniesController extends Controller
             'name' => 'required|string|min:4',
             'cif' => 'required|string|min:9|max:9',
             'location' => 'required|string|max:255',
-            'tutor' => 'nullable|numeric|min:0|not_in:0',
+            'tutor' => 'required|numeric|min:1',
         ]);
 
         $company = new Company([
             'name' => $request->name,
             'CIF' => $request->cif,
             'location' => $request->location,
+            'person_id' => (int)$request->tutor
         ]);
-
-        // TODO: añadir tutor
 
         $company->save();
 
@@ -138,11 +137,11 @@ class CompaniesController extends Controller
      */
     public function edit(Company $company)
     {
-        $availableTutors = Person::companyTutors()->availableCompanyTutors();
+        $availableTutors = Person::companyTutors()->availableCompanyTutors()->orWhere('id', $company->person_id);
 
         return view('companies.edit', [
             'company' => $company,
-            'tutors' => $availableTutors,
+            'tutors' => $availableTutors->get(),
         ]);
     }
 
@@ -165,7 +164,7 @@ class CompaniesController extends Controller
         $company->name = trim($request->name);
         $company->CIF = trim($request->cif);
         $company->location = trim($request->location);
-        // TODO: añadir tutor
+        $company->person_id = (int)$request->tutor;
 
         $company->save();
 

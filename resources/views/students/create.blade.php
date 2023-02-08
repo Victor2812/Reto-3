@@ -30,7 +30,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <input type="text" class="form-control" name="name" placeholder="Nombre">
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+                        <input type="text" class="form-control" name="surname" placeholder="Apellidos">
                     </div>
                 </div>
 
@@ -59,7 +59,6 @@
 
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
-
                 <!-- Grado -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                     <div class="form-group">
@@ -139,14 +138,13 @@
 
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
-
                 <!-- Mail -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
                     @error('cif')
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="email" class="form-control" name="mail" placeholder="Mail">
+                        <input type="email" class="form-control" name="email" placeholder="Mail">
                     </div>
                 </div>
 
@@ -166,7 +164,7 @@
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="telefono" placeholder="Teléfono">
+                        <input type="text" class="form-control" name="phone" placeholder="Teléfono">
                     </div>
                 </div>
 

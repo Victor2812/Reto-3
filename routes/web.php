@@ -12,6 +12,7 @@ use App\Http\Controllers\DiaryEvaluationController;
 use App\Http\Controllers\DualSheetsController;
 use App\Http\Controllers\JobEvaluationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SchoolYearsController;
 use App\Http\Controllers\TutorsController;
 use App\Models\Course;
 use App\Models\DiaryEvaluation;
@@ -65,6 +66,8 @@ Route::resource('/diaryEntries', DiaryEntryController::class)
 Route::get('/dashboard', function() {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
+
+Route::get('/schoolyears/new', [SchoolYearsController::class, 'create'])->middleware('auth')->name('schoolyears.new');
 
 /*
 |--------------------------------------------------------------------------

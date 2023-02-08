@@ -13,6 +13,8 @@ class SchoolYear extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['start', 'end'];
+
     public function dualSheets()
     {
         return $this->hasMany(DualSheet::class);

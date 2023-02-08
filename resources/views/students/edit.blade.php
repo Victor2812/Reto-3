@@ -20,32 +20,33 @@
     <div class="row px-4 gx-sm-3 gx-0">
         <form action="{{ route('students.update', [$student->id]) }}" class="requires-validation" method="POST">
             @csrf
+            @method('PUT')
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
 
                 <!-- Nombre -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    @error('cif')
+                    @error('name')
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{ $student->name }}">
+                        <input type="text" class="form-control" name="name" placeholder="Nombre" value="{{ $student->name }}">
                     </div>
                 </div>
 
                 <!-- Apellidos -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    @error('name')
+                    @error('surname')
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" value="{{ $student->surname }}">
+                        <input type="text" class="form-control" name="surname" placeholder="Apellidos" value="{{ $student->surname }}">
                     </div>
                 </div>
 
                 <!-- DNI -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    @error('name')
+                    @error('dni')
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
@@ -59,99 +60,19 @@
             <!-- Row -->
             <div class="row mb-0 mb-sm-4">
 
-                <!-- Grado -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="grado">
-                        <option value="{{ $grades->first()->id }}" selected>{{ $grades->first()->name }}</option>
-                        @foreach($grades as $g)
-                            <option value="{{ $g->id }}">{{ $g->name }}</option>
-                        @endforeach
-                        </select>
-                    </div> 
-                </div>
-
-                <!-- Curso -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="curso">
-                            <option value="" selected>Curso</option> <!-- TODO cargar cursos -->
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Año Academico -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="anio-academico">
-                        <option selected>Año academico</option>
-                        @foreach($schoolYears as $year)
-                            <option value="{{ $year->id }}">{{ $year->toText() }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <!-- End Row -->
-
-            <!-- Row -->
-            <div class="row mb-0 mb-sm-4">
-
-                <!-- Tutor Academico -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="tutor-academico">
-                        <option selected>{{ $academicTutors->first()->fullName() }}</option>
-                        @foreach($academicTutors as $academic)
-                            <option value="{{ $academic->id }}">{{ $academic->fullName() }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-                
-                <!-- Empresa -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="empresa">
-                        <option selected>Empresa</option> 
-                        @foreach($empresa as $e)
-                            <option value="{{ $e->id }}">{{ $e->name }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Tutor Empresa -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <div class="form-group">
-                        <select class="form-select" name="tutor-empresa">
-                        <option selected>Tutor Empresa</option>
-                        @foreach($companyTutors as $company)
-                            <option value="{{ $company->id }}">{{ $company->fullName() }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-            <!-- End Row -->
-
-            <!-- Row -->
-            <div class="row mb-0 mb-sm-4">
-
                 <!-- Mail -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    @error('cif')
+                    @error('email')
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="email" class="form-control" name="mail" placeholder="Mail" value="{{ $student->email }}">
+                        <input type="email" class="form-control" name="email" placeholder="Mail" value="{{ $student->email }}">
                     </div>
                 </div>
 
                 <!-- Password -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    @error('name')
+                    @error('pass')
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
@@ -161,11 +82,11 @@
 
                 <!-- Telefono -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    @error('name')
+                    @error('phone')
                         <strong>{{ $message }}</strong>
                     @enderror
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="telefono" placeholder="Teléfono" value="{{ $student->phone }}">
+                        <input type="text" class="form-control" name="phone" placeholder="Teléfono" value="{{ $student->phone }}">
                     </div>
                 </div>
 
