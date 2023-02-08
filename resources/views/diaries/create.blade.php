@@ -21,7 +21,7 @@
 
         <!-- Formulario -->
         <div class="row px-4  my-3">
-            <form action="#" class="requires-validation" method="POST">
+            <form action="{{ route('dualSheets.diaryEntries.store', [$sheet->id]) }}" class="requires-validation" method="POST">
                 @csrf
 
                 <!-- Row -->
@@ -31,7 +31,10 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <div class="form-outline">
                             <label for="fecha-inicio" class="h5">Fecha Inicio</label>
-                            <input type="date" class="form-control" name="fecha-inicio">
+                            @error('start')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <input type="date" class="form-control" id="fecha-inicio" name="start">
                         </div>
                     </div>
 
@@ -39,7 +42,10 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <div class="form-outline">
                             <label for="fecha-fin" class="h5">Fecha Fin</label>
-                            <input type="date" class="form-control" name="fecha-fin">
+                            @error('end')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <input type="date" class="form-control" id="fecha-fin" name="end">
                         </div>
                     </div>
 
@@ -53,7 +59,10 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Actividades desarrolladas</h5>
                         <div class="form-group">
-                            <textarea class="form-control" rows="9" placeholder="Escribe aquí"></textarea>
+                            @error('activities')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <textarea class="form-control" rows="9" placeholder="Escribe aquí" name="activities"></textarea>
                         </div>
                     </div>
 
@@ -61,7 +70,10 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Reflexión sobre el aprendizaje</h5>
                         <div class="form-group">
-                            <textarea class="form-control" rows="9" placeholder="Escribe aquí"></textarea>
+                            @error('reflection')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <textarea class="form-control" rows="9" placeholder="Escribe aquí" name="reflection"></textarea>
                         </div>
                     </div>
 
@@ -69,7 +81,10 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Identificación de problemas</h5>
                         <div class="form-group">
-                            <textarea class="form-control" rows="9" placeholder="Escribe aquí"></textarea>
+                            @error('difficulties')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <textarea class="form-control" rows="9" placeholder="Escribe aquí" name="difficulties"></textarea>
                         </div>
                     </div>
 

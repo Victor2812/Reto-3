@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DiaryEntries extends Model
+class DiaryEntry extends Model
 {
     use HasFactory;
 
     protected $table = 'diary_entries';
+
+    protected $fillable = [
+        'sheet_id',
+        'from_date',
+        'to_date',
+    ];
 
     public function toText()
     {
@@ -24,13 +30,13 @@ class DiaryEntries extends Model
         return $this->belongsTo(DualSheet::class, 'sheet_id');
     }
 
-    public function activities()
+    public function activity()
     {
-        return $this->hasMany(DiaryActivities::class, 'diary_entry_id');
+        return $this->hasOne(DiaryActivity::class, 'diary_entry_id');
     }
 
     public function comments()
     {
-        return $this->hasMany(DiaryComments::class, 'diary_entry_id');
+        return $this->hasMany(DiaryComment::class, 'diary_entry_id');
     }
 }

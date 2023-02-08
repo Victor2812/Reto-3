@@ -36,7 +36,7 @@
 
         <!-- Titulo -->
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <h1 class="h3 mb-0 px-4">Diario</h1>
+            <h1 class="h3 mb-0 px-4">Diario {{ $entry->toText() }}</h1>
         </div>
         <!-- End Titulo -->
 
@@ -46,53 +46,41 @@
                 <!-- Actividades Desarrolladas -->
                 <div class="mb-3">
                     <h4 class="h4 mb-2">Actividades desarrolladas</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Vivamus sodales lorem nec risus pharetra ullamcorper. 
-                        Nunc vulputate ut sapien ut gravida. Sed lacinia urna ac efficitur pretium. 
-                        Donec quis rhoncus tortor. Phasellus eget lectus quis ipsum dapibus euismod. 
-                        Pellentesque aliquam, sem in malesuada tincidunt, 
-                        mauris lectus consequat turpis, eu lobortis sapien tortor non lectus. 
-                        Nam mollis ornare justo. Curabitur ac hendrerit velit.
-                    </p>
+                    <p>{{ $activity->name }}</p>
                 </div>
 
                 <!-- Refelxion sobre el aprendizaje -->
                 <div class="mb-3">
                     <h4 class="h4 mb-2">Reflexión sobre el aprendizaje y progreso realizado en las competencias</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Vivamus sodales lorem nec risus pharetra ullamcorper. 
-                        Nunc vulputate ut sapien ut gravida. Sed lacinia urna ac efficitur pretium. 
-                        Donec quis rhoncus tortor. Phasellus eget lectus quis ipsum dapibus euismod. 
-                        Pellentesque aliquam, sem in malesuada tincidunt, 
-                        mauris lectus consequat turpis, eu lobortis sapien tortor non lectus. 
-                        Nam mollis ornare justo. Curabitur ac hendrerit velit.
-                    </p>
+                    <p>{{ $activity->reflection }}</p>
                 </div>
 
                 <!-- Identificacion de problemas -->
                 <div class="mb-3">
                     <h4 class="h4 mb-2">Identificación de problemas o dificultades,acciones de mejora a poner en marcha</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Vivamus sodales lorem nec risus pharetra ullamcorper. 
-                        Nunc vulputate ut sapien ut gravida. Sed lacinia urna ac efficitur pretium. 
-                        Donec quis rhoncus tortor. Phasellus eget lectus quis ipsum dapibus euismod. 
-                        Pellentesque aliquam, sem in malesuada tincidunt, 
-                        mauris lectus consequat turpis, eu lobortis sapien tortor non lectus. 
-                        Nam mollis ornare justo. Curabitur ac hendrerit velit.
-                    </p>
+                    <p>{{ $activity->difficulties }}</p>
                 </div>
 
                 <!-- Observaciones -->
                 <div class="mb-3">
                     <h4 class="h4 mb-2">Observaciones</h4>
-                    <div class="form-group mb-3">
-                        <textarea class="form-control" rows="6" placeholder="Observaciones"></textarea>
-                    </div>
+                    @foreach ($comments as $comment)
+                        <p><strong>{{ $comment->person->fullName() }}:</strong> {{ $comment->text }}</p>
+                    @endforeach
                 </div>
 
-                <!-- Submit -->
-                <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <button type="submit" class="btn btn-primary">Editar Observacion</button>
+                
+                <div class="mb-3">
+                    <form action="" method="GET">
+                        <div class="form-group mb-3">
+                            <textarea class="form-control" rows="6" placeholder="Observaciones" name="comment"></textarea>
+                        </div>
+                        
+                        <!-- Submit -->
+                        <div class="col-12 mb-4 col-sm-4 mb-sm-0">
+                            <button type="submit" class="btn btn-primary">Enviar observacion</button>
+                        </div>
+                    </form>
                 </div>
         </div>
 

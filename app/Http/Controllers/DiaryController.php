@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DiaryActivity;
+use App\Models\DiaryComment;
+use App\Models\DiaryEntry;
 use App\Models\DualSheet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -31,9 +34,11 @@ class DiaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(DualSheet $dualSheet)
     {
-        return view('diaries.create');
+        return view('diaries.create', [
+            'sheet' => $dualSheet
+        ]);
     }
 
     /**
@@ -42,10 +47,34 @@ class DiaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, DualSheet $dualSheet)
     {
-        //
+        $request->validate([
+            'start' => 'required|date',
+            'end' => 'required|date',
+            'activities' => 'required|string',
+            'reflection' => 'required|string',
+            'difficulties' => 'required|string',
+        ]);
 
+        $entry = new DiaryEntry([
+            'sheet_id' => $dualSheet->id,
+            'from_date' => $request->start,
+            'to_date' => $request->end,
+        ]);
+        $entry->save();
+
+        $activity = new DiaryActivity([
+            'diary_entry_id' => $entry->id,
+            'name' => $request->activities,
+            'reflection' => $request->reflection,
+            'difficulties' => $request->difficulties,
+        ]);
+        $activity->save();
+
+        return Redirect::route('dualSheets.diaryEntries.index', [
+            $dualSheet->id,
+        ]);
     }
 
     /**
@@ -54,15 +83,31 @@ class DiaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($student)
+    public function show(Request $request, DualSheet $dualSheet, DiaryEntry $diaryEntry)
     {
-        $alumno = Person::where('id', '=', $student)->get()->first();
+        if ($comment = $request->comment) {
+            $comment = new DiaryComment([
+                'diary_entry_id' => $diaryEntry->id,
+                'person_id' => $request->user()->person_id,
+                'text' => $comment,
+            ]);
+            $comment->save();
+
+            // quitar datos del GET
+            return Redirect::route('dualSheets.diaryEntries.show', [
+                $dualSheet->id,
+                $diaryEntry->id,
+            ]);
+        }
+
+        $student = $dualSheet->student;
 
         return view('diaries.show', [
-            'student' => $alumno,
-
+            'student' => $student,
+            'entry' => $diaryEntry,
+            'activity' => $diaryEntry->activity,
+            'comments' => $diaryEntry->comments,
         ]);
-
     }
 
     /**
@@ -71,11 +116,12 @@ class DiaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Person $student)
+    public function edit(DualSheet $dualSheet, DiaryEntry $diaryEntry)
     {
-        //
-        return view("diaries.edit", [
-            'student' => $student
+        return view('diaries.edit', [
+            'sheet' => $dualSheet,
+            'entry' => $diaryEntry,
+            'activity' => $diaryEntry->activity,
         ]);
     }
 
@@ -86,9 +132,30 @@ class DiaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, DualSheet $dualSheet, DiaryEntry $diaryEntry)
     {
-        //
+        $request->validate([
+            'start' => 'required|date',
+            'end' => 'required|date',
+            'activities' => 'required|string',
+            'reflection' => 'required|string',
+            'difficulties' => 'required|string',
+        ]);
+
+        $diaryEntry->from_date = $request->start;
+        $diaryEntry->to_date = $request->end;
+        $diaryEntry->save();
+
+        $activity = $diaryEntry->activity;
+
+        $activity->name = $request->activities;
+        $activity->reflection = $request->reflection;
+        $activity->difficulties = $request->difficulties;
+        $activity->save();
+
+        return Redirect::route('dualSheets.diaryEntries.index', [
+            $dualSheet->id,
+        ]);
     }
 
     /**
@@ -97,8 +164,11 @@ class DiaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DualSheet $dualSheet, DiaryEntry $diaryEntry)
     {
-        //
+        DiaryEntry::destroy($diaryEntry->id);
+        return Redirect::route('dualSheets.diaryEntries.index', [
+            $dualSheet->id,
+        ]);
     }
 }

@@ -57,7 +57,7 @@ class DualSheet extends Model
 
     public function diaryEntries()
     {
-        return $this->hasMany(DiaryEntries::class, 'sheet_id');
+        return $this->hasMany(DiaryEntry::class, 'sheet_id');
     }
 
     public function followUps()

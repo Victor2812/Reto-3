@@ -65,7 +65,7 @@
                                 <!-- Editar -->
                                 <td>
                                     <a class="btn" href="{{ route('dualSheets.diaryEntries.edit', [$sheet->id, $entry->id]) }}">
-                                        <i class="bi bi-eye"></i>
+                                        <i class="bi bi-pencil"></i>
                                     </a>
                                 </td>
     

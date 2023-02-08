@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('diary_activities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->text('reflection');
             $table->text('difficulties');
             

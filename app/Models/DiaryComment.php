@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DiaryComments extends Model
+class DiaryComment extends Model
 {
     use HasFactory;
 
-    public function author()
+    protected $fillable = [
+        'person_id', 'text', 'diary_entry_id'
+    ];
+
+    public function person()
     {
         return $this->belongsTo(Person::class);
     }
