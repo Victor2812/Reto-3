@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\SchoolYear;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class SchoolYearsController extends Controller
 {
     public function create()
     {
+        $this->authorize('create', SchoolYear::class);
         $latest = SchoolYear::orderBy('end', 'desc')->first();
 
         if ($latest) {

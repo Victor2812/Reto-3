@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class CompaniesController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Company::class, 'company');
+    }
+
     /**
      * Display a listing of the resource.
      *

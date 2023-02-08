@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-use App\Models\Course;
-use App\Models\DiaryEntries;
 use App\Models\DiaryEvaluation;
-use App\Models\DualSheet;
-use App\Models\Person;
-use App\Models\Grade;
-use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class DiaryEvaluationController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(DiaryEvaluation::class, 'diaryEvaluation');
+    }
+
     /**
      * Display a listing of the resource.
      *

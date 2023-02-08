@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Redirect;
 class GradesController extends Controller
 {
     const N_COURSES = 4;
+
+    public function __construct()
+    {
+        $this->authorizeResource(Grade::class, 'grade');
+    }
     
     protected function applyYearFilter(Request $request, Builder $query)
     {

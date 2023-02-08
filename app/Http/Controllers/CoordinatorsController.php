@@ -18,7 +18,7 @@ class CoordinatorsController extends Controller
     public function __construct()
     {
         // Establecer la política de autorización al recurso
-        // $this->authorizeResource(Person::class, 'person');
+        $this->authorizeResource(Person::class, 'coordinator');
     }
 
     /**

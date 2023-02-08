@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-use App\Models\Course;
-use App\Models\DualSheet;
-use App\Models\Person;
-use App\Models\Grade;
 use App\Models\JobEvaluation;
-use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class CompanyEvaluationsController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(JobEvaluation::class, 'companyEvaluation');
+    }
+
     /**
      * Display a listing of the resource.
      *
