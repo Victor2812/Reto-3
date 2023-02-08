@@ -5,7 +5,7 @@
 @section('main')
 
     <!-- Breadcrumbs -->
-    
+
 
     <!-- Row -->
     <div class="row bg-white shadow mx-2 gx-0">
@@ -34,7 +34,8 @@
 
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0 px-5">Entradas Diario</h1>
+                <h1 class="h3 mb-0 px-1 px-sm-5">Entradas Seguimiento</h1>
+                <a href="{{ route('diaries.create') }}" class="px-1 px-sm-5"><button class="btn btn-primary">Nueva</button></a>
             </div>
             <!-- End Titulo -->
 
@@ -45,6 +46,8 @@
                         <tr>
                             <th>Fecha</th>
                             <th>Ver</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,6 +60,21 @@
                                     <i class="bi bi-eye"></i>
                                 </a>
                             </td>
+
+                            <!-- Editar -->
+                            <td>
+                                <a class="btn" href="{{ route('diaries.edit', [$student]) }}">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </td>
+
+                            <!-- Eliminar -->
+                            <td>
+                                <a class="btn" href="#">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </td>
+
                         </tr>
                     </tbody>
                 </table>
