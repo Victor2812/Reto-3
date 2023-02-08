@@ -5,9 +5,7 @@
 @section('main')
     @if (Auth::user()->isCoordinator())
         @include('dashboards.coordinator')
-    @elseif (Auth::user()->isTutor())
-        @include('dashboards.tutor')
     @else
-        @include('dashboards.student')
+        <h1>No deberías poder ver esto</h1>
     @endif
 @endsection
