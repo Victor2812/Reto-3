@@ -1,16 +1,15 @@
 // Componentes fuera de uso
 
-
-// No nos permite una redirección correcta a la ruta de laravel 
+// No nos permite una redirección correcta a la ruta de laravel
 class login extends HTMLElement {
     constructor() {
-        console.log('login component anexed');
+        console.log("login component anexed");
         super();
 
         const shadowRoot = this.attachShadow({ mode: "open" });
 
         // v2 version of the login form web component, this one allows for the user to implement bootstrap
-        const htmlTemplate = document.createElement('template');
+        const htmlTemplate = document.createElement("template");
 
         // no se que le pasa al primer div, no pilla el mb-4, lo alica bien el input dni
         htmlTemplate.innerHTML = `
@@ -62,26 +61,24 @@ class login extends HTMLElement {
         loginForm.appendChild(inputPass);
         loginForm.appendChild(enviar);
         */
-
     }
 
     connectedCallback() {
-        console.log('login component is being used');
+        console.log("login component is being used");
     }
 }
 
-customElements.define('login-sufrimiento', login);
-
+customElements.define("login-sufrimiento", login);
 
 // Fuera de uso -> se optó por no utilizarlo por motivos de ajuste en el layout del proyecto
 class footer extends HTMLElement {
     constructor() {
-        console.log('Footer anexed');
+        console.log("Footer anexed");
         super();
 
-        const shadowRoot = this.attachShadow({ mode: 'open' });
+        const shadowRoot = this.attachShadow({ mode: "open" });
 
-        const template = document.createElement('template');
+        const template = document.createElement("template");
         template.innerHTML = `
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -144,33 +141,30 @@ class footer extends HTMLElement {
         `;
 
         shadowRoot.appendChild(template.content.cloneNode(true));
-
-
     }
 
     connectedCallback() {
-        console.log('footer component is being used');
+        console.log("footer component is being used");
     }
 }
 
-customElements.define('footer-sufrimiento', footer);
+customElements.define("footer-sufrimiento", footer);
 
 // NEW CUSTOM WEB COMPONENTS ARE DATA CHARTS
 
-import { Chart } from "chart.js";
-
+import Chart from "chart.js/auto";
 
 // PIECHART
 class piechart extends HTMLElement {
     constructor() {
-        console.log('stats component ok');
+        console.log("stats component ok");
         super();
     }
-    
+
     getModel() {
         return new Promise((res, rej) => {
-            fetch('/stats')
-                .then(data => data.json())
+            fetch("/stats")
+                .then((data) => data.json())
                 .then((json) => {
                     //console.log(json);
                     this.renderChart(json);
@@ -181,118 +175,110 @@ class piechart extends HTMLElement {
     }
 
     renderChart(json) {
-        
-        const shadowRoot = this.attachShadow({ mode: 'open' });
-        const div = document.createElement('div');
-        div.setAttribute('width', '90%');
-        const canvas = document.createElement('canvas');
-        canvas.setAttribute('id', 'pieChart');
+        const shadowRoot = this.attachShadow({ mode: "open" });
+        const div = document.createElement("div");
+        div.setAttribute("width", "90%");
+        const canvas = document.createElement("canvas");
+        canvas.setAttribute("id", "pieChart");
         div.appendChild(canvas);
         shadowRoot.appendChild(div);
 
-        new Chart(
-            canvas,
-            {
-            type: 'pie',
+        new Chart(canvas, {
+            type: "pie",
             data: {
-                labels: json.map(row => row.item),
+                labels: json.map((row) => row.item),
                 datasets: [
-                {
-                    label: 'Aprobados $ Suspendidos',
-                    data: json.map(row => row.count),
-                    backgroundColor: json.map(row => row.color)
-                }
-                ]
+                    {
+                        label: "Aprobados $ Suspendidos",
+                        data: json.map((row) => row.count),
+                        backgroundColor: json.map((row) => row.color),
+                    },
+                ],
             },
-            options : {
-                resposive : true,
-                maintainAspectRatio: false
-            }
-            }
-        );
+            options: {
+                resposive: true,
+                maintainAspectRatio: false,
+            },
+        });
     }
 
     connectedCallback() {
-        console.log('piechart component is being used');
+        console.log("piechart component is being used");
         this.getModel();
     }
 }
 
-customElements.define('piechart-component', piechart);
-
+customElements.define("piechart-component", piechart);
 
 // LINECHART
 class lineChart extends HTMLElement {
     constructor() {
-        console.log('lineChart component ok');
+        console.log("lineChart component ok");
         super();
     }
 
     async getModel() {
-        const response = await fetch('/lineData');
+        const response = await fetch("/lineData");
         const data = await response.json();
         if (response.ok) {
             //console.log(data);
             this.renderChart(data);
         } else {
-            console.log('An error occured while fetching lineChart data');
+            console.log("An error occured while fetching lineChart data");
         }
     }
 
     renderChart(data) {
         console.log(data);
 
-        const shadowRoot = this.attachShadow({ mode: 'open' });
-        const div = document.createElement('div');
-        div.setAttribute('width', '90%');
-        const canvas = document.createElement('canvas');
-        canvas.setAttribute('id', 'lineChart');
+        const shadowRoot = this.attachShadow({ mode: "open" });
+        const div = document.createElement("div");
+        div.setAttribute("width", "90%");
+        const canvas = document.createElement("canvas");
+        canvas.setAttribute("id", "lineChart");
         div.appendChild(canvas);
         shadowRoot.appendChild(div);
 
-        new Chart(
-            canvas,
-            {
-            type: 'line',
+        new Chart(canvas, {
+            type: "line",
             data: {
-                labels: data.map(row => row.year),
+                labels: data.map((row) => row.year),
                 datasets: [
-                {
-                    label: 'Aprobados',
-                    data: data,
-                    backgroundColor: '#C89F24',
-                    borderColor: '#C89F24',
-                    tension: 0.4,
-                    parsing: {
-                        xAxisKey: 'year',
-                        yAxisKey: 'count.aprobados'
-                    }
-                },
-                {
-                    label: 'Suspendidos',
-                    data: data,
-                    backgroundColor: '#FBDA79',
-                    borderColor: '#FBDA79',
-                    tension: 0.4,
-                    parsing: {
-                        xAxisKey: 'year',
-                        yAxisKey: 'count.suspensos'
-                    }
-                }
+                    {
+                        label: "Aprobados",
+                        data: data,
+                        backgroundColor: "#C89F24",
+                        borderColor: "#C89F24",
+                        tension: 0.4,
+                        parsing: {
+                            xAxisKey: "year",
+                            yAxisKey: "count.aprobados",
+                        },
+                    },
+                    {
+                        label: "Suspendidos",
+                        data: data,
+                        backgroundColor: "#FBDA79",
+                        borderColor: "#FBDA79",
+                        tension: 0.4,
+                        parsing: {
+                            xAxisKey: "year",
+                            yAxisKey: "count.suspensos",
+                        },
+                    },
                 ],
-                options : {
-                    resposive : true,
-                    maintainAspectRatio: false
-                }
-            }
-            }
-        );
+                options: {
+                    resposive: true,
+                    maintainAspectRatio: false,
+                },
+            },
+        });
     }
 
     connectedCallback() {
-        console.log('lineChart component is being used');
+        console.log("lineChart component is being used");
         this.getModel();
     }
 }
 
-customElements.define('linechart-component', lineChart);
+customElements.define("linechart-component", lineChart);
