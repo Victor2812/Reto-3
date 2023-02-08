@@ -30,8 +30,8 @@
                     <!-- Asistentes -->
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <div class="form-group">
-                            <select class="form-select" name="asistentes">
-                                <option selected>Asistentes</option>
+                            <select class="form-select" name="assistants">
+                                <option value="">Asistentes</option>
                             </select>
                         </div>
                     </div>
@@ -39,8 +39,11 @@
                     <!-- Tipo de Tutoria -->
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <div class="form-group">
-                            <select class="form-select" name="tipo-tutoria">
-                                <option selected>Tipo de Tutoría</option>
+                            <select class="form-select" name="type">
+                                <option value="">Tipo de Tutoría</option>
+                                @foreach ($types as $id => $type)
+                                    <option value="{{ $id }}">{{ $type }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -55,7 +58,7 @@
                     <div class="col-12 col-md-6 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Objetivos</h5>
                         <div class="form-group">
-                            <textarea class="form-control" rows="6" placeholder="Escribe aquí"></textarea>
+                            <textarea class="form-control" rows="6" placeholder="Escribe aquí" name="objetives"></textarea>
                         </div>
                     </div>
 
@@ -63,7 +66,7 @@
                     <div class="col-12 col-md-6 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Aspectos comentados</h5>
                         <div class="form-group">
-                            <textarea class="form-control" rows="6" placeholder="Escribe aquí"></textarea>
+                            <textarea class="form-control" rows="6" placeholder="Escribe aquí" name="commented_issues"></textarea>
                         </div>
                     </div>
 

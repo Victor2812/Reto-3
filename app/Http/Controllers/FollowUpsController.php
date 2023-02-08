@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 
 class FollowUpsController extends Controller
 {
+    const ASSISTANTS = [
+        'FA',
+        'FE',
+        'AL',
+    ];
+
+    const TYPES = [
+        1 => 'Presencial',
+        2 => 'Telefónica',
+        3 => 'Correo electrónico',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +44,10 @@ class FollowUpsController extends Controller
      */
     public function create()
     {
-        return view('followUps.create');
+        return view('followUps.create', [
+            'types' => self::TYPES,
+            'assistants' => self::ASSISTANTS,
+        ]);
     }
 
     /**

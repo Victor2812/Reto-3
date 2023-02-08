@@ -81,8 +81,8 @@ Route::get('/schoolyears/new', [SchoolYearsController::class, 'create'])->middle
 */
 
 Route::get('/chart', [ChartsController::class, 'index'])->name('charts');
-Route::get('/stats', [ChartsController::class, 'stats']);
-Route::get('/lineData', [ChartsController::class, 'lineData']);
+Route::get('/stats', [ChartsController::class, 'stats'])->name('stats');
+Route::get('/lineData', [ChartsController::class, 'lineData'])->name('lineData');
 
 Route::get('/frases', function (){
     return new JsonResponse(Frase::all());
