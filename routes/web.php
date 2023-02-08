@@ -50,10 +50,6 @@ Route::resource('/grades', GradesController::class)
     ->middleware('auth');
 Route::resource('/diaries', DiaryController::class)
     ->middleware('auth');
-Route::resource('/jobev', JobEvaluationController::class)
-    ->middleware('auth');
-Route::resource('/diaryev', DiaryEvaluationController::class)
-    ->middleware('auth');
 Route::resource('/dualSheets', DualSheetsController::class)
     ->middleware('auth');
 Route::resource('/diaryEvaluations', DiaryEvaluationController::class)
