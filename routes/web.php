@@ -15,6 +15,8 @@ use App\Http\Controllers\SchoolYearsController;
 use App\Http\Controllers\TutorsController;
 use App\Models\Frase;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'dashboard');
 
+Route::get('/dashboard', function(Request $request) {
+    $person = $request->user()->person;
+
+    if ($person->role_id == config('roles.ALUMNO')) {
+        return Redirect::route('students.show', [$person->id]);
+    }
+
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');
 
 Route::get('/login', [LoginController::class, 'form'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
@@ -64,10 +75,6 @@ Route::resource('dualSheets.diaryEntries', DiaryController::class)
 
 Route::resource('dualSheets.followUps', FollowUpsController::class)
     ->middleware('auth');
-
-Route::get('/dashboard', function() {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
 
 Route::get('/schoolyears/new', [SchoolYearsController::class, 'create'])->middleware('auth')->name('schoolyears.new');
 

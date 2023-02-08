@@ -33,53 +33,55 @@
         <!-- Ficha Dual -->
         <div class="row px-4 gx-0 my-3">
 
-            <!-- Titulo -->
-            <div class="d-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0 px-4">Ficha Dual</h1>
-            </div>
-            <!-- End Titulo -->
-
-            <!-- Data -->
-            <div class="row px-4 gx-0 my-3">
-                <ul class="list-group list-group-light">
-                    <li class="list-group-item"><strong>TUTOR </strong>{{ $sheet->academicTutor->fullName() }}</li>
-                    <li class="list-group-item"><strong>EMPRESA </strong>{{ $sheet->company->name }}</li>
-                    <li class="list-group-item"><strong>TUTOR EMPRESA </strong> {{ $sheet->academicTutor->fullName()}}</li>
-                    <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear->toText() }}</li>
-                    <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course->name }}</li>
-                </ul>
-            </div>
-            <!-- End Data -->
-
-            <!-- Botones -->
-            <div class="row px-4 my-3 gx-0 gx-sm-3">
-
-                <div class="col-12 col-sm-3 mb-3 mb-sm-0">
-                    <a href="{{ route('dualSheets.diaryEntries.index', [$sheet->id])}}" class="btn-guapo btn-outline-primary">
-                        Diario de Aprendizaje
-                    </a>
+            @if ($sheet)
+                <!-- Titulo -->
+                <div class="d-flex align-items-center justify-content-between">
+                    <h1 class="h3 mb-0 px-4">Ficha Dual</h1>
                 </div>
-
-                <div class="col-12 col-sm-3 mb-3 mb-sm-0">
-                    <a href="{{ route('dualSheets.followUps.index', [$sheet->id])}}" class="btn-guapo btn-outline-primary">
-                        Diario Segumiento
-                    </a>
+                <!-- End Titulo -->
+                
+                <!-- Data -->
+                <div class="row px-4 gx-0 my-3">
+                    <ul class="list-group list-group-light">
+                        <li class="list-group-item"><strong>TUTOR </strong>{{ $sheet->academicTutor->fullName() }}</li>
+                        <li class="list-group-item"><strong>EMPRESA </strong>{{ $sheet->company->name }}</li>
+                        <li class="list-group-item"><strong>TUTOR EMPRESA </strong> {{ $sheet->academicTutor->fullName()}}</li>
+                        <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear->toText() }}</li>
+                        <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course->name }}</li>
+                    </ul>
                 </div>
+                <!-- End Data -->
 
-                <div class="col-12 col-sm-3">
-                    <a href="{{ route('diaryEvaluations.show', [$sheet->diaryEvaluation->id])}}" class="btn-guapo btn-outline-primary">
-                        Evaluación Diario
-                    </a>
+                <!-- Botones -->
+                <div class="row px-4 my-3 gx-0 gx-sm-3">
+
+                    <div class="col-12 col-sm-3 mb-3 mb-sm-0">
+                        <a href="{{ route('dualSheets.diaryEntries.index', [$sheet->id])}}" class="btn-guapo btn-outline-primary">
+                            Diario de Aprendizaje
+                        </a>
+                    </div>
+
+                    <div class="col-12 col-sm-3 mb-3 mb-sm-0">
+                        <a href="{{ route('dualSheets.followUps.index', [$sheet->id])}}" class="btn-guapo btn-outline-primary">
+                            Diario Segumiento
+                        </a>
+                    </div>
+
+                    <div class="col-12 col-sm-3">
+                        <a href="{{ route('diaryEvaluations.show', [$sheet->diaryEvaluation->id])}}" class="btn-guapo btn-outline-primary">
+                            Evaluación Diario
+                        </a>
+                    </div>
+
+                    <div class="col-12 col-sm-3">
+                        <a href="{{ route('companyEvaluations.show', [$sheet->jobEvaluation->id])}}" class="btn-guapo btn-outline-primary">
+                            Evaluación Empresa
+                        </a>
+                    </div>
+
                 </div>
-
-                <div class="col-12 col-sm-3">
-                    <a href="{{ route('companyEvaluations.show', [$sheet->jobEvaluation->id])}}" class="btn-guapo btn-outline-primary">
-                        Evaluación Empresa
-                    </a>
-                </div>
-
-            </div>
-            <!-- End Botones -->
+                <!-- End Botones -->
+            @endif
 
         </div>
         <!-- End Ficha Dual -->

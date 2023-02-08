@@ -180,7 +180,7 @@ class StudentsController extends Controller
                 abort(404);
             }
         } else {
-            $sheet = $student->studentSheets()->latest()->get()->first();
+            $sheet = $student->studentSheets()->latest()->first();
         }
         return view('students.show', [
             'student' => $student,
