@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Course;
+use App\Models\DiaryEntries;
+use App\Models\DiaryEvaluation;
 use App\Models\DualSheet;
 use App\Models\Person;
 use App\Models\Grade;
@@ -50,12 +52,13 @@ class DiaryEvaluationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($student)
+    public function show(DiaryEvaluation $diaryEvaluation)
     {
-        $alumno = Person::where('id', '=', $student)->get()->first();
+        dd($diaryEvaluation);
+        /*$alumno = Person::where('id', '=', $student)->get()->first();
         return view('diaryEvaluations.show', [
             'student' => $alumno
-        ]); 
+        ]);*/
     }
 
     /**
