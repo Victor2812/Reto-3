@@ -36,7 +36,10 @@
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
                 <h1 class="h3 mb-0">Evaluación Diario</h1>
-                <a href="{{ route('diaryEvaluations.edit', [$evaluation->id]) }}"><button class="btn btn-primary">Editar</button></a>
+                
+                @can('update', $evaluation)
+                    <a href="{{ route('diaryEvaluations.edit', [$evaluation->id]) }}"><button class="btn btn-primary">Editar</button></a>
+                @endcan
             </div>
             <!-- End Titulo -->
 

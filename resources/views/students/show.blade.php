@@ -15,7 +15,6 @@
             <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
                 <div>
                     <h1 class="h3 mb-0">{{ $student->fullName() }}</h1>
-                    <p class="text-uppercase">grado que esta cursando</p> <!-- meter grado -->
                     <p class="mb-0">{{ $student->email }}</p>
                     <p class="mb-0">{{ $student->phone }}</p>
                 </div>
