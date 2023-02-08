@@ -120,7 +120,7 @@ class CompaniesController extends Controller
             $students->hasStudentDualSheetsGraduated();
         }
 
-        $students->hasStudentDualSheetsGraduated(!$notactive);
+        $students->hasStudentDualSheetsGraduated($notactive);
         return view('companies.show', [
             'company' => $company,
             'coordinator' => $coordinator,

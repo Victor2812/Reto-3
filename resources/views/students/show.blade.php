@@ -52,7 +52,7 @@
                         <li class="list-group-item"><strong>EMAIL TUTOR EMPRESA </strong>{{ $sheet->company->person->email}}</li>
                         <li class="list-group-item"><strong>TELÉFONO TUTOR EMPRESA </strong>{{ $sheet->company->person->phone}}</li>
                         <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear->toText() }}</li>
-                        <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course->name }}</li>
+                        <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course->toText() }}</li>
                     </ul>
                 </div>
                 <!-- End Data -->

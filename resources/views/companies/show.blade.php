@@ -41,7 +41,7 @@
                 <!-- Filtros -->
                 <div class="row px-4 gx-sm-3 gx-0 collapse" id="filtros">
 
-                    <form action="" method="GET"> <!-- TODO accion -->
+                    <form action="" method="GET">
 
                         <!-- Row -->
                         <div class="row mb-0 mb-sm-3 gx-0">
@@ -49,16 +49,18 @@
                             <!-- Buscador -->
                             <div class="col-12 mb-3 col-sm-4 mb-sm-0 px-sm-1">
                                 <div class="form-outline">
-                                    <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value=""/> <!-- TODO value -->
+                                    <input type="text" class="form-control" name="search" placeholder="Nombre, DNI..." value="{{ $old_search }}"/>
                                 </div>
                             </div>
 
                             <!-- Curso -->
                             <div class="col-12 mb-3 col-sm-4 mb-sm-0 px-sm-1">
                                 <div class="form-group">
-                                    <select name="curso" class="form-select">
-                                        <option value="" selected>Curso</option>
-                                        <!-- TODO foreach -->
+                                    <select name="course" class="form-select">
+                                        <option value="">Curso</option>
+                                        @foreach($courses as $course)
+                                            <option value="{{$course->id}}" @selected($course->id == $old_course)>{{$course->toText()}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -68,7 +70,7 @@
 
                                 <!-- Titulados -->
                                 <div class="form-check d-flex justify-content-center align-items-center">
-                                    <input class="form-check-input" type="checkbox" value="" name="titulados">
+                                    <input class="form-check-input" type="checkbox" value="1" id="titulados" name="graduated" @checked($old_graduated)>
                                     <label class="form-check-label px-2 mt-1" for="titulados">
                                         Titulados
                                     </label>
@@ -76,7 +78,7 @@
 
                                 <!-- No Activos -->
                                 <div class="form-check d-flex justify-content-center align-items-center">
-                                    <input class="form-check-input" type="checkbox" value="" name="no-activos">
+                                    <input class="form-check-input" type="checkbox" value="1" id="no-activos" name="notactive" @checked($old_notactive)>
                                     <label class="form-check-label px-2 mt-1" for="no-activos">
                                         No Activos
                                     </label>
