@@ -27,6 +27,28 @@
                 <!-- Row -->
                 <div class="row mb-0 mb-md-4">
 
+                    <!-- Fecha Inicio -->
+                    <div class="col-12 col-md-4 mb-3 mb-md-0">
+                        <div class="form-outline">
+                            <label for="fecha-inicio" class="h5">Fecha Inicio</label>
+                            <input type="date" class="form-control" name="fecha-inicio">
+                        </div>
+                    </div>
+
+                    <!-- Fecha Inicio -->
+                    <div class="col-12 col-md-4 mb-3 mb-md-0">
+                        <div class="form-outline">
+                            <label for="fecha-fin" class="h5">Fecha Fin</label>
+                            <input type="date" class="form-control" name="fecha-fin">
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End Row -->
+
+                <!-- Row -->
+                <div class="row mb-0 mb-md-4">
+
                     <!-- Actividades desarrolladas -->
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Actividades desarrolladas</h5>

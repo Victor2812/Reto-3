@@ -27,6 +27,20 @@
                 <!-- Row -->
                 <div class="row mb-0 mb-md-4">
 
+                    <!-- Fecha -->
+                    <div class="col-12 col-md-4 mb-3 mb-md-0">
+                        <div class="form-outline">
+                            <label for="fecha" class="h5">Fecha Inicio</label>
+                            <input type="date" class="form-control" name="fecha">
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End Row -->
+
+                <!-- Row -->
+                <div class="row mb-0 mb-md-4">
+
                     <!-- Asistentes -->
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <div class="form-group">
