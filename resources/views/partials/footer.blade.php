@@ -1,5 +1,5 @@
 <!-- Footer Nav -->
-<nav class="navbar navbar-expand-sm flex-column flex-md-row">
+<nav class="navbar navbar-expand-sm flex-column flex-md-row footer-guapo">
     <a class="nav-item px-3 text-decoration-none" href="https://www.deusto.es/es/inicio/contacto">
         Contacto
     </a>

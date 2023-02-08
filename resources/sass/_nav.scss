@@ -1,17 +1,12 @@
-// SUBRAYADO HOVER
+@import "mixins";
 
+// subrayado hover en los nav-items
 .nav-item::after {
-    content: "";
-    height: 2px;
-    width: 0;
-    background-color: white;
-    margin: auto;
-    display: block;
+    @include after-guapo(white, 2px);
 }
 
 .nav-item:hover::after {
-    width: 100%;
-    transition: width 0.3s linear;
+    @include after-hover-guapo;
 }
 
 // buscador
@@ -30,3 +25,6 @@
     height: 1rem;
     margin: auto 1rem;
 }
+
+
+

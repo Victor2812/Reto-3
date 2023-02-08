@@ -10,7 +10,7 @@
 <div class="row">
 
     <!-- Alumnos -->
-    <a href="{{ route('students.index') }}" class="col-xl-3 col-md-6 mb-4">
+    <a href="{{ route('students.index') }}" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
         <div class="card text-center text-primary shadow h-100 py-2">
             <div class="card-body">
                 <h2>
@@ -26,7 +26,7 @@
     </a>
 
     <!-- Tutores -->
-    <a href="{{ route('tutors.index')}}" class="col-xl-3 col-md-6 mb-4">
+    <a href="{{ route('tutors.index')}}" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
         <div class="card text-center text-primary shadow h-100 py-2">
             <div class="card-body">
                 <h2>
@@ -42,7 +42,7 @@
     </a>
 
     <!-- Coordinadores -->
-    <a href="{{ route('coordinators.index') }}" class="col-xl-3 col-md-6 mb-4">
+    <a href="{{ route('coordinators.index') }}" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
         <div class="card text-center text-primary shadow h-100 py-2">
             <div class="card-body">
                 <h2>
@@ -58,7 +58,7 @@
     </a>
 
     <!-- Empresas -->
-    <a href="{{ route('companies.index') }}" class="col-xl-3 col-md-6 mb-4">
+    <a href="{{ route('companies.index') }}" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
         <div class="card text-center text-primary shadow h-100 py-2">
             <div class="card-body">
                 <h2>
@@ -80,7 +80,7 @@
 <div class="row">
 
     <!-- Grados -->
-    <a href="{{ route('grades.index') }}" class="col-xl-3 col-md-6 mb-4">
+    <a href="{{ route('grades.index') }}" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
         <div class="card text-center text-primary shadow h-100 py-2">
             <div class="card-body">
                 <h2>
@@ -96,7 +96,7 @@
     </a>
 
     <!-- Fichas Duales -->
-    <a href="{{ route('dualSheets.index') }}" class="col-xl-3 col-md-6 mb-4">
+    <a href="{{ route('dualSheets.index') }}" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
         <div class="card text-center text-primary shadow h-100 py-2">
             <div class="card-body">
                 <h2>
@@ -112,7 +112,7 @@
     </a>
 
     <!-- Estadísticas -->
-    <a href="{{ route('charts')}}" class="col-xl-3 col-md-6 mb-4">
+    <a href="{{ route('charts')}}" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
         <div class="card text-center text-primary shadow h-100 py-2">
             <div class="card-body">
                 <h2>
@@ -148,5 +148,6 @@
             </div>
         </div>
     </div>
+
 
 </div>

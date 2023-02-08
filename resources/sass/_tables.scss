@@ -1,3 +1,7 @@
+
+@use "sass:map";
+@import "variables";
+
 .custom-scrollbar {
     position: relative;
     height: 200px;
@@ -11,7 +15,7 @@
 .tablita-guapa {
     @extend .table, .table-bordered;
 
-    @media (max-width: 576px) {
+    @media (max-width: map.get($breakpoints, “pequeño”)) {
         th,
         td {
             &:not(:nth-of-type(2)) {
