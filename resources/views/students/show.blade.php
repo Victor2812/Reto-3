@@ -42,26 +42,26 @@
             <!-- Data -->
             <div class="row px-4 gx-0 my-3">
                 <ul class="list-group list-group-light">
-                    <li class="list-group-item"><strong>TUTOR </strong>{{ $sheet->academicTutor()->first()->fullName() }}</li>
-                    <li class="list-group-item"><strong>EMPRESA </strong>{{ $sheet->company()->first()->name }}</li>
+                    <li class="list-group-item"><strong>TUTOR </strong>{{ $sheet->academicTutor->fullName() }}</li>
+                    <li class="list-group-item"><strong>EMPRESA </strong>{{ $sheet->company->name }}</li>
                     <li class="list-group-item"><strong>TUTOR EMPRESA </strong> {{ $sheet->academicTutor->fullName()}}</li>
-                    <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear()->first()->toText() }}</li>
-                    <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course()->first()->name }}</li>
-                </ul>         
+                    <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear->toText() }}</li>
+                    <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course->name }}</li>
+                </ul>
             </div>
             <!-- End Data -->
 
             <!-- Botones -->
-            <div class="row px-4  my-3">
-                
-                <div class="col-12 col-sm-3">
+            <div class="row px-4 my-3 gx-0 gx-sm-3">
+
+                <div class="col-12 col-sm-3 mb-3 mb-sm-0">
                     <a href="{{ route('diaryEntries.show', [$student])}}" class="btn-guapo btn-outline-primary">
                         Diario de Aprendizaje
                     </a>
                 </div>
 
-                <div class="col-12 col-sm-3">
-                    <a href="#" class="btn-guapo btn-outline-primary">
+                <div class="col-12 col-sm-3 mb-3 mb-sm-0">
+                    <a href="{{ route('followUpEntries.show', [$student])}}" class="btn-guapo btn-outline-primary">
                         Diario Segumiento
                     </a>
                 </div>

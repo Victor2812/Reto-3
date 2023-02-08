@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Course;
 use App\Models\DualSheet;
+use App\Models\Person;
+use App\Models\Grade;
+use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\Person;
 
-class DiaryController extends Controller
+class FollowUpController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($student)
+    public function index()
     {
-
+        //
     }
 
     /**
@@ -26,8 +30,7 @@ class DiaryController extends Controller
      */
     public function create()
     {
-        return view('diaries.create');
-
+        return view('followUps.create');
     }
 
     /**
@@ -39,7 +42,6 @@ class DiaryController extends Controller
     public function store(Request $request)
     {
         //
-
     }
 
     /**
@@ -52,7 +54,7 @@ class DiaryController extends Controller
     {
         $alumno = Person::where('id', '=', $student)->get()->first();
 
-        return view('diaries.show', [
+        return view('followUps.show', [
             'student' => $alumno,
 
         ]);
@@ -68,7 +70,7 @@ class DiaryController extends Controller
     public function edit(Person $student)
     {
         //
-        return view("diaries.edit", [
+        return view("followUps.edit", [
             'student' => $student
         ]);
     }

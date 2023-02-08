@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Diario | $student->name $student->surname")
+@section('title', "Seguimiento | $student->name $student->surname")
 
 @section('main')
 
@@ -35,7 +35,7 @@
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
                 <h1 class="h3 mb-0 px-1 px-sm-5">Entradas Seguimiento</h1>
-                <a href="{{ route('diaries.create') }}" class="px-1 px-sm-5"><button class="btn btn-primary">Nueva</button></a>
+                <a href="{{ route('followUps.create') }}" class="px-1 px-sm-5"><button class="btn btn-primary">Nueva</button></a>
             </div>
             <!-- End Titulo -->
 
@@ -56,25 +56,24 @@
 
                             <!-- Ver -->
                             <td>
-                                <a class="btn" href="{{ route('diaries.show', [$student]) }}">
+                                <a class="btn" href="{{ route('followUps.show', [$student]) }}">
                                     <i class="bi bi-eye"></i>
                                 </a>
                             </td>
 
                             <!-- Editar -->
                             <td>
-                                <a class="btn" href="{{ route('diaries.edit', [$student]) }}">
-                                    <i class="bi bi-eye"></i>
+                                <a class="btn" href="{{ route('followUps.edit', [$student]) }}">
+                                    <i class="bi bi-pencil"></i>
                                 </a>
                             </td>
 
                             <!-- Eliminar -->
                             <td>
                                 <a class="btn" href="#">
-                                    <i class="bi bi-eye"></i>
+                                    <i class="bi bi-trash3"></i>
                                 </a>
                             </td>
-
                         </tr>
                     </tbody>
                 </table>

@@ -143,7 +143,7 @@
     <!-- Chart -->
     <div class="col-xl-4 col-md-6 mb-4">
         <div class="card shadow h-100 py-2">
-            <div class="card-body d-flex align-items-center">
+            <div class="card-body d-flex align-items-center justify-content-center">
                 <piechart-component></piechart-component>
             </div>
         </div>

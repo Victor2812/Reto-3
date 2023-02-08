@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Editar Entrada Diario | ")
+@section('title', "Nueva Entrada Diario | ")
 
 @section('main')
 
@@ -15,7 +15,7 @@
 
         <!-- Titulo -->
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <h1 class="h3 mb-0">Editar Entrada Diario</h1>
+            <h1 class="h3 mb-0">Nueva Entrada Diario</h1>
         </div>
         <!-- End Titulo -->
 
@@ -56,7 +56,7 @@
 
                 <!-- Submit -->
                 <div class="col-12 mb-4 col-sm-4 mb-sm-0">
-                    <button type="submit" class="btn btn-primary">Actualizar Entrada</button>
+                    <button type="submit" class="btn btn-primary">Añadir Entrada</button>
                 </div>
 
         </div>
