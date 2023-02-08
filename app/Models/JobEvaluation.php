@@ -35,6 +35,22 @@ class JobEvaluation extends Model
         'capacity_for_learning_and_assimilation_observation',
     ];
 
+    public function getAverage()
+    {
+        return (
+            $this->attitude_and_disposition +
+            $this->timeliness +
+            $this->responsability +
+            $this->problem_solving_capacity +
+            $this->quality_at_work +
+            $this->team_involvement_and_integration +
+            $this->decision_making +
+            $this->oral_and_written_communication_capacity +
+            $this->planning_and_organization_capacity +
+            $this->capacity_for_learning_and_assimilation
+        ) / 10;
+    }
+
     public function dualSheet()
     {
         return $this->belongsTo(DualSheet::class, 'sheet_id');

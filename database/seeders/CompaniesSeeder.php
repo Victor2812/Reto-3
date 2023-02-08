@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\Company;
 use App\Models\Course;
+use App\Models\DiaryEvaluation;
 use App\Models\DualSheet;
+use App\Models\JobEvaluation;
 use App\Models\Person;
 use App\Models\SchoolYear;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -41,7 +43,7 @@ class CompaniesSeeder extends Seeder
                 ? $trueFalse[array_rand($trueFalse)]
                 : false;
 
-            DualSheet::factory()->create([
+            $sheet = DualSheet::factory()->create([
                 'tutor_id' => $tutor['id'],
                 'student_id' => $student['id'],
                 'company_id' => $company->id,
@@ -49,6 +51,14 @@ class CompaniesSeeder extends Seeder
                 'school_year_id' => $schoolYear['id'],
                 'active' => $active,
                 'graduated' => $graduated,
+            ]);
+
+            DiaryEvaluation::factory()->create([
+                'sheet_id' => $sheet->id,
+            ]);
+
+            JobEvaluation::factory()->create([
+                'sheet_id' => $sheet->id,
             ]);
         }
     }

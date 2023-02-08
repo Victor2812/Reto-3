@@ -2,18 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DualSheet;
+use App\Models\Person;
 use Illuminate\Http\Request;
 
-class JobEvaluationController extends Controller
+class FollowUpsController extends Controller
 {
+    const ASSISTANTS = [
+        'FA',
+        'FE',
+        'AL',
+    ];
+
+    const TYPES = [
+        1 => 'Presencial',
+        2 => 'Telefónica',
+        3 => 'Correo electrónico',
+    ];
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(DualSheet $dualSheet)
     {
-        //
+        $student = $dualSheet->student;
+        $followUps = $dualSheet->followUps()->latest();
+
+        return view('followUps.index', [
+            'sheet' => $dualSheet,
+            'student' => $student,
+            'followUps' => $followUps->paginate(13),
+        ]);
     }
 
     /**
@@ -23,7 +44,10 @@ class JobEvaluationController extends Controller
      */
     public function create()
     {
-        //
+        return view('followUps.create', [
+            'types' => self::TYPES,
+            'assistants' => self::ASSISTANTS,
+        ]);
     }
 
     /**
@@ -43,9 +67,15 @@ class JobEvaluationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($student)
     {
-        //
+        $alumno = Person::where('id', '=', $student)->get()->first();
+
+        return view('followUps.show', [
+            'student' => $alumno,
+
+        ]);
+
     }
 
     /**
@@ -54,9 +84,12 @@ class JobEvaluationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $student)
     {
         //
+        return view("followUps.edit", [
+            'student' => $student
+        ]);
     }
 
     /**

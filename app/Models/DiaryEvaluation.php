@@ -29,6 +29,19 @@ class DiaryEvaluation extends Model
         'reflection_on_learning_observation',
     ];
 
+    public function getAverage()
+    {
+        return (
+            $this->effort_and_regularity +
+            $this->order_structure_presentation +
+            $this->content +
+            $this->terminology_and_notation +
+            $this->quality_at_work +
+            $this->relates_concepts +
+            $this->reflection_on_learning
+        ) / 7;
+    }
+
     public function dualSheet()
     {
         return $this->belongsTo(DualSheet::class, 'sheet_id');

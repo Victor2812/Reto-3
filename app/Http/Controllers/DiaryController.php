@@ -14,16 +14,16 @@ class DiaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($student)
+    public function index(DualSheet $dualSheet)
     {
-        //$sheets = $student->studentSheets()->latest()->get();
-        $alumno = Person::where('id', '=', $student)->get()->first();
+        $student = $dualSheet->student;
+        $entries = $dualSheet->diaryEntries()->latest();
 
         return view('diaries.index', [
-            'student' => $alumno,
-
+            'sheet' => $dualSheet,
+            'student' => $student,
+            'entries' => $entries->paginate(13),
         ]);
-
     }
 
     /**
@@ -33,7 +33,7 @@ class DiaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('diaries.create');
 
     }
 
@@ -72,10 +72,12 @@ class DiaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $student)
     {
         //
-
+        return view("diaries.edit", [
+            'student' => $student
+        ]);
     }
 
     /**
