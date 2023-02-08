@@ -21,8 +21,9 @@
 
         <!-- Formulario -->
         <div class="row px-4  my-3">
-            <form action="#" class="requires-validation" method="POST">
+            <form action="{{ route('diaryEvaluations.update', [$evaluation->id]) }}" class="requires-validation" method="POST">
                 @csrf
+                @method('PUT')
                 <!-- Row -->
                 <div class="row mb-0 mb-md-4">
 
@@ -30,12 +31,21 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Esfuerzo y regularidad</h5>
                         <div class="form-group mb-2">
-                            <select class="form-select" name="v-esfuerzo">
-                                <option selected>Valoración</option>
+                            @error('effort_and_regularity')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <select class="form-select" name="effort_and_regularity">
+                                <option value="">Valoración</option>
+                                @foreach ($punctuation as $name => $value)
+                                    <option value="{{ $value }}" @selected($evaluation->effort_and_regularity == $value)>{{ $name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Observaciones"></textarea>
+                            @error('effort_and_regularity_observation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <textarea class="form-control" rows="3" placeholder="Observaciones" name="effort_and_regularity_observation">{{ $evaluation->effort_and_regularity_observation }}</textarea>
                         </div>
                     </div>
 
@@ -43,12 +53,21 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Orden, estructura y presentación</h5>
                         <div class="form-group mb-2">
-                            <select class="form-select" name="v-orden">
-                                <option selected>Valoración</option>
+                            @error('order_structure_presentation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <select class="form-select" name="order_structure_presentation">
+                                <option value="">Valoración</option>
+                                @foreach ($punctuation as $name => $value)
+                                    <option value="{{ $value }}" @selected($evaluation->order_structure_presentation == $value)>{{ $name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Observaciones"></textarea>
+                            @error('order_structure_presentation_observation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <textarea class="form-control" rows="3" placeholder="Observaciones" name="order_structure_presentation_observation">{{ $evaluation->order_structure_presentation_observation }}</textarea>
                         </div>
                     </div>
 
@@ -56,12 +75,21 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Contenido</h5>
                         <div class="form-group mb-2">
-                            <select class="form-select" name="v-contenido">
-                                <option selected>Valoración</option>
+                            @error('content')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <select class="form-select" name="content">
+                                <option value="">Valoración</option>
+                                @foreach ($punctuation as $name => $value)
+                                    <option value="{{ $value }}" @selected($evaluation->content == $value)>{{ $name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Observaciones"></textarea>
+                            @error('content_observation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <textarea class="form-control" rows="3" placeholder="Observaciones" name="content_observation">{{ $evaluation->content_observation }}</textarea>
                         </div>
                     </div>
 
@@ -75,12 +103,21 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Terminología y Rotación</h5>
                         <div class="form-group mb-2">
-                            <select class="form-select" name="v-terminologia">
-                                <option selected>Valoración</option>
+                            @error('terminology_and_notation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <select class="form-select" name="terminology_and_notation">
+                                <option value="">Valoración</option>
+                                @foreach ($punctuation as $name => $value)
+                                    <option value="{{ $value }}" @selected($evaluation->terminology_and_notation == $value)>{{ $name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Observaciones"></textarea>
+                            @error('terminology_and_notation_observation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <textarea class="form-control" rows="3" placeholder="Observaciones" name="terminology_and_notation_observation">{{ $evaluation->terminology_and_notation_observation }}</textarea>
                         </div>
                     </div>
 
@@ -88,12 +125,21 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Calidad en el trabajo</h5>
                         <div class="form-group mb-2">
-                            <select class="form-select" name="v-calidad">
-                                <option selected>Valoración</option>
+                            @error('quality_at_work')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <select class="form-select" name="quality_at_work">
+                                <option value="">Valoración</option>
+                                @foreach ($punctuation as $name => $value)
+                                    <option value="{{ $value }}" @selected($evaluation->quality_at_work == $value)>{{ $name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Observaciones"></textarea>
+                            @error('quality_at_work_observation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <textarea class="form-control" rows="3" placeholder="Observaciones" name="quality_at_work_observation">{{ $evaluation->quality_at_work_observation }}</textarea>
                         </div>
                     </div>
 
@@ -101,12 +147,21 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Relaciona conceptos</h5>
                         <div class="form-group mb-2">
-                            <select class="form-select" name="v-conceptos">
-                                <option selected>Valoración</option>
+                            @error('relates_concepts')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <select class="form-select" name="relates_concepts">
+                                <option value="">Valoración</option>
+                                @foreach ($punctuation as $name => $value)
+                                    <option value="{{ $value }}" @selected($evaluation->relates_concepts == $value)>{{ $name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Observaciones"></textarea>
+                            @error('relates_concepts_observation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <textarea class="form-control" rows="3" placeholder="Observaciones" name="relates_concepts_observation">{{ $evaluation->relates_concepts_observation }}</textarea>
                         </div>
                     </div>
                     
@@ -120,12 +175,21 @@
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Reflexión sobre el aprendizaje</h5>
                         <div class="form-group mb-2">
-                            <select class="form-select" name="v-reflexion">
-                                <option selected>Valoración</option>
+                            @error('reflection_on_learning')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <select class="form-select" name="reflection_on_learning">
+                                <option value="">Valoración</option>
+                                @foreach ($punctuation as $name => $value)
+                                    <option value="{{ $value }}" @selected($evaluation->reflection_on_learning == $value)>{{ $name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Observaciones"></textarea>
+                            @error('reflection_on_learning_observation')
+                                <strong>{{ $message }}</strong>    
+                            @enderror
+                            <textarea class="form-control" rows="3" placeholder="Observaciones" name="reflection_on_learning_observation">{{ $evaluation->reflection_on_learning_observation }}</textarea>
                         </div>
                     </div>
                     

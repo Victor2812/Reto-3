@@ -36,7 +36,7 @@
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
                 <h1 class="h3 mb-0">Evaluación Diario</h1>
-                <a href="{{ route('diaryEvaluations.edit', [$student]) }}"><button class="btn btn-primary">Editar</button></a>
+                <a href="{{ route('diaryEvaluations.edit', [$evaluation->id]) }}"><button class="btn btn-primary">Editar</button></a>
             </div>
             <!-- End Titulo -->
 
@@ -52,7 +52,41 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            <tr>
+                                <td>Esfuerzo y regularidad</td>
+                                <td>{{ $evaluation->effort_and_regularity }}</td>
+                                <td>{{ $evaluation->effort_and_regularity_observation }}</td>
+                            </tr>
+                            <tr>
+                                <td>Orden, estructura y presentación</td>
+                                <td>{{ $evaluation->order_structure_presentation }}</td>
+                                <td>{{ $evaluation->order_structure_presentation_observation }}</td>
+                            </tr>
+                            <tr>
+                                <td>Contenido</td>
+                                <td>{{ $evaluation->content }}</td>
+                                <td>{{ $evaluation->content_observation }}</td>
+                            </tr>
+                            <tr>
+                                <td>Terminología y notación</td>
+                                <td>{{ $evaluation->terminology_and_notation }}</td>
+                                <td>{{ $evaluation->terminology_and_notation_observation }}</td>
+                            </tr>
+                            <tr>
+                                <td>Calidad en el trabajo</td>
+                                <td>{{ $evaluation->quality_at_work }}</td>
+                                <td>{{ $evaluation->quality_at_work_observation }}</td>
+                            </tr>
+                            <tr>
+                                <td>Relaciona conceptos</td>
+                                <td>{{ $evaluation->relates_concepts }}</td>
+                                <td>{{ $evaluation->relates_concepts_observation }}</td>
+                            </tr>
+                            <tr>
+                                <td>Reflexión sobre aprendizaje</td>
+                                <td>{{ $evaluation->reflection_on_learning }}</td>
+                                <td>{{ $evaluation->reflection_on_learning_observation }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>  
@@ -61,7 +95,7 @@
             
             <!-- Nota -->
             <div class="row px-4 my-3">
-                <h5 class="h5 mb-0"><strong>Nota </strong> 0</h5>
+                <h5 class="h5 mb-0"><strong>Nota </strong> {{ $average }}</h5>
             </div>
             <!-- End Nota -->
 
