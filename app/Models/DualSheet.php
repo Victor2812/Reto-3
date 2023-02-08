@@ -22,6 +22,14 @@ class DualSheet extends Model
 
     protected $table = 'dual_sheets';
 
+    public function getAverage()
+    {
+        return (
+            $this->jobEvaluation->getAverage() +
+            $this->diaryEvaluation->getAverage()
+        ) / 2;
+    }
+
     public function student()
     {
         return $this->belongsTo(Person::class, 'student_id');

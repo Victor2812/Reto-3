@@ -47,6 +47,13 @@ class SchoolYear extends Model
         return "$s-$e";
     }
 
+    public function toSmallText()
+    {
+        $s = substr($this->start, 2, 2);
+        $e = substr($this->end, 2, 2);
+        return "$s-$e";
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Scopes
