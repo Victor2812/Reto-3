@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreign('sheet_id')->references('id')->on('dual_sheets')->onDelete('cascade');
             
             $table->date('meeting_date');
-            $table->json('assistants');
+            $table->integer('assistants');
             $table->integer('type');
             $table->text('objetives');
             $table->text('commented_issues');

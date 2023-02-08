@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\DualSheet;
+use App\Models\FollowUp;
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class FollowUpsController extends Controller
 {
     const ASSISTANTS = [
-        'FA',
-        'FE',
-        'AL',
+        1 => 'FA + AL + FE',
+        2 => 'FA + FE',
+        3 => 'FA + AL',
     ];
 
     const TYPES = [
@@ -42,9 +44,10 @@ class FollowUpsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(DualSheet $dualSheet)
     {
         return view('followUps.create', [
+            'sheet' => $dualSheet,
             'types' => self::TYPES,
             'assistants' => self::ASSISTANTS,
         ]);
@@ -56,9 +59,29 @@ class FollowUpsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, DualSheet $dualSheet)
     {
-        //
+        $request->validate([
+            'date' => 'required|date',
+            'assistants' => 'required|numeric|min:1|max:3',
+            'type' => 'required|numeric|min:1|max:3',
+            'objetives' => 'required|string',
+            'commented_issues' => 'required|string',
+        ]);
+
+        $followUp = new FollowUp([
+            'sheet_id' => $dualSheet->id,
+            'meeting_date' => $request->date,
+            'assistants' => $request->assistants,
+            'type' => $request->type,
+            'objetives' => $request->objetives,
+            'commented_issues' => $request->commented_issues,
+        ]);
+        $followUp->save();
+
+        return Redirect::route('dualSheets.followUps.index', [
+            $dualSheet->id
+        ]);
     }
 
     /**
@@ -67,15 +90,17 @@ class FollowUpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($student)
+    public function show(DualSheet $dualSheet, FollowUp $followUp)
     {
-        $alumno = Person::where('id', '=', $student)->get()->first();
+        $student = $dualSheet->student;
 
         return view('followUps.show', [
-            'student' => $alumno,
-
+            'sheet' => $dualSheet,
+            'student' => $student,
+            'followUp' => $followUp,
+            'types' => self::TYPES,
+            'assistants' => self::ASSISTANTS
         ]);
-
     }
 
     /**
@@ -84,11 +109,15 @@ class FollowUpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Person $student)
+    public function edit(DualSheet $dualSheet, FollowUp $followUp)
     {
-        //
-        return view("followUps.edit", [
-            'student' => $student
+        $student = $dualSheet->student;
+        return view('followUps.edit', [
+            'sheet' => $dualSheet,
+            'student' => $student,
+            'followUp' => $followUp,
+            'types' => self::TYPES,
+            'assistants' => self::ASSISTANTS
         ]);
     }
 
@@ -99,9 +128,28 @@ class FollowUpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, DualSheet $dualSheet, FollowUp $followUp)
     {
-        //
+        $request->validate([
+            'date' => 'required|date',
+            'assistants' => 'required|numeric|min:1|max:3',
+            'type' => 'required|numeric|min:1|max:3',
+            'objetives' => 'required|string',
+            'commented_issues' => 'required|string',
+        ]);
+
+        $followUp->meeting_date = $request->date;
+        $followUp->assistants = $request->assistants;
+        $followUp->type = $request->type;
+        $followUp->objetives = $request->objetives;
+        $followUp->commented_issues = $request->commented_issues;
+
+        $followUp->save();
+
+        return Redirect::route('dualSheets.followUps.show', [
+            $dualSheet->id,
+            $followUp->id,
+        ]);
     }
 
     /**
@@ -110,8 +158,11 @@ class FollowUpsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DualSheet $dualSheet, FollowUp $followUp)
     {
-        //
+        FollowUp::destroy($followUp->id);
+        return Redirect::route('dualSheets.followUps.index', [
+            $dualSheet->id,
+        ]);
     }
 }

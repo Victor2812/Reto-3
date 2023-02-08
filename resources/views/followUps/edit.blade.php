@@ -21,8 +21,9 @@
 
         <!-- Formulario -->
         <div class="row px-4  my-3">
-            <form action="#" class="requires-validation" method="POST">
+            <form action="{{ route('dualSheets.followUps.update', [$sheet->id, $followUp->id]) }}" class="requires-validation" method="POST">
                 @csrf
+                @method('PUT')
 
                 <!-- Row -->
                 <div class="row mb-0 mb-md-4">
@@ -30,8 +31,11 @@
                     <!-- Fecha -->
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <div class="form-outline">
-                            <label for="fecha" class="h5">Fecha Inicio</label>
-                            <input type="date" class="form-control" name="fecha">
+                            <label for="fecha" class="h5">Fecha de la reunión</label>
+                            @error('date')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <input type="date" class="form-control" name="date" value="{{$followUp->meeting_date}}">
                         </div>
                     </div>
 
@@ -44,8 +48,14 @@
                     <!-- Asistentes -->
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <div class="form-group">
-                            <select class="form-select" name="asistentes">
-                                <option selected>Asistentes</option>
+                            @error('assistants')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <select class="form-select" name="assistants">
+                                <option value="">Asistentes</option>
+                                @foreach($assistants as $id => $value)
+                                    <option value="{{$id}}" @selected($id == $followUp->assistants)>{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -53,8 +63,14 @@
                     <!-- Tipo de Tutoria -->
                     <div class="col-12 col-md-4 mb-3 mb-md-0">
                         <div class="form-group">
-                            <select class="form-select" name="tipo-tutoria">
-                                <option selected>Tipo de Tutoría</option>
+                            @error('type')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <select class="form-select" name="type">
+                                <option value="">Tipo de Tutoría</option>
+                                @foreach ($types as $id => $value)
+                                    <option value="{{ $id }}" @selected($id == $followUp->type)>{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -69,7 +85,10 @@
                     <div class="col-12 col-md-6 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Objetivos</h5>
                         <div class="form-group">
-                            <textarea class="form-control" rows="6" placeholder="Escribe aquí"></textarea>
+                            @error('objetives')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <textarea class="form-control" rows="6" placeholder="Escribe aquí" name="objetives">{{$followUp->objetives}}</textarea>
                         </div>
                     </div>
 
@@ -77,7 +96,10 @@
                     <div class="col-12 col-md-6 mb-3 mb-md-0">
                         <h5 class="h5 mb-2">Aspectos comentados</h5>
                         <div class="form-group">
-                            <textarea class="form-control" rows="6" placeholder="Escribe aquí"></textarea>
+                            @error('commented_issues')
+                                <strong>{{ $message }}</strong>
+                            @enderror
+                            <textarea class="form-control" rows="6" placeholder="Escribe aquí" name="commented_issues">{{$followUp->commented_issues}}</textarea>
                         </div>
                     </div>
 

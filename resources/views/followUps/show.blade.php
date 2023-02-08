@@ -37,7 +37,7 @@
         <!-- Titulo -->
         <div class="d-flex align-items-center justify-content-between mb-3">
             <h1 class="h3 mb-0 px-1 px-sm-4">Seguimiento</h1>
-            <a href="{{ route('followUps.edit', [$student]) }}" class="px-1 px-sm-4"><button class="btn btn-primary">Editar</button></a>
+            <a href="{{ route('dualSheets.followUps.edit', [$sheet->id, $followUp->id]) }}" class="px-1 px-sm-4"><button class="btn btn-primary">Editar</button></a>
         </div>
         <!-- End Titulo -->
 
@@ -48,46 +48,22 @@
                 <!-- Data -->
                 <div class="mb-4">
                     <ul class="list-group list-group-light">
-                        <li class="list-group-item"><strong>FECHA </strong>fecha</li>
-                        <li class="list-group-item"><strong>ASISTENTES </strong>asistentes</li>
-                        <li class="list-group-item"><strong>TIPO DE TUTORÍA </strong>tipo de tutoria</li>
+                        <li class="list-group-item"><strong>FECHA </strong>{{ $followUp->meeting_date}}</li>
+                        <li class="list-group-item"><strong>ASISTENTES </strong>{{ $assistants[$followUp->assistants] }}</li>
+                        <li class="list-group-item"><strong>TIPO DE TUTORÍA </strong>{{ $types[$followUp->type] }}</li>
                     </ul>
                 </div>
 
                 <!-- Objetivos -->
                 <div class="mb-3">
                     <h4 class="h4 mb-2">Objetivos</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Vivamus sodales lorem nec risus pharetra ullamcorper.
-                        Nunc vulputate ut sapien ut gravida. Sed lacinia urna ac efficitur pretium.
-                        Donec quis rhoncus tortor.
-                    </p>
+                    <p>{{ $followUp->objetives }}</p>
                 </div>
 
                 <!-- ASPECTOS COMENTADOS/DECISIONES TOMADAS/FUTURAS ACCIONES -->
                 <div class="mb-3">
                     <h4 class="h4 mb-2">Aspectos Comentados / Decisiones Tomadas / Futuras Acciones</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Vivamus sodales lorem nec risus pharetra ullamcorper.
-                        Nunc vulputate ut sapien ut gravida. Sed lacinia urna ac efficitur pretium.
-                        Donec quis rhoncus tortor. Phasellus eget lectus quis ipsum dapibus euismod.
-                        Pellentesque aliquam, sem in malesuada tincidunt,
-                        mauris lectus consequat turpis, eu lobortis sapien tortor non lectus.
-                        Nam mollis ornare justo. Curabitur ac hendrerit velit.
-                    </p>
-                </div>
-
-                <!-- Identificacion de problemas -->
-                <div class="mb-3">
-                    <h4 class="h4 mb-2">Identificación de problemas o dificultades,acciones de mejora a poner en marcha</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Vivamus sodales lorem nec risus pharetra ullamcorper.
-                        Nunc vulputate ut sapien ut gravida. Sed lacinia urna ac efficitur pretium.
-                        Donec quis rhoncus tortor. Phasellus eget lectus quis ipsum dapibus euismod.
-                        Pellentesque aliquam, sem in malesuada tincidunt,
-                        mauris lectus consequat turpis, eu lobortis sapien tortor non lectus.
-                        Nam mollis ornare justo. Curabitur ac hendrerit velit.
-                    </p>
+                    <p>{{ $followUp->commented_issues }}</p>
                 </div>
         </div>
 
