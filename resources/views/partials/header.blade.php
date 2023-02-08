@@ -4,6 +4,7 @@
 </a>
 
 <!-- Header Buscador -->
+<!--
 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
     <div class="input-group">
         <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar...">
@@ -14,8 +15,9 @@
         </div>
     </div>
 </form>
+-->
 
-<div class="d-flex flex-row align-items-center justify-content-center">
+<div class="d-flex flex-row align-items-center justify-content-center header-guapo">
     <!-- Header Usuario -->
     @if (Auth::user()->isCoordinator())
         <a href="{{ route('coordinators.show', [Auth::user()->person()->first()->id]) }}" class="mr-2 d-none d-lg-inline text-decoration-none small">
