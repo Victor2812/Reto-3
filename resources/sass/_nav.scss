@@ -1,0 +1,30 @@
+@import "mixins";
+
+// subrayado hover en los nav-items
+.nav-item::after {
+    @include after-guapo(white, 2px);
+}
+
+.nav-item:hover::after {
+    @include after-hover-guapo;
+}
+
+// buscador
+.navbar-search {
+    width: 25rem;
+    input {
+        font-size: 0.85rem;
+        height: auto;
+    }
+}
+
+//divider
+.divider {
+    width: 0;
+    border-right: 1px solid $primary;
+    height: 1rem;
+    margin: auto 1rem;
+}
+
+
+

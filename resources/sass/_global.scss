@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+    .content-wrapper {
+        background-color: $secondary;
+        width: 100%;
+        overflow-x: hidden;
+        .content {
+            flex: 1 0 auto;
+        }
+    }
+}
+
+body {
+    min-height: 100vh;
+}

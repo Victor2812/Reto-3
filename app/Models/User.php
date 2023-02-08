@@ -19,7 +19,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'person_id',
+        //'email',
         'password',
     ];
 
@@ -33,12 +34,27 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
+    /*
      * The attributes that should be cast.
      *
      * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+     */
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
+
+    public function isCoordinator()
+    {
+        return $this->person()->first()->role_id == config('roles.COORDINADOR');
+    }
+
+    public function isTutor()
+    {
+        return $this->person()->first()->role_id == config('roles.FACTILITADOR_ACADEMICO');
+    }
 }

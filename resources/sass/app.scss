@@ -1,0 +1,27 @@
+@use "sass:map";
+
+// Fonts
+@import url("https://fonts.bunny.net/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Bootstrap icons
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+// FontAwesome icons
+
+// Global
+@import "global";
+
+// Components
+@import "card";
+@import "nav";
+@import "tables";
+@import "grades";
+@import "buttons";
+@import "links";
+@import "animations";

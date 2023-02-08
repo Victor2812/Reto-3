@@ -1,0 +1,21 @@
+@import "variables";
+@import "mixins";
+
+//after-guapo($color, $altura)
+//after-hover-guapo
+
+.footer-guapo a::after {
+    @include after-guapo($primary, 1px);
+}
+
+.footer-guapo a:hover::after {
+    @include after-hover-guapo;
+}
+
+.header-guapo a::after {
+    @include after-guapo($primary, 1px);
+}
+
+.header-guapo a:hover::after {
+    @include after-hover-guapo;
+}
