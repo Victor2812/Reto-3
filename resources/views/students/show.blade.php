@@ -44,8 +44,12 @@
                 <div class="row px-4 gx-0 my-3">
                     <ul class="list-group list-group-light">
                         <li class="list-group-item"><strong>TUTOR </strong>{{ $sheet->academicTutor->fullName() }}</li>
+                        <li class="list-group-item"><strong>EMAIL TUTOR </strong>{{ $sheet->academicTutor->email}}</li>
+                        <li class="list-group-item"><strong>TELÉFONO TUTOR </strong>{{ $sheet->academicTutor->phone}}</li>
                         <li class="list-group-item"><strong>EMPRESA </strong>{{ $sheet->company->name }}</li>
-                        <li class="list-group-item"><strong>TUTOR EMPRESA </strong> {{ $sheet->academicTutor->fullName()}}</li>
+                        <li class="list-group-item"><strong>TUTOR EMPRESA </strong> {{ $sheet->company->person->fullName()}}</li>
+                        <li class="list-group-item"><strong>EMAIL TUTOR EMPRESA </strong>{{ $sheet->company->person->email}}</li>
+                        <li class="list-group-item"><strong>TELÉFONO TUTOR EMPRESA </strong>{{ $sheet->company->person->phone}}</li>
                         <li class="list-group-item"><strong>AÑO ACADÉMICO </strong>{{ $sheet->schoolYear->toText() }}</li>
                         <li class="list-group-item"><strong>CURSO </strong>{{ $sheet->course->name }}</li>
                     </ul>

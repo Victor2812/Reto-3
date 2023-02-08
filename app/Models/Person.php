@@ -146,7 +146,7 @@ class Person extends Model
     public function scopeIsStudentOfTutor(Builder $query, int $tutorId)
     {
         return $query->whereHas('studentSheets', function (Builder $query) use ($tutorId){
-            $query->where('tutor_id', '=', $tutorId);
+            $query->where('tutor_id', '=', $tutorId)->where('school_year_id', '=', SchoolYear::orderBy('id', 'desc')->first()->id);
         });
     }
 

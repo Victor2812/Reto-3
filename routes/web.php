@@ -37,6 +37,8 @@ Route::get('/dashboard', function(Request $request) {
 
     if ($person->role_id == config('roles.ALUMNO')) {
         return Redirect::route('students.show', [$person->id]);
+    } else if ($person->role_id == config('roles.FACTILITADOR_ACADEMICO')) {
+        return Redirect::route('tutors.show', [$person->id]);
     }
 
     return view('dashboard');

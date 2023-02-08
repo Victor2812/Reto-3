@@ -191,7 +191,7 @@ class TutorsController extends Controller
             $students->hasStudentDualSheetsGraduated();
         }
 
-        $students->hasStudentDualSheetsGraduated(!$notactive);
+        $students->hasStudentDualSheetsGraduated($notactive);
 
         return view('tutors.show', [
             'tutor' => $tutor,

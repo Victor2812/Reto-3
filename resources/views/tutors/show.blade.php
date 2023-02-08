@@ -18,12 +18,11 @@
             <div class="d-flex align-items-center justify-content-between p-4 bg-primary text-white">
                 <div>
                     <h1 class="h3 mb-0">{{ $tutor->fullName() }}</h1>
-                    <p class="text-uppercase">grado del que es tutor</p> <!-- meter grado -->
                     <p class="mb-0">{{ $tutor->email }}</p>
                     <p class="mb-0">{{ $tutor->phone }}</p>
                 </div>
                 <div>
-                    <a href="#"><button class="btn btn-secondary text-primary">Editar</button></a>
+                    <a href="{{ route('tutors.edit', [$tutor->id])}}"><button class="btn btn-secondary text-primary">Editar</button></a>
                 </div>
             </div>
         </div>
@@ -127,8 +126,10 @@
                             <th class="d-none d-sm-table-cell">Mail</th>
                             <th class="d-none d-sm-table-cell">Telefono</th>
                             <th>Ver</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
+                            @can('create', App\Models\Person::class)
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            @endcan
                         </tr>
                     </thead>
                     <tbody>
@@ -147,18 +148,22 @@
                                 </td>
     
                                 <!-- Editar -->
-                                <td> 
-                                    <a class="btn" href="{{ route('students.edit', [$student->id]) }}">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                </td>
+                                @can('update', $student)
+                                    <td> 
+                                        <a class="btn" href="{{ route('students.edit', [$student->id]) }}">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                    </td>
+                                @endcan
     
                                 <!-- Eliminar -->
-                                <td>
-                                    @include('partials.general.deletebutton', [
-                                        'route' => route('students.destroy', [$student->id])
-                                    ])
-                                </td>
+                                @can('delete', $student)
+                                    <td>
+                                        @include('partials.general.deletebutton', [
+                                            'route' => route('students.destroy', [$student->id])
+                                        ])
+                                    </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>

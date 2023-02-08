@@ -40,6 +40,13 @@ class PersonPolicy
     public function view(User $user, Person $person)
     {
         // Los coordinadores (función before) y sólo si la persona es el propio usuario
+
+        if ($person->role_id == config('roles.ALUMNO')) {
+            // Si el alumno es estudiante del tutor
+            $sheet = $person->studentSheets()->where('tutor_id', $user->person_id)->first();
+            return !!$sheet;
+        }
+
         return $user->person()->first()->id === $person->id;
     }
 
