@@ -64,11 +64,13 @@
                         </a>
                     </div>
 
-                    <div class="col-12 col-sm-3 mb-3 mb-sm-0">
-                        <a href="{{ route('dualSheets.followUps.index', [$sheet->id])}}" class="btn-guapo btn-outline-primary">
-                            Diario Segumiento
-                        </a>
-                    </div>
+                    @can('viewFollowUps', $sheet)
+                        <div class="col-12 col-sm-3 mb-3 mb-sm-0">
+                            <a href="{{ route('dualSheets.followUps.index', [$sheet->id])}}" class="btn-guapo btn-outline-primary">
+                                Diario Segumiento
+                            </a>
+                        </div>
+                    @endcan
 
                     <div class="col-12 col-sm-3">
                         <a href="{{ route('diaryEvaluations.show', [$sheet->diaryEvaluation->id])}}" class="btn-guapo btn-outline-primary">

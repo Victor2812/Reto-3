@@ -19,6 +19,8 @@ class DiaryController extends Controller
      */
     public function index(DualSheet $dualSheet)
     {
+        $this->authorize('view', $dualSheet);
+
         $student = $dualSheet->student;
         $entries = $dualSheet->diaryEntries()->latest();
 
@@ -36,6 +38,8 @@ class DiaryController extends Controller
      */
     public function create(DualSheet $dualSheet)
     {
+        $this->authorize('createDiaryEntries', $dualSheet);
+
         return view('diaries.create', [
             'sheet' => $dualSheet
         ]);
@@ -49,6 +53,8 @@ class DiaryController extends Controller
      */
     public function store(Request $request, DualSheet $dualSheet)
     {
+        $this->authorize('createDiaryEntries', $dualSheet);
+
         $request->validate([
             'start' => 'required|date',
             'end' => 'required|date',
@@ -85,6 +91,8 @@ class DiaryController extends Controller
      */
     public function show(Request $request, DualSheet $dualSheet, DiaryEntry $diaryEntry)
     {
+        $this->authorize('view', $diaryEntry);
+
         if ($comment = $request->comment) {
             $comment = new DiaryComment([
                 'diary_entry_id' => $diaryEntry->id,
@@ -118,6 +126,8 @@ class DiaryController extends Controller
      */
     public function edit(DualSheet $dualSheet, DiaryEntry $diaryEntry)
     {
+        $this->authorize('update', $diaryEntry);
+
         return view('diaries.edit', [
             'sheet' => $dualSheet,
             'entry' => $diaryEntry,
@@ -134,6 +144,8 @@ class DiaryController extends Controller
      */
     public function update(Request $request, DualSheet $dualSheet, DiaryEntry $diaryEntry)
     {
+        $this->authorize('update', $diaryEntry);
+
         $request->validate([
             'start' => 'required|date',
             'end' => 'required|date',
@@ -166,6 +178,8 @@ class DiaryController extends Controller
      */
     public function destroy(DualSheet $dualSheet, DiaryEntry $diaryEntry)
     {
+        $this->authorize('delete', $diaryEntry);
+
         DiaryEntry::destroy($diaryEntry->id);
         return Redirect::route('dualSheets.diaryEntries.index', [
             $dualSheet->id,

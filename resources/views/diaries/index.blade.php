@@ -35,7 +35,9 @@
             <!-- Titulo -->
             <div class="d-flex align-items-center justify-content-between">
                 <h1 class="h3 mb-0 px-1 px-sm-5">Entradas del Diario</h1>
-                <a href="{{ route('dualSheets.diaryEntries.create', [$sheet->id]) }}" class="px-1 px-sm-5"><button class="btn btn-primary">Nueva</button></a>
+                @can('createDiaryEntries', $sheet)
+                    <a href="{{ route('dualSheets.diaryEntries.create', [$sheet->id]) }}" class="px-1 px-sm-5"><button class="btn btn-primary">Nueva</button></a>
+                @endcan
             </div>
             <!-- End Titulo -->
 
@@ -47,7 +49,9 @@
                             <th>Fecha</th>
                             <th>Ver</th>
                             <th>Editar</th>
-                            <th>Eliminar</th>
+                            @can('deleteDiaryEntries', $sheet)
+                                <th>Eliminar</th>
+                            @endcan
                         </tr>
                     </thead>
                     <tbody>
@@ -70,11 +74,13 @@
                                 </td>
     
                                 <!-- Eliminar -->
-                                <td>
-                                    @include('partials.general.deletebutton', [
-                                        'route' => route('dualSheets.diaryEntries.destroy', [$sheet->id, $entry->id])
-                                    ])
-                                </td>
+                                @can('delete', $entry)
+                                    <td>
+                                        @include('partials.general.deletebutton', [
+                                            'route' => route('dualSheets.diaryEntries.destroy', [$sheet->id, $entry->id])
+                                        ])
+                                    </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>

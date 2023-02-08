@@ -29,6 +29,8 @@ class FollowUpsController extends Controller
      */
     public function index(DualSheet $dualSheet)
     {
+        $this->authorize('viewFollowUps', $dualSheet);
+
         $student = $dualSheet->student;
         $followUps = $dualSheet->followUps()->latest();
 
@@ -46,6 +48,8 @@ class FollowUpsController extends Controller
      */
     public function create(DualSheet $dualSheet)
     {
+        $this->authorize('viewFollowUps', $dualSheet);
+
         return view('followUps.create', [
             'sheet' => $dualSheet,
             'types' => self::TYPES,
@@ -61,6 +65,8 @@ class FollowUpsController extends Controller
      */
     public function store(Request $request, DualSheet $dualSheet)
     {
+        $this->authorize('viewFollowUps', $dualSheet);
+
         $request->validate([
             'date' => 'required|date',
             'assistants' => 'required|numeric|min:1|max:3',
@@ -92,6 +98,8 @@ class FollowUpsController extends Controller
      */
     public function show(DualSheet $dualSheet, FollowUp $followUp)
     {
+        $this->authorize('view', $followUp);
+
         $student = $dualSheet->student;
 
         return view('followUps.show', [
@@ -111,6 +119,8 @@ class FollowUpsController extends Controller
      */
     public function edit(DualSheet $dualSheet, FollowUp $followUp)
     {
+        $this->authorize('update', $followUp);
+
         $student = $dualSheet->student;
         return view('followUps.edit', [
             'sheet' => $dualSheet,
@@ -130,6 +140,8 @@ class FollowUpsController extends Controller
      */
     public function update(Request $request, DualSheet $dualSheet, FollowUp $followUp)
     {
+        $this->authorize('update', $followUp);
+
         $request->validate([
             'date' => 'required|date',
             'assistants' => 'required|numeric|min:1|max:3',
@@ -160,6 +172,8 @@ class FollowUpsController extends Controller
      */
     public function destroy(DualSheet $dualSheet, FollowUp $followUp)
     {
+        $this->authorize('delete', $followUp);
+
         FollowUp::destroy($followUp->id);
         return Redirect::route('dualSheets.followUps.index', [
             $dualSheet->id,
